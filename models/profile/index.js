@@ -14,11 +14,11 @@ const profileSchema = new Schema({
 				events: { type: Number, default: 0 },
 				successes: { type: Number, default: 0 }
 			},
-			liberal: {
+			camper: {
 				events: { type: Number, default: 0 },
 				successes: { type: Number, default: 0 }
 			},
-			fascist: {
+			bam: {
 				events: { type: Number, default: 0 },
 				successes: { type: Number, default: 0 }
 			}

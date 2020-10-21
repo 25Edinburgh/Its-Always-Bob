@@ -229,10 +229,6 @@ class Menu extends React.Component {
 								<a rel="noopener noreferrer" target="_blank" href="https://github.com/25Edinburgh/its-always-bob/wiki">
 									Wiki
 								</a>{' '}
-								|{' '}
-								<a rel="noopener noreferrer" target="_blank" href="https://discord.gg/secretbobio">
-									Discord
-								</a>
 							</span>
 						</div>
 						<div className="item right menu">
@@ -324,10 +320,6 @@ class Menu extends React.Component {
 								<a rel="noopener noreferrer" target="_blank" href="https://github.com/25Edinburgh/its-always-bob/wiki">
 									Wiki
 								</a>{' '}
-								|{' '}
-								<a rel="noopener noreferrer" target="_blank" href="https://discord.gg/secretbobio">
-									Discord
-								</a>
 							</span>
 						</div>
 					</section>

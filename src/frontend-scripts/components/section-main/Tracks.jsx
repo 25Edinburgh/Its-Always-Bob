@@ -241,7 +241,7 @@ class Tracks extends React.Component {
 
 		if (game.flappyMode) {
 			flappyMode = <i className="plane icon" />;
-			flappyModeTooltip = 'COMING SOON: Flappy Mode - sudden death games are resolved with a game of Flappy Hitler';
+			flappyModeTooltip = 'COMING SOON: Flappy Mode - sudden death games are resolved with a game of Flappy Bob';
 		}
 
 		if (game.flappyOnlyMode) {
@@ -395,7 +395,7 @@ class Tracks extends React.Component {
 						return null;
 					});
 					numFas = gameInfo.customGameSettings.fascistCount;
-					hzStart = gameInfo.customGameSettings.hitlerZone;
+					hzStart = gameInfo.customGameSettings.bobZone;
 					vzPoint = gameInfo.customGameSettings.vetoZone;
 					hitKnowsFas = gameInfo.customGameSettings.hitKnowsFas;
 				} else {

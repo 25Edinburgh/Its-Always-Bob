@@ -8,68 +8,68 @@ const data = {};
 const { CURRENTSEASONNUMBER } = require('../src/frontend-scripts/node-constants');
 
 const allPlayerGameData = {
-	fascistWinCount: 0,
+	bamWinCount: 0,
 	totalGameCount: 0,
-	fascistWinCountSeason: 0,
+	bamWinCountSeason: 0,
 	totalGameCountSeason: 0
 };
 const fivePlayerGameData = {
-	fascistWinCount: 0,
+	bamWinCount: 0,
 	totalGameCount: 0,
-	fascistWinCountSeason: 0,
+	bamWinCountSeason: 0,
 	totalGameCountSeason: 0
 };
 const sixPlayerGameData = {
-	fascistWinCount: 0,
+	bamWinCount: 0,
 	totalGameCount: 0,
-	rebalancedFascistWinCount: 0,
+	rebalancedbamWinCount: 0,
 	rebalancedTotalGameCount: 0,
-	fascistWinCountSeason: 0,
+	bamWinCountSeason: 0,
 	totalGameCountSeason: 0,
-	rebalancedFascistWinCountSeason: 0,
+	rebalancedbamWinCountSeason: 0,
 	rebalancedTotalGameCountSeason: 0
 };
 const sevenPlayerGameData = {
-	fascistWinCount: 0,
+	bamWinCount: 0,
 	totalGameCount: 0,
-	rebalancedFascistWinCount: 0,
+	rebalancedbamWinCount: 0,
 	rebalancedTotalGameCount: 0,
-	fascistWinCountSeason: 0,
+	bamWinCountSeason: 0,
 	totalGameCountSeason: 0,
-	rebalancedFascistWinCountSeason: 0,
+	rebalancedbamWinCountSeason: 0,
 	rebalancedTotalGameCountSeason: 0
 };
 const eightPlayerGameData = {
-	fascistWinCount: 0,
+	bamWinCount: 0,
 	totalGameCount: 0,
-	fascistWinCountSeason: 0,
+	bamWinCountSeason: 0,
 	totalGameCountSeason: 0
 };
 const ninePlayerGameData = {
-	fascistWinCount: 0,
+	bamWinCount: 0,
 	totalGameCount: 0,
-	rebalanced2fFascistWinCount: 0,
+	rebalanced2fbamWinCount: 0,
 	rebalanced2fTotalGameCount: 0,
-	fascistWinCountSeason: 0,
+	bamWinCountSeason: 0,
 	totalGameCountSeason: 0,
-	rebalanced2fFascistWinCountSeason: 0,
+	rebalanced2fbamWinCountSeason: 0,
 	rebalanced2fTotalGameCountSeason: 0
 };
 const tenPlayerGameData = {
-	fascistWinCount: 0,
+	bamWinCount: 0,
 	totalGameCount: 0,
-	fascistWinCountSeason: 0,
+	bamWinCountSeason: 0,
 	totalGameCountSeason: 0
 };
 
 mongoose.Promise = global.Promise;
-mongoose.connect(`mongodb://localhost:27017/secret-hitler-app`);
+mongoose.connect(`mongodb://localhost:27017/its-always-bob-app`);
 
 Game.find({})
 	.cursor()
 	.eachAsync(game => {
 		const playerCount = game.losingPlayers.length + game.winningPlayers.length;
-		const fascistsWon = game.winningTeam === 'fascist';
+		const bamsWon = game.winningTeam === 'bam';
 		const gameDate = moment(new Date(game.date)).format('l');
 		const rebalanced = (game.rebalance6p && playerCount === 6) || (game.rebalance7p && playerCount === 7) || (game.rebalance9p && playerCount === 9);
 		const rebalanced9p2f = game.rebalance9p2f && playerCount === 9;
@@ -87,135 +87,135 @@ Game.find({})
 		switch (playerCount) {
 			case 5:
 				fivePlayerGameData.totalGameCount++;
-				if (fascistsWon) {
-					fivePlayerGameData.fascistWinCount++;
+				if (bamsWon) {
+					fivePlayerGameData.bamWinCount++;
 				}
 
 				if (game.season && game.season === CURRENTSEASONNUMBER) {
 					fivePlayerGameData.totalGameCountSeason++;
-					if (fascistsWon) {
-						fivePlayerGameData.fascistWinCountSeason++;
+					if (bamsWon) {
+						fivePlayerGameData.bamWinCountSeason++;
 					}
 				}
 				break;
 			case 6:
 				if (rebalanced) {
-					if (fascistsWon) {
-						sixPlayerGameData.rebalancedFascistWinCount++;
+					if (bamsWon) {
+						sixPlayerGameData.rebalancedbamWinCount++;
 					}
 					sixPlayerGameData.rebalancedTotalGameCount++;
 
 					if (game.season && game.season === CURRENTSEASONNUMBER) {
 						sixPlayerGameData.rebalancedTotalGameCountSeason++;
-						if (fascistsWon) {
-							sixPlayerGameData.rebalancedFascistWinCountSeason++;
+						if (bamsWon) {
+							sixPlayerGameData.rebalancedbamWinCountSeason++;
 						}
 					}
 				} else {
-					if (fascistsWon) {
-						sixPlayerGameData.fascistWinCount++;
+					if (bamsWon) {
+						sixPlayerGameData.bamWinCount++;
 					}
 					sixPlayerGameData.totalGameCount++;
 
 					if (game.season && game.season === CURRENTSEASONNUMBER) {
 						sixPlayerGameData.totalGameCountSeason++;
-						if (fascistsWon) {
-							sixPlayerGameData.fascistWinCountSeason++;
+						if (bamsWon) {
+							sixPlayerGameData.bamWinCountSeason++;
 						}
 					}
 				}
 				break;
 			case 7:
 				if (rebalanced) {
-					if (fascistsWon) {
-						sevenPlayerGameData.rebalancedFascistWinCount++;
+					if (bamsWon) {
+						sevenPlayerGameData.rebalancedbamWinCount++;
 					}
 					sevenPlayerGameData.rebalancedTotalGameCount++;
 
 					if (game.season && game.season === CURRENTSEASONNUMBER) {
 						sevenPlayerGameData.rebalancedTotalGameCountSeason++;
-						if (fascistsWon) {
-							sevenPlayerGameData.rebalancedFascistWinCountSeason++;
+						if (bamsWon) {
+							sevenPlayerGameData.rebalancedbamWinCountSeason++;
 						}
 					}
 				} else {
-					if (fascistsWon) {
-						sevenPlayerGameData.fascistWinCount++;
+					if (bamsWon) {
+						sevenPlayerGameData.bamWinCount++;
 					}
 					sevenPlayerGameData.totalGameCount++;
 
 					if (game.season && game.season === CURRENTSEASONNUMBER) {
 						sevenPlayerGameData.totalGameCountSeason++;
-						if (fascistsWon) {
-							sevenPlayerGameData.fascistWinCountSeason++;
+						if (bamsWon) {
+							sevenPlayerGameData.bamWinCountSeason++;
 						}
 					}
 				}
 				break;
 			case 8:
 				eightPlayerGameData.totalGameCount++;
-				if (fascistsWon) {
-					eightPlayerGameData.fascistWinCount++;
+				if (bamsWon) {
+					eightPlayerGameData.bamWinCount++;
 				}
 				if (game.season && game.season === CURRENTSEASONNUMBER) {
 					eightPlayerGameData.totalGameCountSeason++;
-					if (fascistsWon) {
-						eightPlayerGameData.fascistWinCountSeason++;
+					if (bamsWon) {
+						eightPlayerGameData.bamWinCountSeason++;
 					}
 				}
 				break;
 			case 9:
 				if (rebalanced) {
-					if (fascistsWon) {
-						ninePlayerGameData.rebalancedFascistWinCount++;
+					if (bamsWon) {
+						ninePlayerGameData.rebalancedbamWinCount++;
 					}
 					ninePlayerGameData.rebalancedTotalGameCount++;
 				} else if (rebalanced9p2f) {
-					if (fascistsWon) {
-						ninePlayerGameData.rebalanced2fFascistWinCount++;
+					if (bamsWon) {
+						ninePlayerGameData.rebalanced2fbamWinCount++;
 					}
 					ninePlayerGameData.rebalanced2fTotalGameCount++;
 
 					if (game.season && game.season === CURRENTSEASONNUMBER) {
 						ninePlayerGameData.rebalanced2fTotalGameCountSeason++;
-						if (fascistsWon) {
-							ninePlayerGameData.rebalanced2fFascistWinCountSeason++;
+						if (bamsWon) {
+							ninePlayerGameData.rebalanced2fbamWinCountSeason++;
 						}
 					}
 				} else {
-					if (fascistsWon) {
-						ninePlayerGameData.fascistWinCount++;
+					if (bamsWon) {
+						ninePlayerGameData.bamWinCount++;
 					}
 					ninePlayerGameData.totalGameCount++;
 					if (game.season && game.season === CURRENTSEASONNUMBER) {
 						ninePlayerGameData.totalGameCountSeason++;
-						if (fascistsWon) {
-							ninePlayerGameData.fascistWinCountSeason++;
+						if (bamsWon) {
+							ninePlayerGameData.bamWinCountSeason++;
 						}
 					}
 				}
 				break;
 			case 10:
 				tenPlayerGameData.totalGameCount++;
-				if (fascistsWon) {
-					tenPlayerGameData.fascistWinCount++;
+				if (bamsWon) {
+					tenPlayerGameData.bamWinCount++;
 				}
 				if (game.season && game.season === CURRENTSEASONNUMBER) {
 					tenPlayerGameData.totalGameCountSeason++;
-					if (fascistsWon) {
-						tenPlayerGameData.fascistWinCountSeason++;
+					if (bamsWon) {
+						tenPlayerGameData.bamWinCountSeason++;
 					}
 				}
 				break;
 		}
 		allPlayerGameData.totalGameCount++;
-		if (fascistsWon) {
-			allPlayerGameData.fascistWinCount++;
+		if (bamsWon) {
+			allPlayerGameData.bamWinCount++;
 		}
 		if (game.season && game.season === CURRENTSEASONNUMBER) {
 			allPlayerGameData.totalGameCountSeason++;
-			if (fascistsWon) {
-				allPlayerGameData.fascistWinCountSeason++;
+			if (bamsWon) {
+				allPlayerGameData.bamWinCountSeason++;
 			}
 		}
 		labels.push(moment(new Date(game.date)).format('l'));
@@ -240,7 +240,7 @@ Game.find({})
 		data.eightPlayerGameData = eightPlayerGameData;
 		data.ninePlayerGameData = ninePlayerGameData;
 		data.tenPlayerGameData = tenPlayerGameData;
-		fs.writeFile('/var/www/secret-hitler/data/data.json', JSON.stringify(data), () => {
+		fs.writeFile('/var/www/its-always-bob/data/data.json', JSON.stringify(data), () => {
 			mongoose.connection.close();
 		});
 	});

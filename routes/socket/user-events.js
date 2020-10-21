@@ -271,7 +271,7 @@ const handleSocketDisconnect = socket => {
 					publicPlayersState[playerIndex].leftGame = true;
 					const playerRemakeData = game.remakeData && game.remakeData.find(player => player.userName === passport.user);
 					if (playerRemakeData && playerRemakeData.isRemaking) {
-						const minimumRemakeVoteCount = game.general.playerCount - game.customGameSettings.fascistCount;
+						const minimumRemakeVoteCount = game.general.playerCount - game.customGameSettings.bamCount;
 						const remakePlayerCount = game.remakeData.filter(player => player.isRemaking).length;
 
 						if (!game.general.isRemade && game.general.isRemaking && remakePlayerCount <= minimumRemakeVoteCount) {
@@ -359,7 +359,7 @@ const handleUserLeaveGame = (socket, game, data, passport) => {
 		if (playerRemakeData && playerRemakeData.isRemaking) {
 			// Count leaving the game as rescinded remake vote.
 			const minimumRemakeVoteCount =
-				(game.customGameSettings.fascistCount && game.general.playerCount - game.customGameSettings.fascistCount) ||
+				(game.customGameSettings.bamCount && game.general.playerCount - game.customGameSettings.bamCount) ||
 				Math.floor(game.general.playerCount / 2) + 2;
 			const remakePlayerCount = game.remakeData.filter(player => player.isRemaking).length;
 
@@ -635,7 +635,7 @@ module.exports.handleAddNewGame = (socket, passport, data) => {
 			else if (data.customGameSettings.powers[a] && !validPowers.includes(data.customGameSettings.powers[a])) return;
 		}
 
-		if (!(data.customGameSettings.hitlerZone >= 1) || data.customGameSettings.hitlerZone > 5) return;
+		if (!(data.customGameSettings.bobZone >= 1) || data.customGameSettings.bobZone > 5) return;
 		if (
 			!data.customGameSettings.vetoZone ||
 			data.customGameSettings.vetoZone <= data.customGameSettings.trackState.fas ||
@@ -646,7 +646,7 @@ module.exports.handleAddNewGame = (socket, passport, data) => {
 
 		// Ensure that there is never a fas majority at the start.
 		// Custom games should probably require a fixed player count, which will be in playerCounts[0] regardless.
-		if (!(data.customGameSettings.fascistCount >= 1) || data.customGameSettings.fascistCount + 1 > playerCounts[0] / 2) return;
+		if (!(data.customGameSettings.bamCount >= 1) || data.customGameSettings.bamCount + 1 > playerCounts[0] / 2) return;
 
 		// Ensure standard victory conditions can be met for both teams.
 		if (!(data.customGameSettings.deckState.lib >= 5) || data.customGameSettings.deckState.lib > 8) return;
@@ -727,8 +727,8 @@ module.exports.handleAddNewGame = (socket, passport, data) => {
 		playersState: [],
 		cardFlingerState: [],
 		trackState: {
-			liberalPolicyCount: 0,
-			fascistPolicyCount: 0,
+			camperPolicyCount: 0,
+			bamPolicyCount: 0,
 			electionTrackerCount: 0,
 			enactedPolicies: []
 		}
@@ -743,15 +743,15 @@ module.exports.handleAddNewGame = (socket, passport, data) => {
 					text: 'There will be '
 				},
 				{
-					text: `${newGame.customGameSettings.deckState.lib - newGame.customGameSettings.trackState.lib} liberal`,
-					type: 'liberal'
+					text: `${newGame.customGameSettings.deckState.lib - newGame.customGameSettings.trackState.lib} camper`,
+					type: 'camper'
 				},
 				{
 					text: ' and '
 				},
 				{
-					text: `${newGame.customGameSettings.deckState.fas - newGame.customGameSettings.trackState.fas} fascist`,
-					type: 'fascist'
+					text: `${newGame.customGameSettings.deckState.fas - newGame.customGameSettings.trackState.fas} bam`,
+					type: 'bam'
 				},
 				{
 					text: ' policies in the deck.'
@@ -768,15 +768,15 @@ module.exports.handleAddNewGame = (socket, passport, data) => {
 					text: 'The game will start with '
 				},
 				{
-					text: `${newGame.customGameSettings.trackState.lib} liberal`,
-					type: 'liberal'
+					text: `${newGame.customGameSettings.trackState.lib} camper`,
+					type: 'camper'
 				},
 				{
 					text: ' and '
 				},
 				{
-					text: `${newGame.customGameSettings.trackState.fas} fascist`,
-					type: 'fascist'
+					text: `${newGame.customGameSettings.trackState.fas} bam`,
+					type: 'bam'
 				},
 				{
 					text: ' policies.'
@@ -1027,7 +1027,7 @@ module.exports.handleAddNewClaim = (socket, passport, game, data) => {
 				}
 				return;
 			case 'didSinglePolicyPeek':
-				if (data.claimState === 'liberal' || data.claimState === 'fascist') {
+				if (data.claimState === 'camper' || data.claimState === 'bam') {
 					text = [
 						{
 							text: 'President '
@@ -1192,11 +1192,11 @@ module.exports.handleAddNewClaim = (socket, passport, game, data) => {
 					{ presidentId: playerIndex }
 				);
 				switch (data.claimState) {
-					case 'fascist':
+					case 'bam':
 						text.push(
 							{
-								text: 'fascist ',
-								type: 'fascist'
+								text: 'bam ',
+								type: 'bam'
 							},
 							{
 								text: 'team.'
@@ -1204,11 +1204,11 @@ module.exports.handleAddNewClaim = (socket, passport, game, data) => {
 						);
 
 						return text;
-					case 'liberal':
+					case 'camper':
 						text.push(
 							{
-								text: 'liberal ',
-								type: 'liberal'
+								text: 'camper ',
+								type: 'camper'
 							},
 							{
 								text: 'team.'
@@ -1269,7 +1269,7 @@ module.exports.handleUpdatedRemakeGame = (passport, game, data, socket) => {
 	const player = remakeData[playerIndex];
 	let chat;
 	const minimumRemakeVoteCount =
-		(game.customGameSettings.fascistCount && game.general.playerCount - game.customGameSettings.fascistCount) || Math.floor(game.general.playerCount / 2) + 2;
+		(game.customGameSettings.bamCount && game.general.playerCount - game.customGameSettings.bamCount) || Math.floor(game.general.playerCount / 2) + 2;
 	if (game && game.general && game.general.private) {
 		chat = {
 			timestamp: new Date(),
@@ -1304,7 +1304,7 @@ module.exports.handleUpdatedRemakeGame = (passport, game, data, socket) => {
 				chat: [
 					{
 						text: 'Game remake aborted, game creation is currently disabled.',
-						type: 'hitler'
+						type: 'bob'
 					}
 				]
 			});
@@ -1337,15 +1337,15 @@ module.exports.handleUpdatedRemakeGame = (passport, game, data, socket) => {
 						text: 'There will be '
 					},
 					{
-						text: `${newGame.customGameSettings.deckState.lib - newGame.customGameSettings.trackState.lib} liberal`,
-						type: 'liberal'
+						text: `${newGame.customGameSettings.deckState.lib - newGame.customGameSettings.trackState.lib} camper`,
+						type: 'camper'
 					},
 					{
 						text: ' and '
 					},
 					{
-						text: `${newGame.customGameSettings.deckState.fas - newGame.customGameSettings.trackState.fas} fascist`,
-						type: 'fascist'
+						text: `${newGame.customGameSettings.deckState.fas - newGame.customGameSettings.trackState.fas} bam`,
+						type: 'bam'
 					},
 					{
 						text: ' policies in the deck.'
@@ -1362,15 +1362,15 @@ module.exports.handleUpdatedRemakeGame = (passport, game, data, socket) => {
 						text: 'The game will start with '
 					},
 					{
-						text: `${newGame.customGameSettings.trackState.lib} liberal`,
-						type: 'liberal'
+						text: `${newGame.customGameSettings.trackState.lib} camper`,
+						type: 'camper'
 					},
 					{
 						text: ' and '
 					},
 					{
-						text: `${newGame.customGameSettings.trackState.fas} fascist`,
-						type: 'fascist'
+						text: `${newGame.customGameSettings.trackState.fas} bam`,
+						type: 'bam'
 					},
 					{
 						text: ' policies.'
@@ -1419,8 +1419,8 @@ module.exports.handleUpdatedRemakeGame = (passport, game, data, socket) => {
 		newGame.playersState = [];
 		newGame.cardFlingerState = [];
 		newGame.trackState = {
-			liberalPolicyCount: 0,
-			fascistPolicyCount: 0,
+			camperPolicyCount: 0,
+			bamPolicyCount: 0,
 			electionTrackerCount: 0,
 			enactedPolicies: []
 		};
@@ -1512,7 +1512,7 @@ module.exports.handleUpdatedRemakeGame = (passport, game, data, socket) => {
 				chat: [
 					{
 						text: 'Due to the other tournament table voting for cancellation, this tournament has been cancelled.',
-						type: 'hitler'
+						type: 'bob'
 					}
 				]
 			});
@@ -1680,8 +1680,8 @@ module.exports.handleAddNewGameChat = (socket, passport, data, game, modUserName
 			}
 		}
 
-		if (/^(b|blue|l|lib|liberal)$/i.exec(chat)) {
-			// console.log(chat, ' - ', 'liberal', ' - ', game.private.seatedPlayers[playerIndex].playersState[playerIndex].claim);
+		if (/^(b|blue|l|lib|camper)$/i.exec(chat)) {
+			// console.log(chat, ' - ', 'camper', ' - ', game.private.seatedPlayers[playerIndex].playersState[playerIndex].claim);
 			if (
 				0 <= playerIndex <= 9 &&
 				(game.private.seatedPlayers[playerIndex].playersState[playerIndex].claim === 'didSinglePolicyPeek' ||
@@ -1689,7 +1689,7 @@ module.exports.handleAddNewGameChat = (socket, passport, data, game, modUserName
 			) {
 				const claimData = {
 					userName: user.userName,
-					claimState: 'liberal',
+					claimState: 'camper',
 					claim: game.private.seatedPlayers[playerIndex].playersState[playerIndex].claim,
 					uid: data.uid
 				};
@@ -1697,8 +1697,8 @@ module.exports.handleAddNewGameChat = (socket, passport, data, game, modUserName
 			}
 		}
 
-		if (/^(r|red|fas|f|fasc|fascist)$/i.exec(chat)) {
-			// console.log(chat, ' - ', 'fascist', ' - ', game.private.seatedPlayers[playerIndex].playersState[playerIndex].claim);
+		if (/^(r|red|fas|f|fasc|bam)$/i.exec(chat)) {
+			// console.log(chat, ' - ', 'bam', ' - ', game.private.seatedPlayers[playerIndex].playersState[playerIndex].claim);
 			if (
 				0 <= playerIndex <= 9 &&
 				(game.private.seatedPlayers[playerIndex].playersState[playerIndex].claim === 'didSinglePolicyPeek' ||
@@ -1706,7 +1706,7 @@ module.exports.handleAddNewGameChat = (socket, passport, data, game, modUserName
 			) {
 				const claimData = {
 					userName: user.userName,
-					claimState: 'fascist',
+					claimState: 'bam',
 					claim: game.private.seatedPlayers[playerIndex].playersState[playerIndex].claim,
 					uid: data.uid
 				};
@@ -1772,7 +1772,7 @@ module.exports.handleAddNewGameChat = (socket, passport, data, game, modUserName
 						if (card === 'R' || card === 'B') {
 							changedChat.push({
 								text: card,
-								type: `${card === 'R' ? 'fascist' : 'liberal'}`
+								type: `${card === 'R' ? 'bam' : 'camper'}`
 							});
 						}
 					}
@@ -2090,7 +2090,7 @@ module.exports.handleAddNewGameChat = (socket, passport, data, game, modUserName
 						socket.emit('sendAlert', 'Unable to send ping.');
 						return;
 					}
-					io.sockets.sockets[affectedSocketId].emit('pingPlayer', 'Secret Hitler IO: A moderator has pinged you.');
+					io.sockets.sockets[affectedSocketId].emit('pingPlayer', 'It\'s Always Bob: A moderator has pinged you.');
 				} catch (e) {
 					console.log(e, 'caught exception in ping chat');
 				}
@@ -2186,7 +2186,7 @@ module.exports.handleAddNewGameChat = (socket, passport, data, game, modUserName
 			}
 			io.sockets.sockets[affectedSocketId].emit(
 				'pingPlayer',
-				game.general.blindMode ? 'Secret Hitler IO: A player has pinged you.' : `Secret Hitler IO: Player ${data.userName} just pinged you.`
+				game.general.blindMode ? 'It\'s Always Bob: A player has pinged you.' : `It\'s Always Bob: Player ${data.userName} just pinged you.`
 			);
 
 			game.chats.push({
@@ -2513,7 +2513,7 @@ module.exports.handleSubscribeModChat = (socket, passport, game) => {
 	};
 	game.private.policies.forEach(policy => {
 		modOnlyChat.chat.push({
-			text: policy === 'liberal' ? 'B' : 'R',
+			text: policy === 'camper' ? 'B' : 'R',
 			type: policy
 		});
 	});
@@ -2645,7 +2645,7 @@ module.exports.handleModPeekVotes = (socket, passport, game, modUserName) => {
 			output += '<td>' + (playersToCheckVotes.indexOf(player) + 1) + '</td>';
 			output += '<td>';
 			if (player && player.role && player.role.cardName) {
-				if (player.role.cardName === 'hitler') {
+				if (player.role.cardName === 'bob') {
 					output += player.role.cardName.substring(0, 1).toUpperCase() + player.role.cardName.substring(1);
 				} else {
 					output += player.role.cardName.substring(0, 1).toUpperCase() + player.role.cardName.substring(1);
@@ -3793,7 +3793,7 @@ module.exports.handlePlayerReport = (passport, data) => {
 			: 'Anonymous'
 		: data.reportedPlayer;
 	const body = JSON.stringify({
-		content: `Game UID: <https://secrethitler.io/game/#/table/${data.uid}>\nReported player: ${blindModeAnonymizedPlayer}\nReason: ${playerReport.reason}\nComment: ${httpEscapedComment}`
+		content: `Game UID: <https://iab.25edinburgh.org/game/#/table/${data.uid}>\nReported player: ${blindModeAnonymizedPlayer}\nReason: ${playerReport.reason}\nComment: ${httpEscapedComment}`
 	});
 
 	const options = {
@@ -3967,9 +3967,9 @@ module.exports.handleFlappyEvent = (data, game) => {
 	if (data.type === 'startFlappy') {
 		game.flappyState = {
 			controllingLibUser: '',
-			controllingFascistUser: '',
-			liberalScore: 0,
-			fascistScore: 0,
+			controllingbamUser: '',
+			camperScore: 0,
+			bamScore: 0,
 			pylonDensity: 1.3,
 			flapDistance: 1,
 			pylonOffset: 1.3,
@@ -4000,7 +4000,7 @@ module.exports.handleFlappyEvent = (data, game) => {
 
 	if (data.type === 'passedPylon') {
 		game.flappyState.passedPylonCount++;
-		game.general.status = `FLAPPY HITLER: ${game.flappyState.liberalScore} - ${game.flappyState.fascistScore} (${game.flappyState.passedPylonCount})`;
+		game.general.status = `FLAPPY HITLER: ${game.flappyState.camperScore} - ${game.flappyState.bamScore} (${game.flappyState.passedPylonCount})`;
 
 		io.sockets.in(game.general.uid).emit('gameUpdate', game);
 	}

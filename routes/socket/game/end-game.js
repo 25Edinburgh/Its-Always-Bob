@@ -118,8 +118,8 @@ module.exports.completeGame = (game, winningTeamName) => {
 		timestamp: new Date(),
 		chat: [
 			{
-				text: winningTeamName === 'fascist' ? 'Fascists' : 'Liberals',
-				type: winningTeamName === 'fascist' ? 'fascist' : 'liberal'
+				text: winningTeamName === 'bam' ? 'bams' : 'campers',
+				type: winningTeamName === 'bam' ? 'bam' : 'camper'
 			},
 			{ text: ' win the game.' }
 		]
@@ -132,7 +132,7 @@ module.exports.completeGame = (game, winningTeamName) => {
 				text: 'The remaining policies are '
 			},
 			{
-				policies: game.private.policies.map(policyName => (policyName === 'liberal' ? 'b' : 'r'))
+				policies: game.private.policies.map(policyName => (policyName === 'camper' ? 'b' : 'r'))
 			},
 			{
 				text: '.'
@@ -155,7 +155,7 @@ module.exports.completeGame = (game, winningTeamName) => {
 		}, 15000);
 	}
 
-	game.general.status = winningTeamName === 'fascist' ? 'Fascists win the game.' : 'Liberals win the game.';
+	game.general.status = winningTeamName === 'bam' ? 'bams win the game.' : 'campers win the game.';
 	game.gameState.isCompleted = winningTeamName;
 	sendGameList();
 
@@ -203,9 +203,9 @@ module.exports.completeGame = (game, winningTeamName) => {
 				};
 
 				seatedPlayers = [
-					...seatedPlayers.filter(e => e.role.cardName === 'hitler').sort(byUsername),
-					...seatedPlayers.filter(e => e.role.cardName === 'fascist').sort(byUsername),
-					...seatedPlayers.filter(e => e.role.cardName === 'liberal').sort(byUsername)
+					...seatedPlayers.filter(e => e.role.cardName === 'bob').sort(byUsername),
+					...seatedPlayers.filter(e => e.role.cardName === 'bam').sort(byUsername),
+					...seatedPlayers.filter(e => e.role.cardName === 'camper').sort(byUsername)
 				];
 
 				results.forEach(player => {
@@ -365,8 +365,8 @@ module.exports.completeGame = (game, winningTeamName) => {
 					isStarted: true
 				};
 				finalGame.trackState = {
-					liberalPolicyCount: 0,
-					fascistPolicyCount: 0,
+					camperPolicyCount: 0,
+					bamPolicyCount: 0,
 					electionTrackerCount: 0,
 					enactedPolicies: []
 				};

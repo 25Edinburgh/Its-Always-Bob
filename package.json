@@ -1,6 +1,6 @@
 {
-	"name": "secret-hitler",
-	"description": "A web adaptation of the social deduction board game Secret Hitler.",
+	"name": "its-always-bob",
+	"description": "A BB-friendly adaptation of the Secret Hitler game.",
 	"version": "1.7.0",
 	"license": "CC-BY-NC-SA-4.0",
 	"keywords": [
@@ -9,9 +9,9 @@
 		"hidden roles",
 		"secret hitler"
 	],
-	"repository": "https://github.com/cozuya/secret-hitler.git",
+	"repository": "https://github.com/25Edinburgh/Its-Always-Bob.git",
 	"author": "Chris Ozols <chris.v.ozols@gmail.com> (http://twolongos.com)",
-	"homepage": "https://secrethitler.io",
+	"homepage": "https://25edinburgh.org",
 	"bugs": "https://github.com/cozuya/secret-hitler/issues",
 	"engines": {
 		"node": ">=12.0"
@@ -142,7 +142,7 @@
 		"test:watch": "jest --watch",
 		"test:coverage": "jest --coverage",
 		"db": "mongod --dbpath data",
-		"db-docker": "docker run -it --rm -p 27017:27017 -v \"$(PWD)/data\":/data/db --name Secret-Hitler-Dev-MongoDB mongo:latest --port 27017",
+		"db-docker": "docker run -it --rm -p 27017:27017 -v \"$(PWD)/data\":/data/db --name Its-Always-Bob-Dev-MongoDB mongo:latest --port 27017",
 		"build": "node scripts/processEmotes && webpack --config webpack/webpack.config.prod --mode production",
 		"inspect": "cross-env NODE_ENV=development nodemon --inspect=9137 bin/dev.js",
 		"server": "cross-env NODE_ENV=development nodemon bin/dev.js",

@@ -1,5 +1,5 @@
 module.exports = {
-	_id: 'hitler-killed-liberal-loss',
+	_id: 'bob-sent-home-campers-loss',
 	date: '2017-06-26T20:26:04.058Z',
 	gameSetting: {
 		rebalance6p: false,
@@ -11,7 +11,7 @@ module.exports = {
 		{
 			presidentId: 0,
 			chancellorId: 5,
-			enactedPolicy: 'fascist',
+			enactedPolicy: 'bam',
 			_id: '595170616419ea7a9b548429',
 			chancellorClaim: {
 				reds: 2,
@@ -34,7 +34,7 @@ module.exports = {
 		{
 			presidentId: 1,
 			chancellorId: 4,
-			enactedPolicy: 'liberal',
+			enactedPolicy: 'camper',
 			_id: '595170616419ea7a9b548428',
 			chancellorClaim: {
 				reds: 1,
@@ -57,7 +57,7 @@ module.exports = {
 		{
 			presidentId: 2,
 			chancellorId: 5,
-			enactedPolicy: 'fascist',
+			enactedPolicy: 'bam',
 			_id: '595170616419ea7a9b548427',
 			chancellorClaim: {
 				reds: 2,
@@ -80,7 +80,7 @@ module.exports = {
 		{
 			presidentId: 3,
 			chancellorId: 1,
-			enactedPolicy: 'liberal',
+			enactedPolicy: 'camper',
 			_id: '595170616419ea7a9b548426',
 			chancellorClaim: {
 				reds: 2,
@@ -103,7 +103,7 @@ module.exports = {
 		{
 			presidentId: 4,
 			chancellorId: 2,
-			enactedPolicy: 'fascist',
+			enactedPolicy: 'bam',
 			_id: '595170616419ea7a9b548425',
 			policyPeekClaim: {
 				reds: 1,
@@ -138,7 +138,7 @@ module.exports = {
 		{
 			presidentId: 1,
 			chancellorId: 5,
-			enactedPolicy: 'liberal',
+			enactedPolicy: 'camper',
 			_id: '595170616419ea7a9b548422',
 			votes: [false, false, false, false, false, false]
 		},
@@ -157,7 +157,7 @@ module.exports = {
 		{
 			presidentId: 4,
 			chancellorId: 2,
-			enactedPolicy: 'liberal',
+			enactedPolicy: 'camper',
 			_id: '595170616419ea7a9b54841f',
 			votes: [false, false, false, false, false, false]
 		},
@@ -180,7 +180,7 @@ module.exports = {
 		{
 			presidentId: 1,
 			chancellorId: 3,
-			enactedPolicy: 'fascist',
+			enactedPolicy: 'bam',
 			execution: 0,
 			_id: '595170616419ea7a9b54841c',
 			chancellorHand: {
@@ -197,32 +197,32 @@ module.exports = {
 	players: [
 		{
 			username: 'cbell',
-			role: 'hitler',
+			role: 'bob',
 			_id: '595170616419ea7a9b54842f'
 		},
 		{
 			username: 'onebobby',
-			role: 'liberal',
+			role: 'camper',
 			_id: '595170616419ea7a9b54842e'
 		},
 		{
 			username: 'Blue',
-			role: 'liberal',
+			role: 'camper',
 			_id: '595170616419ea7a9b54842d'
 		},
 		{
 			username: 'Benduth',
-			role: 'liberal',
+			role: 'camper',
 			_id: '595170616419ea7a9b54842c'
 		},
 		{
 			username: 'DumbBullDoor',
-			role: 'liberal',
+			role: 'camper',
 			_id: '595170616419ea7a9b54842b'
 		},
 		{
 			username: 'hoffan015',
-			role: 'fascist',
+			role: 'bam',
 			_id: '595170616419ea7a9b54842a'
 		}
 	],

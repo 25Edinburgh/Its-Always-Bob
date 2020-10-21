@@ -623,22 +623,22 @@ class Gamechat extends React.Component {
 
 		const parseClaim = claim => {
 			const mode = (userInfo && userInfo.gameSettings && userInfo.gameSettings.claimCharacters) || 'legacy';
-			let liberalChar = 'L';
-			let fascistChar = 'F';
+			let camperChar = 'L';
+			let bamChar = 'F';
 			if (mode === 'legacy') {
-				liberalChar = 'B';
-				fascistChar = 'R';
+				camperChar = 'B';
+				bamChar = 'R';
 			} else if (mode === 'full') {
-				liberalChar = 'liberal';
-				fascistChar = 'fascist';
+				camperChar = 'camper';
+				bamChar = 'bam';
 			}
 			const claims = Array.from(claim);
 			const elements = claims.map((claimChar, index) => {
-				const isLiberal = claimChar === 'b';
+				const iscamper = claimChar === 'b';
 
 				return (
 					<span key={`claim${index}`}>
-						<span className={getClassesFromType(isLiberal ? 'liberal' : 'fascist')}>{isLiberal ? liberalChar : fascistChar}</span>
+						<span className={getClassesFromType(iscamper ? 'camper' : 'bam')}>{iscamper ? camperChar : bamChar}</span>
 						{mode === 'full' && index < claims.length - 1 ? <span>, </span> : <React.Fragment />}
 					</span>
 				);
@@ -1254,33 +1254,33 @@ class Gamechat extends React.Component {
 												onClick={e => {
 													handleClaimButtonClick(e, 'rrr');
 												}}
-												className="ui button threefascist"
+												className="ui button threebam"
 											>
-												3 Fascist policies
+												3 bam policies
 											</button>
 											<button
 												onClick={e => {
 													handleClaimButtonClick(e, 'rrb');
 												}}
-												className="ui button twofascistoneliberal"
+												className="ui button twobamonecamper"
 											>
-												2 Fascist and a Liberal policy
+												2 bam and a camper policy
 											</button>
 											<button
 												onClick={e => {
 													handleClaimButtonClick(e, 'rbb');
 												}}
-												className="ui button twoliberalonefascist"
+												className="ui button twocamperonebam"
 											>
-												2 Liberal and a Fascist policy
+												2 camper and a bam policy
 											</button>
 											<button
 												onClick={e => {
 													handleClaimButtonClick(e, 'bbb');
 												}}
-												className="ui button threeliberal"
+												className="ui button threecamper"
 											>
-												3 Liberal policies
+												3 camper policies
 											</button>
 										</div>
 									);
@@ -1292,25 +1292,25 @@ class Gamechat extends React.Component {
 												onClick={e => {
 													handleClaimButtonClick(e, 'rr');
 												}}
-												className="ui button threefascist"
+												className="ui button threebam"
 											>
-												2 Fascist policies
+												2 bam policies
 											</button>
 											<button
 												onClick={e => {
 													handleClaimButtonClick(e, 'rb');
 												}}
-												className="ui button onefascistoneliberal"
+												className="ui button onebamonecamper"
 											>
-												A Fascist and a Liberal policy
+												A bam and a camper policy
 											</button>
 											<button
 												onClick={e => {
 													handleClaimButtonClick(e, 'bb');
 												}}
-												className="ui button threeliberal"
+												className="ui button threecamper"
 											>
-												2 Liberal policies
+												2 camper policies
 											</button>
 										</div>
 									);
@@ -1320,19 +1320,19 @@ class Gamechat extends React.Component {
 											<p> As president, when I looked at the party membership I saw that he or she was on the...</p>
 											<button
 												onClick={e => {
-													handleClaimButtonClick(e, 'fascist');
+													handleClaimButtonClick(e, 'bam');
 												}}
-												className="ui button threefascist"
+												className="ui button threebam"
 											>
-												Fascist team
+												bam team
 											</button>
 											<button
 												onClick={e => {
-													handleClaimButtonClick(e, 'liberal');
+													handleClaimButtonClick(e, 'camper');
 												}}
-												className="ui button threeliberal"
+												className="ui button threecamper"
 											>
-												Liberal team
+												camper team
 											</button>
 										</div>
 									);
@@ -1342,19 +1342,19 @@ class Gamechat extends React.Component {
 											<p> As president, when I looked at the top card I saw a...</p>
 											<button
 												onClick={e => {
-													handleClaimButtonClick(e, 'fascist');
+													handleClaimButtonClick(e, 'bam');
 												}}
-												className="ui button threefascist"
+												className="ui button threebam"
 											>
-												Fascist policy
+												bam policy
 											</button>
 											<button
 												onClick={e => {
-													handleClaimButtonClick(e, 'liberal');
+													handleClaimButtonClick(e, 'camper');
 												}}
-												className="ui button threeliberal"
+												className="ui button threecamper"
 											>
-												Liberal policy
+												camper policy
 											</button>
 										</div>
 									);
@@ -1366,33 +1366,33 @@ class Gamechat extends React.Component {
 												onClick={e => {
 													handleClaimButtonClick(e, 'rrr');
 												}}
-												className="ui button threefascist"
+												className="ui button threebam"
 											>
-												3 Fascist policies
+												3 bam policies
 											</button>
 											<button
 												onClick={e => {
 													handleClaimButtonClick(e, 'rrb');
 												}}
-												className="ui button twofascistoneliberal"
+												className="ui button twobamonecamper"
 											>
-												2 Fascist and a Liberal policy
+												2 bam and a camper policy
 											</button>
 											<button
 												onClick={e => {
 													handleClaimButtonClick(e, 'rbb');
 												}}
-												className="ui button twoliberalonefascist"
+												className="ui button twocamperonebam"
 											>
-												2 Liberal and a Fascist policy
+												2 camper and a bam policy
 											</button>
 											<button
 												onClick={e => {
 													handleClaimButtonClick(e, 'bbb');
 												}}
-												className="ui button threeliberal"
+												className="ui button threecamper"
 											>
-												3 Liberal policies
+												3 camper policies
 											</button>
 										</div>
 									);
@@ -1520,18 +1520,18 @@ class Gamechat extends React.Component {
 					<div
 						className="ui blue positive inverted button"
 						onClick={() => {
-							sendModEndGame('liberal');
+							sendModEndGame('camper');
 						}}
 					>
-						End game elo win for liberals
+						End game elo win for campers
 					</div>
 					<div
 						className="ui red positive inverted button"
 						onClick={() => {
-							sendModEndGame('fascist');
+							sendModEndGame('bam');
 						}}
 					>
-						End game elo win for fascists
+						End game elo win for bams
 					</div>
 				</div>
 				<div

@@ -17,25 +17,25 @@ const beginGame = game => {
 	const { customGameSettings } = game;
 	if (!customGameSettings.enabled) {
 		// Standard game, this object needs populating.
-		customGameSettings.hitlerZone = 3;
+		customGameSettings.bobZone = 3;
 		customGameSettings.vetoZone = 5;
 		customGameSettings.trackState = { lib: 0, fas: 0 };
 		customGameSettings.deckState = { lib: 6, fas: 11 };
 		if (game.general.type == 0) {
 			// 5-6 players
-			customGameSettings.fascistCount = 1;
+			customGameSettings.bamCount = 1;
 			customGameSettings.hitKnowsFas = true;
 			customGameSettings.powers = [null, null, 'deckpeek', 'bullet', 'bullet'];
 			if (game.general.rebalance6p && game.publicPlayersState.length == 6) customGameSettings.trackState.fas = 1;
 		} else if (game.general.type == 1) {
 			// 7-8 players
-			customGameSettings.fascistCount = 2;
+			customGameSettings.bamCount = 2;
 			customGameSettings.hitKnowsFas = false;
 			customGameSettings.powers = [null, 'investigate', 'election', 'bullet', 'bullet'];
 			if (game.general.rebalance7p && game.publicPlayersState.length == 7) customGameSettings.deckState.fas = 10;
 		} else {
 			// 9-10 players
-			customGameSettings.fascistCount = 3;
+			customGameSettings.bamCount = 3;
 			customGameSettings.hitKnowsFas = false;
 			customGameSettings.powers = ['investigate', 'investigate', 'election', 'bullet', 'bullet'];
 			if (game.general.rebalance9p2f && game.publicPlayersState.length == 9) customGameSettings.deckState.fas = 10;
@@ -45,9 +45,9 @@ const beginGame = game => {
 
 	const roles = [
 		{
-			cardName: 'hitler',
+			cardName: 'bob',
 			icon: 0,
-			team: 'fascist'
+			team: 'bam'
 		}
 	]
 		.concat(
@@ -55,22 +55,22 @@ const beginGame = game => {
 				// With custom games, up to 8 libs can be in a game, but there are only 6 cards. Two are re-used in this case.
 				_.range(0, 8)
 					.map(el => ({
-						cardName: 'liberal',
+						cardName: 'camper',
 						icon: el % 6,
-						team: 'liberal'
+						team: 'camper'
 					}))
-					.slice(0, game.publicPlayersState.length - customGameSettings.fascistCount - 1)
+					.slice(0, game.publicPlayersState.length - customGameSettings.bamCount - 1)
 			)
 		)
 		.concat(
 			_.shuffle(
 				_.range(0, 3)
 					.map(el => ({
-						cardName: 'fascist',
+						cardName: 'bam',
 						icon: el,
-						team: 'fascist'
+						team: 'bam'
 					}))
-					.slice(0, customGameSettings.fascistCount)
+					.slice(0, customGameSettings.bamCount)
 			)
 		);
 
@@ -103,7 +103,7 @@ const beginGame = game => {
 						text: 'The game begins and you receive the '
 					},
 					{
-						text: player.role.cardName === 'hitler' ? 'hitler' : player.role.cardName,
+						text: player.role.cardName === 'bob' ? 'bob' : player.role.cardName,
 						type: player.role.cardName
 					},
 					{
@@ -139,7 +139,7 @@ const beginGame = game => {
 					text: ' is assigned the '
 				},
 				{
-					text: player.role.cardName === 'hitler' ? 'hitler' : player.role.cardName,
+					text: player.role.cardName === 'bob' ? 'bob' : player.role.cardName,
 					type: player.role.cardName
 				},
 				{
@@ -151,8 +151,8 @@ const beginGame = game => {
 		sendInProgressModChatUpdate(game, modOnlyChat);
 	});
 
-	const libPlayers = game.private.seatedPlayers.filter(player => player.role.team === 'liberal');
-	const fasPlayers = game.private.seatedPlayers.filter(player => player.role.team !== 'liberal');
+	const libPlayers = game.private.seatedPlayers.filter(player => player.role.team === 'camper');
+	const fasPlayers = game.private.seatedPlayers.filter(player => player.role.team !== 'camper');
 	const lib = libPlayers.map(player => player.userName);
 	const fas = fasPlayers.map(player => player.userName);
 	const libElo = { overall: 1600, season: 1600 };
@@ -219,9 +219,9 @@ const beginGame = game => {
 	];
 
 	sendInProgressGameUpdate(game);
-	const hitlerPlayer = game.private.seatedPlayers.find(player => player.role.cardName === 'hitler');
+	const bobPlayer = game.private.seatedPlayers.find(player => player.role.cardName === 'bob');
 
-	if (!hitlerPlayer) {
+	if (!bobPlayer) {
 		return;
 	}
 
@@ -231,14 +231,14 @@ const beginGame = game => {
 				const { seatedPlayers } = game.private;
 				const { cardName } = player.role;
 
-				if (cardName === 'fascist') {
-					player.playersState[i].nameStatus = 'fascist';
+				if (cardName === 'bam') {
+					player.playersState[i].nameStatus = 'bam';
 
-					if (customGameSettings.fascistCount == 2) {
-						const otherFascist = seatedPlayers.find(play => play.role.cardName === 'fascist' && play.userName !== player.userName);
-						const otherFascistIndex = seatedPlayers.indexOf(otherFascist);
+					if (customGameSettings.bamCount == 2) {
+						const otherbam = seatedPlayers.find(play => play.role.cardName === 'bam' && play.userName !== player.userName);
+						const otherbamIndex = seatedPlayers.indexOf(otherbam);
 
-						if (!otherFascist) {
+						if (!otherbam) {
 							return;
 						}
 
@@ -251,14 +251,14 @@ const beginGame = game => {
 										text: 'You see that the other '
 									},
 									{
-										text: 'fascist',
-										type: 'fascist'
+										text: 'bam',
+										type: 'bam'
 									},
 									{
 										text: ' in this game is '
 									},
 									{
-										text: game.general.blindMode ? `{${otherFascistIndex + 1}}` : `${otherFascist.userName} {${otherFascistIndex + 1}}`,
+										text: game.general.blindMode ? `{${otherbamIndex + 1}}` : `${otherbam.userName} {${otherbamIndex + 1}}`,
 										type: 'player'
 									},
 									{
@@ -267,10 +267,10 @@ const beginGame = game => {
 								]
 							});
 						}
-						player.playersState[otherFascistIndex].nameStatus = 'fascist';
-						player.playersState[otherFascistIndex].notificationStatus = 'fascist';
-					} else if (customGameSettings.fascistCount == 3) {
-						const otherFascists = seatedPlayers.filter(play => play.role.cardName === 'fascist' && play.userName !== player.userName);
+						player.playersState[otherbamIndex].nameStatus = 'bam';
+						player.playersState[otherbamIndex].notificationStatus = 'bam';
+					} else if (customGameSettings.bamCount == 3) {
+						const otherbams = seatedPlayers.filter(play => play.role.cardName === 'bam' && play.userName !== player.userName);
 
 						if (!game.general.disableGamechat) {
 							player.gameChats.push({
@@ -281,16 +281,16 @@ const beginGame = game => {
 										text: 'You see that the other '
 									},
 									{
-										text: 'fascists',
-										type: 'fascist'
+										text: 'bams',
+										type: 'bam'
 									},
 									{
 										text: ' in this game are '
 									},
 									{
 										text: game.general.blindMode
-											? `{${seatedPlayers.indexOf(otherFascists[0]) + 1}}`
-											: `${otherFascists[0].userName} {${seatedPlayers.indexOf(otherFascists[0]) + 1}}`,
+											? `{${seatedPlayers.indexOf(otherbams[0]) + 1}}`
+											: `${otherbams[0].userName} {${seatedPlayers.indexOf(otherbams[0]) + 1}}`,
 										type: 'player'
 									},
 									{
@@ -298,8 +298,8 @@ const beginGame = game => {
 									},
 									{
 										text: game.general.blindMode
-											? `{${seatedPlayers.indexOf(otherFascists[1]) + 1}}`
-											: `${otherFascists[1].userName} {${seatedPlayers.indexOf(otherFascists[1]) + 1}}`,
+											? `{${seatedPlayers.indexOf(otherbams[1]) + 1}}`
+											: `${otherbams[1].userName} {${seatedPlayers.indexOf(otherbams[1]) + 1}}`,
 										type: 'player'
 									},
 									{
@@ -308,11 +308,11 @@ const beginGame = game => {
 								]
 							});
 						}
-						otherFascists.forEach(fascistPlayer => {
-							player.playersState[seatedPlayers.indexOf(fascistPlayer)].nameStatus = 'fascist';
+						otherbams.forEach(bamPlayer => {
+							player.playersState[seatedPlayers.indexOf(bamPlayer)].nameStatus = 'bam';
 						});
-						otherFascists.forEach(fascistPlayer => {
-							player.playersState[seatedPlayers.indexOf(fascistPlayer)].notificationStatus = 'fascist';
+						otherbams.forEach(bamPlayer => {
+							player.playersState[seatedPlayers.indexOf(bamPlayer)].notificationStatus = 'bam';
 						});
 					}
 
@@ -324,16 +324,16 @@ const beginGame = game => {
 								text: 'You see that '
 							},
 							{
-								text: 'hitler',
-								type: 'hitler'
+								text: 'bob',
+								type: 'bob'
 							},
 							{
 								text: ' in this game is '
 							},
 							{
 								text: game.general.blindMode
-									? `{${seatedPlayers.indexOf(hitlerPlayer) + 1}}`
-									: `${hitlerPlayer.userName} {${seatedPlayers.indexOf(hitlerPlayer) + 1}}`,
+									? `{${seatedPlayers.indexOf(bobPlayer) + 1}}`
+									: `${bobPlayer.userName} {${seatedPlayers.indexOf(bobPlayer) + 1}}`,
 								type: 'player'
 							}
 						]
@@ -344,8 +344,8 @@ const beginGame = game => {
 							chat.chat.push(
 								{ text: '. They also see that you are a ' },
 								{
-									text: 'fascist',
-									type: 'fascist'
+									text: 'bam',
+									type: 'bam'
 								},
 								{ text: '.' }
 							);
@@ -353,8 +353,8 @@ const beginGame = game => {
 							chat.chat.push(
 								{ text: '. They do not know you are a ' },
 								{
-									text: 'fascist',
-									type: 'fascist'
+									text: 'bam',
+									type: 'bam'
 								},
 								{ text: '.' }
 							);
@@ -362,14 +362,14 @@ const beginGame = game => {
 						player.gameChats.push(chat);
 					}
 
-					player.playersState[seatedPlayers.indexOf(hitlerPlayer)].notificationStatus = 'hitler';
-					player.playersState[seatedPlayers.indexOf(hitlerPlayer)].nameStatus = 'hitler';
-				} else if (cardName === 'hitler') {
-					player.playersState[seatedPlayers.indexOf(player)].nameStatus = 'hitler';
+					player.playersState[seatedPlayers.indexOf(bobPlayer)].notificationStatus = 'bob';
+					player.playersState[seatedPlayers.indexOf(bobPlayer)].nameStatus = 'bob';
+				} else if (cardName === 'bob') {
+					player.playersState[seatedPlayers.indexOf(player)].nameStatus = 'bob';
 
 					if (customGameSettings.hitKnowsFas) {
-						if (customGameSettings.fascistCount == 1) {
-							const otherFascist = seatedPlayers.find(player => player.role.cardName === 'fascist');
+						if (customGameSettings.bamCount == 1) {
+							const otherbam = seatedPlayers.find(player => player.role.cardName === 'bam');
 
 							if (!game.general.disableGamechat) {
 								player.gameChats.push({
@@ -380,16 +380,16 @@ const beginGame = game => {
 											text: 'You see that the other '
 										},
 										{
-											text: 'fascist',
-											type: 'fascist'
+											text: 'bam',
+											type: 'bam'
 										},
 										{
 											text: ' in this game is '
 										},
 										{
 											text: game.general.blindMode
-												? `{${seatedPlayers.indexOf(otherFascist) + 1}}`
-												: `${otherFascist.userName} {${seatedPlayers.indexOf(otherFascist) + 1}}`,
+												? `{${seatedPlayers.indexOf(otherbam) + 1}}`
+												: `${otherbam.userName} {${seatedPlayers.indexOf(otherbam) + 1}}`,
 											type: 'player'
 										},
 										{
@@ -398,10 +398,10 @@ const beginGame = game => {
 									]
 								});
 							}
-							player.playersState[seatedPlayers.indexOf(otherFascist)].nameStatus = 'fascist';
-							player.playersState[seatedPlayers.indexOf(otherFascist)].notificationStatus = 'fascist';
+							player.playersState[seatedPlayers.indexOf(otherbam)].nameStatus = 'bam';
+							player.playersState[seatedPlayers.indexOf(otherbam)].notificationStatus = 'bam';
 						} else {
-							const otherFascists = seatedPlayers.filter(play => play.role.cardName === 'fascist' && play.userName !== player.userName);
+							const otherbams = seatedPlayers.filter(play => play.role.cardName === 'bam' && play.userName !== player.userName);
 
 							if (!game.general.disableGamechat) {
 								player.gameChats.push({
@@ -412,37 +412,37 @@ const beginGame = game => {
 											text: 'You see that the other '
 										},
 										{
-											text: 'fascists',
-											type: 'fascist'
+											text: 'bams',
+											type: 'bam'
 										},
 										{
 											text: ' in this game are '
 										},
 										{
 											text: game.general.blindMode
-												? `{${seatedPlayers.indexOf(otherFascists[0]) + 1}}`
-												: `${otherFascists[0].userName} {${seatedPlayers.indexOf(otherFascists[0]) + 1}}`,
+												? `{${seatedPlayers.indexOf(otherbams[0]) + 1}}`
+												: `${otherbams[0].userName} {${seatedPlayers.indexOf(otherbams[0]) + 1}}`,
 											type: 'player'
 										},
 										{
-											text: customGameSettings.fascistCount == 3 ? ', ' : ''
+											text: customGameSettings.bamCount == 3 ? ', ' : ''
 										},
 										{
 											text:
-												customGameSettings.fascistCount == 3
+												customGameSettings.bamCount == 3
 													? game.general.blindMode
-														? `{${seatedPlayers.indexOf(otherFascists[2]) + 1}}`
-														: `${otherFascists[2].userName} {${seatedPlayers.indexOf(otherFascists[2]) + 1}}`
+														? `{${seatedPlayers.indexOf(otherbams[2]) + 1}}`
+														: `${otherbams[2].userName} {${seatedPlayers.indexOf(otherbams[2]) + 1}}`
 													: '',
 											type: 'player'
 										},
 										{
-											text: customGameSettings.fascistCount == 3 ? ', and' : ' and '
+											text: customGameSettings.bamCount == 3 ? ', and' : ' and '
 										},
 										{
 											text: game.general.blindMode
-												? `{${seatedPlayers.indexOf(otherFascists[1]) + 1}}`
-												: `${otherFascists[1].userName} {${seatedPlayers.indexOf(otherFascists[1]) + 1}}`,
+												? `{${seatedPlayers.indexOf(otherbams[1]) + 1}}`
+												: `${otherbams[1].userName} {${seatedPlayers.indexOf(otherbams[1]) + 1}}`,
 											type: 'player'
 										},
 										{
@@ -451,9 +451,9 @@ const beginGame = game => {
 									]
 								});
 							}
-							otherFascists.forEach(fascistPlayer => {
-								player.playersState[seatedPlayers.indexOf(fascistPlayer)].nameStatus = 'fascist';
-								player.playersState[seatedPlayers.indexOf(fascistPlayer)].notificationStatus = 'fascist';
+							otherbams.forEach(bamPlayer => {
+								player.playersState[seatedPlayers.indexOf(bamPlayer)].nameStatus = 'bam';
+								player.playersState[seatedPlayers.indexOf(bamPlayer)].notificationStatus = 'bam';
 							});
 						}
 					} else {
@@ -463,11 +463,11 @@ const beginGame = game => {
 								gameChat: true,
 								chat: [
 									{
-										text: `There ${customGameSettings.fascistCount == 1 ? 'is' : 'are'} `
+										text: `There ${customGameSettings.bamCount == 1 ? 'is' : 'are'} `
 									},
 									{
-										text: customGameSettings.fascistCount == 1 ? '1 fascist' : customGameSettings.fascistCount == 2 ? '2 fascists' : '3 fascists',
-										type: 'fascist'
+										text: customGameSettings.bamCount == 1 ? '1 bam' : customGameSettings.bamCount == 2 ? '2 bams' : '3 bams',
+										type: 'bam'
 									},
 									{
 										text: ', they know who you are.'
@@ -477,7 +477,7 @@ const beginGame = game => {
 						}
 					}
 				} else if (!game.general.disableGamechat) {
-					player.playersState[seatedPlayers.indexOf(player)].nameStatus = 'liberal';
+					player.playersState[seatedPlayers.indexOf(player)].nameStatus = 'camper';
 				}
 
 				player.playersState[i].cardStatus.isFlipped = true;
@@ -536,7 +536,7 @@ const beginGame = game => {
 			continue;
 		}
 		if (process.env.NODE_ENV !== 'development') {
-			io.sockets.sockets[affectedSocketId].emit('pingPlayer', 'Secret Hitler IO: The game has started!');
+			io.sockets.sockets[affectedSocketId].emit('pingPlayer', 'It\'s Always Bob: The game has started!');
 		}
 	}
 };
@@ -565,7 +565,7 @@ module.exports = game => {
 
 	game.general.playerCount = game.publicPlayersState.length;
 	game.general.livingPlayerCount = game.publicPlayersState.length;
-	game.general.type = game.general.playerCount < 7 ? 0 : game.general.playerCount < 9 ? 1 : 2; // different fascist tracks
+	game.general.type = game.general.playerCount < 7 ? 0 : game.general.playerCount < 9 ? 1 : 2; // different bam tracks
 	game.publicPlayersState = _.shuffle(game.publicPlayersState);
 	game.private.seatedPlayers = _.cloneDeep(game.publicPlayersState);
 	game.private.seatedPlayers.forEach(player => {

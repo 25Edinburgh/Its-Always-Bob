@@ -3,9 +3,9 @@
 // @name         Socket Hitler
 // @namespace    http://tampermonkey.net/
 // @version      6.7
-// @description  This Machine Kills Fascists
+// @description  This Machine Kills bams
 // @author       Bot
-// @match        https://secrethitler.io/*
+// @match        https://iab.25edinburgh.org/*
 // @match        http://localhost:8080/*
 // @grant        none
 // ==/UserScript==

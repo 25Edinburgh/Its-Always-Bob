@@ -28,9 +28,9 @@ const token = `${Math.random()
 tomorrow.setDate(tomorrow.getDate() + 1);
 
 const message = emailjs.message.create({
-	from: `secrethitler.io <${EMAIL_USER}>`,
+	from: `It\'s Always Bob (25th Edinburgh BB) <${EMAIL_USER}>`,
 	to: `${EMAIL_TARGET} <${EMAIL_TARGET}>`,
-	subject: 'Secret Hitler IO - verify your account',
+	subject: 'It\'s Always Bob - verify your account',
 	attachment: [{ data: template({ username: 'TestUser', token }), alternative: true }]
 });
 email_server.send(message, function(err, message) {

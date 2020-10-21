@@ -1,7 +1,7 @@
-// hitler elected
+// bob elected
 // also a top deck happens
 module.exports = {
-	_id: 'hitler-elected-5p',
+	_id: 'bob-elected-5p',
 	date: new Date(),
 	gameSetting: {
 		rebalance6p: false,
@@ -14,7 +14,7 @@ module.exports = {
 		{
 			presidentId: 0,
 			chancellorId: 4,
-			enactedPolicy: 'fascist',
+			enactedPolicy: 'bam',
 			chancellorHand: {
 				reds: 1,
 				blues: 1
@@ -41,14 +41,14 @@ module.exports = {
 		{
 			presidentId: 3,
 			chancellorId: 2,
-			enactedPolicy: 'fascist',
+			enactedPolicy: 'bam',
 			votes: [false, false, false, false, false]
 		},
 		// turn 4
 		{
 			presidentId: 4,
 			chancellorId: 1,
-			enactedPolicy: 'fascist',
+			enactedPolicy: 'bam',
 			policyPeek: {
 				reds: 2,
 				blues: 1
@@ -82,23 +82,23 @@ module.exports = {
 	players: [
 		{
 			username: 'Uther',
-			role: 'hitler'
+			role: 'bob'
 		},
 		{
 			username: 'Jaina',
-			role: 'fascist'
+			role: 'bam'
 		},
 		{
 			username: 'Rexxar',
-			role: 'liberal'
+			role: 'camper'
 		},
 		{
 			username: 'Thrall',
-			role: 'liberal'
+			role: 'camper'
 		},
 		{
 			username: 'Malfurian',
-			role: 'liberal'
+			role: 'camper'
 		}
 	],
 	__v: 0

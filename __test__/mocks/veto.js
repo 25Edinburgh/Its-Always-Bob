@@ -13,7 +13,7 @@ module.exports = {
 		{
 			presidentId: 0,
 			chancellorId: 7,
-			enactedPolicy: 'fascist',
+			enactedPolicy: 'bam',
 			_id: '595052626419ea7a9b545b53',
 			chancellorClaim: {
 				reds: 2,
@@ -37,7 +37,7 @@ module.exports = {
 		{
 			presidentId: 1,
 			chancellorId: 6,
-			enactedPolicy: 'liberal',
+			enactedPolicy: 'camper',
 			_id: '595052626419ea7a9b545b52',
 			chancellorClaim: {
 				reds: 2,
@@ -61,9 +61,9 @@ module.exports = {
 		{
 			presidentId: 2,
 			chancellorId: 5,
-			enactedPolicy: 'fascist',
+			enactedPolicy: 'bam',
 			investigationId: 3,
-			investigationClaim: 'fascist',
+			investigationClaim: 'bam',
 			_id: '595052626419ea7a9b545b51',
 			chancellorHand: {
 				reds: 2,
@@ -94,7 +94,7 @@ module.exports = {
 		{
 			presidentId: 4,
 			chancellorId: 1,
-			enactedPolicy: 'fascist',
+			enactedPolicy: 'bam',
 			specialElection: 6,
 			_id: '595052626419ea7a9b545b4f',
 			chancellorHand: {
@@ -118,7 +118,7 @@ module.exports = {
 		{
 			presidentId: 5,
 			chancellorId: 6,
-			enactedPolicy: 'liberal',
+			enactedPolicy: 'camper',
 			_id: '595052626419ea7a9b545b4d',
 			chancellorClaim: {
 				reds: 0,
@@ -156,7 +156,7 @@ module.exports = {
 		{
 			presidentId: 0,
 			chancellorId: 4,
-			enactedPolicy: 'liberal',
+			enactedPolicy: 'camper',
 			_id: '595052626419ea7a9b545b4a',
 			chancellorClaim: {
 				reds: 0,
@@ -194,7 +194,7 @@ module.exports = {
 		{
 			presidentId: 3,
 			chancellorId: 6,
-			enactedPolicy: 'fascist',
+			enactedPolicy: 'bam',
 			_id: '595052626419ea7a9b545b47',
 			chancellorClaim: {
 				reds: 2,
@@ -210,7 +210,7 @@ module.exports = {
 		{
 			presidentId: 4,
 			chancellorId: 6,
-			enactedPolicy: 'fascist',
+			enactedPolicy: 'bam',
 			execution: 7,
 			_id: '595052626419ea7a9b545b46',
 			chancellorHand: {
@@ -234,7 +234,7 @@ module.exports = {
 		{
 			presidentId: 6,
 			chancellorId: 1,
-			enactedPolicy: 'liberal',
+			enactedPolicy: 'camper',
 			_id: '595052626419ea7a9b545b44',
 			chancellorHand: {
 				reds: 1,
@@ -272,7 +272,7 @@ module.exports = {
 		{
 			presidentId: 2,
 			chancellorId: 6,
-			enactedPolicy: 'fascist',
+			enactedPolicy: 'bam',
 			_id: '595052626419ea7a9b545b41',
 			votes: [false, false, true, false, false, false, false, false]
 		}
@@ -280,42 +280,42 @@ module.exports = {
 	players: [
 		{
 			username: 'Crazyuncle',
-			role: 'hitler',
+			role: 'bob',
 			_id: '595052626419ea7a9b545b5b'
 		},
 		{
 			username: 'cbell',
-			role: 'liberal',
+			role: 'camper',
 			_id: '595052626419ea7a9b545b5a'
 		},
 		{
 			username: 'sebastian',
-			role: 'fascist',
+			role: 'bam',
 			_id: '595052626419ea7a9b545b59'
 		},
 		{
 			username: 'hootie',
-			role: 'liberal',
+			role: 'camper',
 			_id: '595052626419ea7a9b545b58'
 		},
 		{
 			username: 'Mountainhawk',
-			role: 'liberal',
+			role: 'camper',
 			_id: '595052626419ea7a9b545b57'
 		},
 		{
 			username: 'sethe',
-			role: 'liberal',
+			role: 'camper',
 			_id: '595052626419ea7a9b545b56'
 		},
 		{
 			username: 'morewhales',
-			role: 'liberal',
+			role: 'camper',
 			_id: '595052626419ea7a9b545b55'
 		},
 		{
 			username: 'obama',
-			role: 'fascist',
+			role: 'bam',
 			_id: '595052626419ea7a9b545b54'
 		}
 	],

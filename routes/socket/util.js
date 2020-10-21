@@ -138,22 +138,22 @@ const probToEloPoints = (p) => -400 * Math.log10((1/p) - 1);
 
 // The probability of this team winning in this game size, given perfectly equal teams, in terms of elo points
 const winnerBiasPoints = (game) => {
-	const liberalBias = game.gameState.isCompleted === 'liberal' ? 1 : -1;
-	const fascistBias = game.gameState.isCompleted === 'liberal' ? -1 : 1;
+	const camperBias = game.gameState.isCompleted === 'camper' ? 1 : -1;
+	const bamBias = game.gameState.isCompleted === 'camper' ? -1 : 1;
 	if (game.general.rebalance6p) {
-		return probToEloPoints(.5 + (0.03 * fascistBias))
+		return probToEloPoints(.5 + (0.03 * bamBias))
 	} else if (game.general.rebalance7p) {
-		return probToEloPoints(.5 + (0.01 * fascistBias))
+		return probToEloPoints(.5 + (0.01 * bamBias))
 	} else if (game.general.rebalance9p2f) {
-		return probToEloPoints(.5 + (0.07 * fascistBias))
+		return probToEloPoints(.5 + (0.07 * bamBias))
 	} else {
 		switch (game.general.playerCount) {
-			case 5: return probToEloPoints(.5 + (0.04 * fascistBias));
-			case 6: return probToEloPoints(.5 + (0.07 * liberalBias));
-			case 7: return probToEloPoints(.5 + (0.02 * fascistBias));
-			case 8: return probToEloPoints(.5 + (0.04 * liberalBias));
-			case 9: return probToEloPoints(.5 + (0.08 * fascistBias));
-			case 10: return probToEloPoints(.5 + (0.04 * fascistBias));
+			case 5: return probToEloPoints(.5 + (0.04 * bamBias));
+			case 6: return probToEloPoints(.5 + (0.07 * camperBias));
+			case 7: return probToEloPoints(.5 + (0.02 * bamBias));
+			case 8: return probToEloPoints(.5 + (0.04 * camperBias));
+			case 9: return probToEloPoints(.5 + (0.08 * bamBias));
+			case 10: return probToEloPoints(.5 + (0.04 * bamBias));
 			default: return 0;
 		}
 	}
@@ -220,7 +220,7 @@ module.exports.destroySession = username => {
 			return;
 		}
 		mongoClient
-			.db('secret-hitler-app')
+			.db('its-always-bob-app')
 			.collection('sessions')
 			.findOneAndDelete({ 'session.passport.user': username }, err => {
 				if (err) {

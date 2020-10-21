@@ -123,11 +123,11 @@ export default () => {
 					Range(0, 7).map(i => some(true))
 				);
 
-				testPresidentLegislation(0, { reds: 2, blues: 1 }, 'liberal', some({ reds: 2, blues: 1 }));
+				testPresidentLegislation(0, { reds: 2, blues: 1 }, 'camper', some({ reds: 2, blues: 1 }));
 
-				testChancellorLegislation(0, { reds: 2, blues: 0 }, some('fascist'), some({ reds: 2, blues: 0 }));
+				testChancellorLegislation(0, { reds: 2, blues: 0 }, some('bam'), some({ reds: 2, blues: 0 }));
 
-				testPolicyEnaction(0, 'fascist');
+				testPolicyEnaction(0, 'bam');
 
 				testExecution(0, null);
 
@@ -155,15 +155,15 @@ export default () => {
 					Range(0, 7).map(i => some(true))
 				);
 
-				testPresidentLegislation(1, { reds: 2, blues: 1 }, 'fascist', some({ reds: 2, blues: 1 }));
+				testPresidentLegislation(1, { reds: 2, blues: 1 }, 'bam', some({ reds: 2, blues: 1 }));
 
-				testChancellorLegislation(1, { reds: 1, blues: 1 }, some('liberal'), some({ reds: 2, blues: 0 }));
+				testChancellorLegislation(1, { reds: 1, blues: 1 }, some('camper'), some({ reds: 2, blues: 0 }));
 
-				testPolicyEnaction(1, 'fascist');
+				testPolicyEnaction(1, 'bam');
 
 				testExecution(1, null);
 
-				testInvestigation(1, 4, some('fascist'));
+				testInvestigation(1, 4, some('bam'));
 			});
 
 			it('3', () => {
@@ -225,11 +225,11 @@ export default () => {
 					List([true, true, true, null, true, true, true]).map(x => fromNullable(x))
 				);
 
-				testPresidentLegislation(6, { reds: 2, blues: 1 }, 'liberal', some({ reds: 2, blues: 1 }));
+				testPresidentLegislation(6, { reds: 2, blues: 1 }, 'camper', some({ reds: 2, blues: 1 }));
 
-				testChancellorLegislation(6, { reds: 2, blues: 0 }, some('fascist'), some({ reds: 2, blues: 0 }));
+				testChancellorLegislation(6, { reds: 2, blues: 0 }, some('bam'), some({ reds: 2, blues: 0 }));
 
-				testPolicyEnaction(6, 'fascist');
+				testPolicyEnaction(6, 'bam');
 
 				testExecution(6, 2);
 
@@ -252,16 +252,16 @@ export default () => {
 
 				testNomination(7, 0, 5);
 
-				testPresidentLegislation(7, { reds: 2, blues: 1 }, 'liberal', none);
+				testPresidentLegislation(7, { reds: 2, blues: 1 }, 'camper', none);
 
-				testChancellorLegislation(7, { reds: 2, blues: 0 }, some('fascist'), none);
+				testChancellorLegislation(7, { reds: 2, blues: 0 }, some('bam'), none);
 
 				testElection(
 					7,
 					List([true, false, null, null, true, true, true]).map(x => fromNullable(x))
 				);
 
-				testPolicyEnaction(7, 'fascist');
+				testPolicyEnaction(7, 'bam');
 
 				testExecution(7, null);
 

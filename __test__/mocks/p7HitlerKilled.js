@@ -1,6 +1,6 @@
-// hitler executed
+// bob executed
 module.exports = {
-	_id: 'hitler-killed-7p',
+	_id: 'bob-killed-7p',
 	gameSetting: {
 		rebalance6p: false,
 		rebalance7p: false,
@@ -11,7 +11,7 @@ module.exports = {
 		{
 			presidentId: 0,
 			chancellorId: 2,
-			enactedPolicy: 'fascist',
+			enactedPolicy: 'bam',
 			chancellorHand: {
 				reds: 1,
 				blues: 1
@@ -25,7 +25,7 @@ module.exports = {
 		{
 			presidentId: 1,
 			chancellorId: 3,
-			enactedPolicy: 'fascist',
+			enactedPolicy: 'bam',
 			investigationId: 2,
 			presidentClaim: {
 				reds: 0,
@@ -49,7 +49,7 @@ module.exports = {
 		{
 			presidentId: 3,
 			chancellorId: 4,
-			enactedPolicy: 'fascist',
+			enactedPolicy: 'bam',
 			specialElection: 4,
 			chancellorHand: {
 				reds: 1,
@@ -64,7 +64,7 @@ module.exports = {
 		{
 			presidentId: 4,
 			chancellorId: 5,
-			enactedPolicy: 'fascist',
+			enactedPolicy: 'bam',
 			execution: 2,
 			chancellorHand: {
 				reds: 2,
@@ -80,31 +80,31 @@ module.exports = {
 	players: [
 		{
 			username: 'Uther',
-			role: 'liberal'
+			role: 'camper'
 		},
 		{
 			username: 'Jaina',
-			role: 'fascist'
+			role: 'bam'
 		},
 		{
 			username: 'Malfurian',
-			role: 'hitler'
+			role: 'bob'
 		},
 		{
 			username: 'Rexxar',
-			role: 'fascist'
+			role: 'bam'
 		},
 		{
 			username: 'Thrall',
-			role: 'liberal'
+			role: 'camper'
 		},
 		{
 			username: 'Valeera',
-			role: 'liberal'
+			role: 'camper'
 		},
 		{
 			username: 'Anduin',
-			role: 'liberal'
+			role: 'camper'
 		}
 	],
 	__v: 0

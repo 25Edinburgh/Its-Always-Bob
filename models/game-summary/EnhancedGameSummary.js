@@ -15,13 +15,13 @@ module.exports = class EnhancedGameSummary {
 		// derived
 		this.playerSize = this.players.length;
 
-		this.hitlerIndex = this.players.findIndex(p => p.role === 'hitler');
+		this.bobIndex = this.players.findIndex(p => p.role === 'bob');
 
 		this.numberOfTurns = this.logs.length;
 
 		this.lastTurn = this.logs.slice(-1)[0];
 
-		this.hitlerZone = (() => {
+		this.bobZone = (() => {
 			const step = (turn, reds) => {
 				const log = this.logs[turn],
 					enactedPolicy = log && log.enactedPolicy;
@@ -30,7 +30,7 @@ module.exports = class EnhancedGameSummary {
 					return -1;
 				} else if (reds === 3) {
 					return turn;
-				} else if (enactedPolicy === 'fascist') {
+				} else if (enactedPolicy === 'bam') {
 					return step(turn + 1, reds + 1);
 				} else {
 					return step(turn + 1, reds);
@@ -68,10 +68,10 @@ module.exports = class EnhancedGameSummary {
 	}
 
 	isWinner(identifier) {
-		if (this.lastTurn.execution === this.hitlerIndex) {
-			return this.loyaltyOf(identifier) === 'liberal';
-		} else if (this.lastTurn.chancellorId === this.hitlerIndex && this.lastTurn.votes.filter(v => v).length > this.playerSize / 2) {
-			return this.loyaltyOf(identifier) === 'fascist';
+		if (this.lastTurn.execution === this.bobIndex) {
+			return this.loyaltyOf(identifier) === 'camper';
+		} else if (this.lastTurn.chancellorId === this.bobIndex && this.lastTurn.votes.filter(v => v).length > this.playerSize / 2) {
+			return this.loyaltyOf(identifier) === 'bam';
 		} else {
 			return this.loyaltyOf(identifier) === this.lastTurn.enactedPolicy;
 		}
@@ -81,10 +81,10 @@ module.exports = class EnhancedGameSummary {
 	loyaltyOf(identifier) {
 		const player = this.playerOf(identifier);
 
-		if (player.role === 'fascist' || player.role === 'hitler') {
-			return 'fascist';
+		if (player.role === 'bam' || player.role === 'bob') {
+			return 'bam';
 		} else {
-			return 'liberal';
+			return 'camper';
 		}
 	}
 

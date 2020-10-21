@@ -26,8 +26,8 @@ const TrackPieces = ({ phase, track, electionTracker }) => {
 
 	return (
 		<section className={classes}>
-			<CardGroup className="enacted fascist-policies" cards={redCards} />
-			<CardGroup className="enacted liberal-policies" cards={blueCards} />
+			<CardGroup className="enacted bam-policies" cards={redCards} />
+			<CardGroup className="enacted camper-policies" cards={blueCards} />
 			<ElectionTracker position={electionTracker} />
 		</section>
 	);

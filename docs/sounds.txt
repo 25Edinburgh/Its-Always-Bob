@@ -7,10 +7,10 @@ Policy Peek - https://freesound.org/people/themfish/sounds/45813/
 Player Shot - https://freesound.org/people/Jaturo/sounds/196361/
 Investigation - https://freesound.org/people/emitex/sounds/213378/
 Special Election Given - https://freesound.org/people/Dublie/sounds/170255/
-Liberals Win - https://freesound.org/people/memz/sounds/325141/
-Liberals Win (Hitler shot) - https://freesound.org/people/SamWelkerTV/sounds/147625/
-Fascists Win (Hitler Elected) - https://freesound.org/people/smacks999/sounds/387578/
-Fascists Win - https://freesound.org/people/dominictreis/sounds/362281/
+campers Win - https://freesound.org/people/memz/sounds/325141/
+campers Win (Hitler shot) - https://freesound.org/people/SamWelkerTV/sounds/147625/
+bams Win (Hitler Elected) - https://freesound.org/people/smacks999/sounds/387578/
+bams Win - https://freesound.org/people/dominictreis/sounds/362281/
 Veto Succeeds - https://freesound.org/people/the_very_Real_Horst/sounds/239040/
 Veto Fails - https://freesound.org/people/InspectorJ/sounds/411729/
 Timer Tick - http://dustyroom.com/casual-game-sfx-freebie/
@@ -24,10 +24,10 @@ Policy Peek - attribution (by)
 Player Shot - zero(cc0)
 Investigation - attribution (by)
 Special Election - zero(cc0)
-Liberals Win - attribution (by)
-Liberals Win (Hitler shot) - attribution (by)
-Fascists Win (Hitler Elected) - zero(cc0)
-Fascists Win - zero(cc0)
+campers Win - attribution (by)
+campers Win (Hitler shot) - attribution (by)
+bams Win (Hitler Elected) - zero(cc0)
+bams Win - zero(cc0)
 Veto Succeeds - zero(cc0)
 Veto Fails - attribution (by)
 Timer Tick - zero(cc0)

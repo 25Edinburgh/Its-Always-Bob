@@ -12,7 +12,7 @@ module.exports = {
 		{
 			presidentId: 0,
 			chancellorId: 1,
-			enactedPolicy: 'fascist',
+			enactedPolicy: 'bam',
 			chancellorHand: {
 				reds: 1,
 				blues: 1
@@ -27,7 +27,7 @@ module.exports = {
 		{
 			presidentId: 1,
 			chancellorId: 2,
-			enactedPolicy: 'fascist',
+			enactedPolicy: 'bam',
 			chancellorHand: {
 				reds: 1,
 				blues: 1
@@ -42,7 +42,7 @@ module.exports = {
 		{
 			presidentId: 2,
 			chancellorId: 1,
-			enactedPolicy: 'fascist',
+			enactedPolicy: 'bam',
 			policyPeek: {
 				reds: 2,
 				blues: 1
@@ -61,7 +61,7 @@ module.exports = {
 		{
 			presidentId: 3,
 			chancellorId: 2,
-			enactedPolicy: 'fascist',
+			enactedPolicy: 'bam',
 			execution: 4,
 			chancellorHand: {
 				reds: 2,
@@ -77,7 +77,7 @@ module.exports = {
 		{
 			presidentId: 0,
 			chancellorId: 1,
-			enactedPolicy: 'fascist',
+			enactedPolicy: 'bam',
 			execution: 1,
 			chancellorHand: {
 				reds: 2,
@@ -95,7 +95,7 @@ module.exports = {
 			chancellorId: 0,
 			chancellorVeto: true,
 			presidentVeto: false,
-			enactedPolicy: 'liberal',
+			enactedPolicy: 'camper',
 			chancellorHand: {
 				reds: 1,
 				blues: 1
@@ -111,7 +111,7 @@ module.exports = {
 			presidentId: 3,
 			chancellorId: 2,
 			chancellorVeto: false,
-			enactedPolicy: 'liberal',
+			enactedPolicy: 'camper',
 			chancellorHand: {
 				reds: 1,
 				blues: 1
@@ -140,7 +140,7 @@ module.exports = {
 			chancellorId: 0,
 			chancellorVeto: true,
 			presidentVeto: true,
-			enactedPolicy: 'fascist',
+			enactedPolicy: 'bam',
 			chancellorHand: {
 				reds: 1,
 				blues: 1
@@ -155,23 +155,23 @@ module.exports = {
 	players: [
 		{
 			username: 'Malfurian',
-			role: 'liberal'
+			role: 'camper'
 		},
 		{
 			username: 'Jaina',
-			role: 'liberal'
+			role: 'camper'
 		},
 		{
 			username: 'Uther',
-			role: 'fascist'
+			role: 'bam'
 		},
 		{
 			username: 'Rexxar',
-			role: 'hitler'
+			role: 'bob'
 		},
 		{
 			username: 'Thrall',
-			role: 'liberal'
+			role: 'camper'
 		}
 	],
 	__v: 0

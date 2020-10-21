@@ -79,7 +79,7 @@ class CardFlinger extends React.Component {
 				return;
 			}
 
-			if (status === 'Fascists win the game.' || status === 'Liberals win the game.') {
+			if (status === 'bams win the game.' || status === 'campers win the game.') {
 				return;
 			}
 

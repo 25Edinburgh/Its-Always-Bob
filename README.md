@@ -1,24 +1,24 @@
-# secret-hitler
+# It's Always Bob
 
-[![Build Status](https://api.travis-ci.com/cozuya/secret-hitler.svg?branch=master)](https://travis-ci.com/cozuya/secret-hitler/)
-[![Contributions Welcome](https://img.shields.io/badge/contributions-welcome-orange.svg?style=flat)](https://github.com/cozuya/secret-hitler/issues)
-[![Dependencies](https://david-dm.org/cozuya/secret-hitler.svg)](https://david-dm.org/cozuya/secret-hitler)
-[![Dev Dependencies](https://david-dm.org/cozuya/secret-hitler/dev-status.svg)](https://david-dm.org/cozuya/secret-hitler?type=dev)
+[![Build Status](https://api.travis-ci.com/25Edinburgh/its-always-bob.svg?branch=master)](https://travis-ci.com/25Edinburgh/its-always-bob/)
+[![Contributions Welcome](https://img.shields.io/badge/contributions-welcome-orange.svg?style=flat)](https://github.com/25Edinburgh/its-always-bob/issues)
+[![Dependencies](https://david-dm.org/25Edinburgh/its-always-bob.svg)](https://david-dm.org/25Edinburgh/its-always-bob)
+[![Dev Dependencies](https://david-dm.org/25Edinburgh/its-always-bob/dev-status.svg)](https://david-dm.org/25Edinburgh/its-always-bob?type=dev)
 [![Styled with Prettier](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
 
-Secret Hitler is a dramatic game of political intrigue and betrayal set in 1930's Germany. Players are secretly divided into two teams - liberals and fascists.
-Known only to each other, the fascists coordinate to sow distrust and install their cold-blooded leader. The liberals must find and stop the Secret Hitler before it’s too late.
+It's Always Bob is a dramatic game of political intrigue and betrayal set in 2020's Scotland. Players are secretly divided into two teams - Campers and Bams.
+Known only to each other, the Bams coordinate to sow distrust and install their cold-blooded leader. The campers must find and stop the Secret Bob before it’s too late.
 
-Effectively this is a take on the classic social deduction/hidden role board game genre such as Werewolf and Mafia, but closer to the Resistance. Games are 5-10 players, the minority (fascists) know who everyone is and the majority (liberals) don't know anything. Over the course of the game the liberals need to try to identify the fascists to win and the fascists need to remain hidden, with an extra "superfascist" role with an additional win condition for both sides.
+Effectively this is a take on the classic social deduction/hidden role board game genre such as Werewolf and Mafia, but closer to the Resistance. Games are 5-10 players, the minority (Bams) know who everyone is and the majority (Campers) don't know anything. Over the course of the game the Campers need to try to identify the Bams to win and the Bams need to remain hidden, with an extra "Superbam" role with an additional win condition for both sides.
 
 This codebase is a "lobby style" implementation of this game - anyone can make a game which is displayed on a list on the "home" page. The game starts when enough players are seated. In addition, anyone can watch a game in progress, etc.
 
-Current production/stable is found at [Secret Hitler IO](https://secrethitler.io).
+Current production/stable is found at [It's Always Bob](https://iab.25edinburgh.org).
 
 ![Screenshot](https://cdn.discordapp.com/attachments/532418308977328139/538550232015962112/unknown.png)
 
 Considering contributing to this project? Please read our brief guidelines found at
-[CONTRIBUTING](https://github.com/cozuya/secret-hitler/blob/master/.github/CONTRIBUTING.md). Contributors get a cool special playername color!
+[CONTRIBUTING](https://github.com/25Edinburgh/its-always-bob/blob/master/.github/CONTRIBUTING.md). Contributors get a cool special playername color!
 
 Front end: React, Redux, Sass, Semantic UI, jQuery, SocketIO.
 
@@ -37,8 +37,8 @@ Install [yarn](https://yarnpkg.com/en/docs/install) for your OS.
 then
 
 ```bash
-git clone https://github.com/cozuya/secret-hitler.git
-cd secret-hitler
+git clone https://github.com/25Edinburgh/its-always-bob.git
+cd its-always-bob
 yarn
 ```
 
@@ -63,7 +63,7 @@ yarn create-accounts
 **Assigning a local mod:**
 
 In order to better test all functions of the site in a local development environment it is useful to assign an admin account.
-This is done for you through the `secret-hitler/scripts/assignLocalMod.js` file courtesy of contributor Hexicube.
+This is done for you through the `its-always-bob/scripts/assignLocalMod.js` file courtesy of contributor Hexicube.
 After running the `create-accounts` script you will have the helper accounts populated into the database.
 Running the next line below will then assign `Uther` to the `admin` staffRole to better test all site functions in testing.
 
@@ -77,6 +77,8 @@ Upon seeing the end result in the terminal of `Assigned.` you will know it worke
 
 Don't. Please respect the maintainers and contributors who have given their time for free to make SH.io as good as it is. Running this codebase outside of SH.io may have unintended consequences.
 
+_All right, we accept. We're running our own. But it's private, for our BB youth group, okay?_
+
 ## Statistics
 
 Production has a limited set of data on the /stats page, check network traffic for the XHR for that if interested. If you'd like to do more detailed data analysis, please contact the maintainer for a dump of the (anonymized) profile and replay data.
@@ -84,6 +86,8 @@ Production has a limited set of data on the /stats page, check network traffic f
 ## License and Attribution
 
 Secret Hitler is designed by Max Temkin (Cards Against Humanity, Humans vs. Zombies) Mike Boxleiter (Solipskier, TouchTone), Tommy Maranges (Philosophy Bro) and illustrated by Mackenzie Schubert (Letter Tycoon, Penny Press).
+
+It's Always Bob is based on the SH.io digital adaptation. See [https://github.com/coyuz/secret-hitler](github.com/coyuz/secret-hitler) for more.
 
 This game is licensed as per the [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International](https://creativecommons.org/licenses/by-nc-sa/4.0/)
 license.
@@ -96,6 +100,6 @@ Veto power is slightly adjusted so that chancellors need to select a policy prio
 
 Adapted the rules explanation to account for online vs physical play.
 
-There is an option when players make a game to "rebalance" the 6, 7 and 9 player games - 6p starts with a fascist policy already enacted, 7p starts with one less fascist policy in the deck, 9p starts with two less fascist policies in the deck. Players (and results from analyzing statistics) have noted that these game modes are not balanced well in the original ruleset.
+There is an option when players make a game to "rebalance" the 6, 7 and 9 player games - 6p starts with a bam policy already enacted, 7p starts with one less bam policy in the deck, 9p starts with two less bam policies in the deck. Players (and results from analyzing statistics) have noted that these game modes are not balanced well in the original ruleset.
 
-There is a custom game mode where game creators can make games with different rulesets such as being able to pick policy powers, pick number of fascists (always less than liberals), number of policies, etc.
+There is a custom game mode where game creators can make games with different rulesets such as being able to pick policy powers, pick number of bams (always less than campers), number of policies, etc.

@@ -21,7 +21,7 @@ const Flappy = ({ isFacist, userInfo, gameInfo, socket }) => {
 		if (cardY < 30 + offset / 2 || cardY + 57 > 150 + offset / 2) {
 			socket.emit('flappyEvent', {
 				uid: gameInfo.general.uid,
-				team: isFacist ? 'fascist' : 'liberal',
+				team: isFacist ? 'bam' : 'camper',
 				type: 'collision'
 			});
 		} else if (x === -32) {
@@ -77,7 +77,7 @@ const Flappy = ({ isFacist, userInfo, gameInfo, socket }) => {
 	const flap = () => {
 		socket.emit('flappyEvent', {
 			uid: gameInfo.general.uid,
-			team: isFacist ? 'fascist' : 'liberal',
+			team: isFacist ? 'bam' : 'camper',
 			type: 'flap'
 		});
 	};
@@ -93,7 +93,7 @@ const Flappy = ({ isFacist, userInfo, gameInfo, socket }) => {
 		}, 500);
 
 		socket.on('flappyUpdate', data => {
-			if (data.type === 'flap' && ((isFacist && data.team == 'fascist') || (!isFacist && data.team === 'liberal'))) {
+			if (data.type === 'flap' && ((isFacist && data.team == 'bam') || (!isFacist && data.team === 'camper'))) {
 				lastFlapTime = Date.now();
 			}
 

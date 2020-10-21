@@ -1,8 +1,8 @@
 // keep this updated with GameSummary schema
 
-// Jaina never votes for a fascist, kills a fascist
-// Valeera shoots a liberal
-// Uther always votes for a fascist
+// Jaina never votes for a bam, sends home a bam
+// Valeera sends home a camper
+// Uther always votes for a bam
 module.exports = {
 	_id: 'generic-game',
 	date: new Date(),
@@ -17,7 +17,7 @@ module.exports = {
 		{
 			presidentId: 0,
 			chancellorId: 1,
-			enactedPolicy: 'fascist',
+			enactedPolicy: 'bam',
 			chancellorHand: {
 				reds: 2,
 				blues: 0
@@ -34,9 +34,9 @@ module.exports = {
 		{
 			presidentId: 1,
 			chancellorId: 3,
-			enactedPolicy: 'fascist',
+			enactedPolicy: 'bam',
 			investigationId: 4,
-			investigationClaim: 'fascist',
+			investigationClaim: 'bam',
 			chancellorHand: {
 				reds: 1,
 				blues: 1
@@ -53,7 +53,7 @@ module.exports = {
 		{
 			presidentId: 2,
 			chancellorId: 0,
-			enactedPolicy: 'fascist',
+			enactedPolicy: 'bam',
 			specialElection: 1,
 			chancellorHand: {
 				reds: 1,
@@ -71,7 +71,7 @@ module.exports = {
 		{
 			presidentId: 1,
 			chancellorId: 6,
-			enactedPolicy: 'fascist',
+			enactedPolicy: 'bam',
 			execution: 3,
 			chancellorHand: {
 				reds: 1,
@@ -101,7 +101,7 @@ module.exports = {
 		{
 			presidentId: 6,
 			chancellorId: 2,
-			enactedPolicy: 'fascist',
+			enactedPolicy: 'bam',
 			execution: 2,
 			chancellorHand: {
 				reds: 2,
@@ -119,7 +119,7 @@ module.exports = {
 		{
 			presidentId: 0,
 			chancellorId: 5,
-			enactedPolicy: 'fascist',
+			enactedPolicy: 'bam',
 			chancellorHand: {
 				reds: 2,
 				blues: 0
@@ -134,31 +134,31 @@ module.exports = {
 	players: [
 		{
 			username: 'Uther',
-			role: 'liberal'
+			role: 'camper'
 		},
 		{
 			username: 'Jaina',
-			role: 'liberal'
+			role: 'camper'
 		},
 		{
 			username: 'Rexxar',
-			role: 'liberal'
+			role: 'camper'
 		},
 		{
 			username: 'Malfurian',
-			role: 'fascist'
+			role: 'bam'
 		},
 		{
 			username: 'Thrall',
-			role: 'hitler'
+			role: 'bob'
 		},
 		{
 			username: 'Valeera',
-			role: 'fascist'
+			role: 'bam'
 		},
 		{
 			username: 'Anduin',
-			role: 'liberal'
+			role: 'camper'
 		}
 	]
 };

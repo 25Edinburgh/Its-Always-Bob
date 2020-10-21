@@ -147,8 +147,8 @@ const buildTurn = (prevTurnOpt, log, players, gameSetting) => {
 
 		const beforeTrack = prevTurn.afterTrack;
 		const afterTrack = {
-			reds: f(beforeTrack.reds, log.enactedPolicy, 'fascist'),
-			blues: f(beforeTrack.blues, log.enactedPolicy, 'liberal')
+			reds: f(beforeTrack.reds, log.enactedPolicy, 'bam'),
+			blues: f(beforeTrack.blues, log.enactedPolicy, 'camper')
 		};
 
 		return { beforeTrack, afterTrack };
@@ -159,16 +159,16 @@ const buildTurn = (prevTurnOpt, log, players, gameSetting) => {
 
 	// Boolean
 	const isHitlerElected = (() => {
-		const hitlerIndex = players.findIndex(p => p.role === 'hitler');
+		const bobIndex = players.findIndex(p => p.role === 'bob');
 
-		return beforeTrack.reds >= 3 && log.chancellorId === hitlerIndex && isVotePassed;
+		return beforeTrack.reds >= 3 && log.chancellorId === bobIndex && isVotePassed;
 	})();
 
 	// Boolean
 	const isHitlerKilled = (() => {
-		const hitlerIndex = players.findIndex(p => p.role === 'hitler');
+		const bobIndex = players.findIndex(p => p.role === 'bob');
 
-		return log.execution.map(e => e === hitlerIndex).valueOrElse(false);
+		return log.execution.map(e => e === bobIndex).valueOrElse(false);
 	})();
 
 	// Option[String]

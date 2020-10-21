@@ -85,22 +85,22 @@ class ReplayGamechat extends React.Component {
 		const { userInfo } = this.props;
 
 		const mode = (userInfo && userInfo.gameSettings && userInfo.gameSettings.claimCharacters) || 'legacy';
-		let liberalChar = 'L';
-		let fascistChar = 'F';
+		let camperChar = 'L';
+		let bamChar = 'F';
 		if (mode === 'legacy') {
-			liberalChar = 'B';
-			fascistChar = 'R';
+			camperChar = 'B';
+			bamChar = 'R';
 		} else if (mode === 'full') {
-			liberalChar = 'liberal';
-			fascistChar = 'fascist';
+			camperChar = 'camper';
+			bamChar = 'bam';
 		}
 		const claims = Array.from(claim);
 		const elements = claims.map((claimChar, index) => {
-			const isLiberal = claimChar === 'b';
+			const iscamper = claimChar === 'b';
 
 			return (
 				<span key={`claim${index}`}>
-					<span className={this.getClassesFromType(isLiberal ? 'liberal' : 'fascist')}>{isLiberal ? liberalChar : fascistChar}</span>
+					<span className={this.getClassesFromType(iscamper ? 'camper' : 'bam')}>{iscamper ? camperChar : bamChar}</span>
 					{mode === 'full' && index < claims.length - 1 ? <span>, </span> : <React.Fragment />}
 				</span>
 			);

@@ -145,7 +145,7 @@ const enactPolicy = (game, team, socket) => {
 	setTimeout(
 		() => {
 			game.trackState.enactedPolicies[index].isFlipped = true;
-			game.gameState.audioCue = team === 'liberal' ? 'enactPolicyL' : 'enactPolicyF';
+			game.gameState.audioCue = team === 'camper' ? 'enactPolicyL' : 'enactPolicyF';
 			sendInProgressGameUpdate(game, true);
 		},
 		process.env.NODE_ENV === 'development' ? 100 : experiencedMode ? 300 : 2000
@@ -160,13 +160,13 @@ const enactPolicy = (game, team, socket) => {
 				chat: [
 					{ text: 'A ' },
 					{
-						text: team === 'liberal' ? 'liberal' : 'fascist',
-						type: team === 'liberal' ? 'liberal' : 'fascist'
+						text: team === 'camper' ? 'camper' : 'bam',
+						type: team === 'camper' ? 'camper' : 'bam'
 					},
 					{
 						text: ` policy has been enacted. (${
-							team === 'liberal' ? game.trackState.liberalPolicyCount.toString() : game.trackState.fascistPolicyCount.toString()
-						}/${team === 'liberal' ? '5' : '6'})`
+							team === 'camper' ? game.trackState.camperPolicyCount.toString() : game.trackState.bamPolicyCount.toString()
+						}/${team === 'camper' ? '5' : '6'})`
 					}
 				]
 			};
@@ -184,14 +184,14 @@ const enactPolicy = (game, team, socket) => {
 				}
 			};
 			const powerToEnact =
-				team === 'fascist'
+				team === 'bam'
 					? game.customGameSettings.enabled
-						? powerMapping[game.customGameSettings.powers[game.trackState.fascistPolicyCount - 1]]
-						: presidentPowers[game.general.type][game.trackState.fascistPolicyCount - 1]
+						? powerMapping[game.customGameSettings.powers[game.trackState.bamPolicyCount - 1]]
+						: presidentPowers[game.general.type][game.trackState.bamPolicyCount - 1]
 					: null;
 
 			game.trackState.enactedPolicies[index].position =
-				team === 'liberal' ? `liberal${game.trackState.liberalPolicyCount}` : `fascist${game.trackState.fascistPolicyCount}`;
+				team === 'camper' ? `camper${game.trackState.camperPolicyCount}` : `bam${game.trackState.bamPolicyCount}`;
 
 			if (!game.general.disableGamechat) {
 				game.private.seatedPlayers.forEach(player => {
@@ -201,7 +201,7 @@ const enactPolicy = (game, team, socket) => {
 				game.private.unSeatedGameChats.push(chat);
 			}
 
-			if (game.trackState.liberalPolicyCount === 5 || game.trackState.fascistPolicyCount === 6) {
+			if (game.trackState.camperPolicyCount === 5 || game.trackState.bamPolicyCount === 6) {
 				game.publicPlayersState.forEach((player, i) => {
 					player.cardStatus.cardFront = 'secretrole';
 					player.cardStatus.cardBack = game.private.seatedPlayers[i].role;
@@ -211,7 +211,7 @@ const enactPolicy = (game, team, socket) => {
 
 				sendInProgressGameUpdate(game);
 
-				game.gameState.audioCue = game.trackState.liberalPolicyCount === 5 ? 'liberalsWin' : 'fascistsWin';
+				game.gameState.audioCue = game.trackState.camperPolicyCount === 5 ? 'campersWin' : 'bamsWin';
 				setTimeout(
 					() => {
 						game.publicPlayersState.forEach((player, i) => {
@@ -219,9 +219,9 @@ const enactPolicy = (game, team, socket) => {
 						});
 						game.gameState.audioCue = '';
 						if (process.env.NODE_ENV === 'development') {
-							completeGame(game, game.trackState.liberalPolicyCount === 1 ? 'liberal' : 'fascist');
+							completeGame(game, game.trackState.camperPolicyCount === 1 ? 'camper' : 'bam');
 						} else {
-							completeGame(game, game.trackState.liberalPolicyCount === 5 ? 'liberal' : 'fascist');
+							completeGame(game, game.trackState.camperPolicyCount === 5 ? 'camper' : 'bam');
 						}
 					},
 					process.env.NODE_ENV === 'development' ? 100 : 2000
@@ -266,8 +266,8 @@ const enactPolicy = (game, team, socket) => {
 										selectPolicies({ user: president.userName }, game, socket);
 										break;
 									case 'The president must select a player for execution.':
-										if (president.role.cardName === 'fascist') {
-											list = list.filter(player => player.role.cardName !== 'hitler');
+										if (president.role.cardName === 'bam') {
+											list = list.filter(player => player.role.cardName !== 'bob');
 										}
 										selectPlayerToExecute({ user: president.userName }, game, { playerIndex: seatedPlayers.indexOf(_.shuffle(list)[0]) }, socket);
 										break;
@@ -663,7 +663,7 @@ module.exports.selectChancellorVoteOnVeto = selectChancellorVoteOnVeto;
 const handToLog = hand =>
 	hand.reduce(
 		(hand, policy) => {
-			return policy === 'fascist' ? Object.assign({}, hand, { reds: hand.reds + 1 }) : Object.assign({}, hand, { blues: hand.blues + 1 });
+			return policy === 'bam' ? Object.assign({}, hand, { reds: hand.reds + 1 }) : Object.assign({}, hand, { blues: hand.blues + 1 });
 		},
 		{ reds: 0, blues: 0 }
 	);
@@ -710,17 +710,17 @@ const selectChancellorPolicy = (passport, game, data, wasTimer, socket) => {
 	) {
 		if (!wasTimer && !game.general.private) {
 			if (
-				chancellor.role.team === 'liberal' &&
-				enactedPolicy === 'fascist' &&
-				(game.private.currentChancellorOptions[0] === 'liberal' || game.private.currentChancellorOptions[1] === 'liberal')
+				chancellor.role.team === 'camper' &&
+				enactedPolicy === 'bam' &&
+				(game.private.currentChancellorOptions[0] === 'camper' || game.private.currentChancellorOptions[1] === 'camper')
 			) {
-				// Liberal chancellor chose to play fascist, probably throwing.
+				// camper chancellor chose to play bam, probably throwing.
 				makeReport(
 					{
 						player: chancellor.userName,
 						seat: chancellorIndex + 1,
-						role: 'Liberal',
-						situation: `was given choice as chancellor, and played fascist.`,
+						role: 'camper',
+						situation: `was given choice as chancellor, and played bam.`,
 						election: game.general.electionCount,
 						title: game.general.name,
 						uid: game.general.uid,
@@ -731,18 +731,18 @@ const selectChancellorPolicy = (passport, game, data, wasTimer, socket) => {
 				);
 			}
 			if (
-				chancellor.role.team === 'fascist' &&
-				enactedPolicy === 'liberal' &&
-				game.trackState.liberalPolicyCount >= 4 &&
-				(game.private.currentChancellorOptions[0] === 'fascist' || game.private.currentChancellorOptions[1] === 'fascist')
+				chancellor.role.team === 'bam' &&
+				enactedPolicy === 'camper' &&
+				game.trackState.camperPolicyCount >= 4 &&
+				(game.private.currentChancellorOptions[0] === 'bam' || game.private.currentChancellorOptions[1] === 'bam')
 			) {
-				// Fascist chancellor chose to play 5th liberal.
+				// bam chancellor chose to play 5th camper.
 				makeReport(
 					{
 						player: chancellor.userName,
 						seat: chancellorIndex + 1,
-						role: 'Fascist',
-						situation: `was given choice as chancellor with 4 blues on the track, and played liberal.`,
+						role: 'bam',
+						situation: `was given choice as chancellor with 4 blues on the track, and played camper.`,
 						election: game.general.electionCount,
 						title: game.general.name,
 						uid: game.general.uid,
@@ -985,21 +985,21 @@ const selectPresidentPolicy = (passport, game, data, wasTimer, socket) => {
 		sendInProgressModChatUpdate(game, modOnlyChat);
 
 		if (!wasTimer && !game.general.private) {
-			// const presGetsPower = presidentPowers[game.general.type][game.trackState.fascistPolicyCount] ? true : false;
-			const track4blue = game.trackState.liberalPolicyCount >= 4;
-			const trackReds = game.trackState.fascistPolicyCount;
+			// const presGetsPower = presidentPowers[game.general.type][game.trackState.bamPolicyCount] ? true : false;
+			const track4blue = game.trackState.camperPolicyCount >= 4;
+			const trackReds = game.trackState.bamPolicyCount;
 
 			const passed = [game.private.currentElectionPolicies[nonDiscardedPolicies[0]], game.private.currentElectionPolicies[nonDiscardedPolicies[1]]];
 			let passedNicer = '';
-			if (passed[0] === 'liberal') {
-				if (passed[1] === 'liberal') passedNicer = 'BB';
+			if (passed[0] === 'camper') {
+				if (passed[1] === 'camper') passedNicer = 'BB';
 				else passedNicer = 'BR';
-			} else if (passed[1] === 'liberal') passedNicer = 'BR';
+			} else if (passed[1] === 'camper') passedNicer = 'BR';
 			else passedNicer = 'RR';
 
-			if (president.role.team === 'liberal') {
-				// liberal
-				if (discarded === 'liberal') {
+			if (president.role.team === 'camper') {
+				// camper
+				if (discarded === 'camper') {
 					if (track4blue) {
 						if (passedNicer === 'RR') {
 							// tossed only blue on 4 blues
@@ -1007,7 +1007,7 @@ const selectPresidentPolicy = (passport, game, data, wasTimer, socket) => {
 								{
 									player: president.userName,
 									seat: presidentIndex + 1,
-									role: 'Liberal',
+									role: 'camper',
 									situation: `got BRR with 4 blues on the track, and tossed the blue.`,
 									election: game.general.electionCount,
 									title: game.general.name,
@@ -1023,7 +1023,7 @@ const selectPresidentPolicy = (passport, game, data, wasTimer, socket) => {
 								{
 									player: president.userName,
 									seat: presidentIndex + 1,
-									role: 'Liberal',
+									role: 'camper',
 									situation: `got BBR with 4 blues on the track, and did not force.`,
 									election: game.general.electionCount,
 									title: game.general.name,
@@ -1041,7 +1041,7 @@ const selectPresidentPolicy = (passport, game, data, wasTimer, socket) => {
 								{
 									player: president.userName,
 									seat: presidentIndex + 1,
-									role: 'Liberal',
+									role: 'camper',
 									situation: `got BRR before HZ, and tossed the blue.`,
 									election: game.general.electionCount,
 									title: game.general.name,
@@ -1059,7 +1059,7 @@ const selectPresidentPolicy = (passport, game, data, wasTimer, socket) => {
 								{
 									player: president.userName,
 									seat: presidentIndex + 1,
-									role: 'Liberal',
+									role: 'camper',
 									situation: `got BRR during veto zone, and tossed the blue.`,
 									election: game.general.electionCount,
 									title: game.general.name,
@@ -1075,7 +1075,7 @@ const selectPresidentPolicy = (passport, game, data, wasTimer, socket) => {
 								{
 									player: president.userName,
 									seat: presidentIndex + 1,
-									role: 'Liberal',
+									role: 'camper',
 									situation: `got BBR during veto zone, and did not force 5th blue.`,
 									election: game.general.electionCount,
 									title: game.general.name,
@@ -1089,17 +1089,17 @@ const selectPresidentPolicy = (passport, game, data, wasTimer, socket) => {
 					}
 				}
 			} else {
-				// fascist
-				if (discarded === 'fascist') {
+				// bam
+				if (discarded === 'bam') {
 					if (track4blue) {
-						if (passedNicer === 'BB' && chancellor.role.team !== 'liberal') {
+						if (passedNicer === 'BB' && chancellor.role.team !== 'camper') {
 							// forced 5th blue on another fas
 							makeReport(
 								{
 									player: president.userName,
 									seat: presidentIndex + 1,
-									role: 'Fascist',
-									situation: `got BBR with 4 blues on the track, and forced blues on a fascist chancellor.`,
+									role: 'bam',
+									situation: `got BBR with 4 blues on the track, and forced blues on a bam chancellor.`,
 									election: game.general.electionCount,
 									title: game.general.name,
 									uid: game.general.uid,
@@ -1108,14 +1108,14 @@ const selectPresidentPolicy = (passport, game, data, wasTimer, socket) => {
 								game,
 								'report'
 							);
-						} else if (passedNicer === 'BR' && chancellor.role.team === 'liberal') {
+						} else if (passedNicer === 'BR' && chancellor.role.team === 'camper') {
 							// offered 5th blue choice as fas
 							makeReport(
 								{
 									player: president.userName,
 									seat: presidentIndex + 1,
-									role: 'Fascist',
-									situation: `got BRR with 4 blues on the track, and offered choice to a liberal chancellor.`,
+									role: 'bam',
+									situation: `got BRR with 4 blues on the track, and offered choice to a camper chancellor.`,
 									election: game.general.electionCount,
 									title: game.general.name,
 									uid: game.general.uid,
@@ -1126,14 +1126,14 @@ const selectPresidentPolicy = (passport, game, data, wasTimer, socket) => {
 							);
 						}
 					} else if (trackReds === 5) {
-						if (passedNicer === 'BB' && chancellor.role.team !== 'liberal') {
+						if (passedNicer === 'BB' && chancellor.role.team !== 'camper') {
 							// forced 5th blue as hit
 							makeReport(
 								{
 									player: president.userName,
 									seat: presidentIndex + 1,
-									role: 'Fascist',
-									situation: `got BBR with 5 reds on the track, and forced blues on a fascist chancellor.`,
+									role: 'bam',
+									situation: `got BBR with 5 reds on the track, and forced blues on a bam chancellor.`,
 									election: game.general.electionCount,
 									title: game.general.name,
 									uid: game.general.uid,
@@ -1142,14 +1142,14 @@ const selectPresidentPolicy = (passport, game, data, wasTimer, socket) => {
 								game,
 								'report'
 							);
-						} else if (passedNicer === 'BR' && chancellor.role.team === 'liberal') {
+						} else if (passedNicer === 'BR' && chancellor.role.team === 'camper') {
 							// offered 5th blue choice as hit
 							makeReport(
 								{
 									player: president.userName,
 									seat: presidentIndex + 1,
-									role: 'Fascist',
-									situation: `got BRR with 5 reds on the track, and offered choice to a liberal chancellor.`,
+									role: 'bam',
+									situation: `got BRR with 5 reds on the track, and offered choice to a camper chancellor.`,
 									election: game.general.electionCount,
 									title: game.general.name,
 									uid: game.general.uid,
@@ -1338,8 +1338,8 @@ module.exports.selectVoting = (passport, game, data, socket, force = false) => {
 		gameState.undrawnPolicyCount--;
 		game.private.currentElectionPolicies = [game.private.policies.shift(), game.private.policies.shift(), game.private.policies.shift()];
 		const verifyCorrect = policy => {
-			if (policy === 'liberal') return true;
-			if (policy === 'fascist') return true;
+			if (policy === 'camper') return true;
+			if (policy === 'bam') return true;
 			return false;
 		};
 		if (
@@ -1351,7 +1351,7 @@ module.exports.selectVoting = (passport, game, data, socket, force = false) => {
 				{
 					player: 'A Player',
 					seat: presidentIndex + 1,
-					role: 'Liberal',
+					role: 'camper',
 					situation: `has just received an invalid hand!\n${JSON.stringify(game.private.currentElectionPolicies)}`,
 					election: game.general.electionCount,
 					title: game.general.name,
@@ -1378,15 +1378,15 @@ module.exports.selectVoting = (passport, game, data, socket, force = false) => {
 					text: ' received '
 				},
 				{
-					text: game.private.currentElectionPolicies[0] === 'liberal' ? 'B' : 'R',
+					text: game.private.currentElectionPolicies[0] === 'camper' ? 'B' : 'R',
 					type: game.private.currentElectionPolicies[0]
 				},
 				{
-					text: game.private.currentElectionPolicies[1] === 'liberal' ? 'B' : 'R',
+					text: game.private.currentElectionPolicies[1] === 'camper' ? 'B' : 'R',
 					type: game.private.currentElectionPolicies[1]
 				},
 				{
-					text: game.private.currentElectionPolicies[2] === 'liberal' ? 'B' : 'R',
+					text: game.private.currentElectionPolicies[2] === 'camper' ? 'B' : 'R',
 					type: game.private.currentElectionPolicies[2]
 				},
 				{
@@ -1597,8 +1597,8 @@ module.exports.selectVoting = (passport, game, data, socket, force = false) => {
 					}
 
 					if (
-						game.trackState.fascistPolicyCount >= game.customGameSettings.hitlerZone &&
-						game.private.seatedPlayers[chancellorIndex].role.cardName === 'hitler'
+						game.trackState.bamPolicyCount >= game.customGameSettings.bobZone &&
+						game.private.seatedPlayers[chancellorIndex].role.cardName === 'bob'
 					) {
 						const getNumberText = val => {
 							if (val == 1) return '1st';
@@ -1612,10 +1612,10 @@ module.exports.selectVoting = (passport, game, data, socket, force = false) => {
 							chat: [
 								{
 									text: 'Hitler',
-									type: 'hitler'
+									type: 'bob'
 								},
 								{
-									text: ` has been elected chancellor after the ${getNumberText(game.customGameSettings.hitlerZone)} fascist policy has been enacted.`
+									text: ` has been elected chancellor after the ${getNumberText(game.customGameSettings.bobZone)} bam policy has been enacted.`
 								}
 							]
 						};
@@ -1633,7 +1633,7 @@ module.exports.selectVoting = (passport, game, data, socket, force = false) => {
 										player.gameChats.push(chat);
 									});
 
-									game.gameState.audioCue = 'fascistsWinHitlerElected';
+									game.gameState.audioCue = 'bamsWinHitlerElected';
 									game.private.unSeatedGameChats.push(chat);
 								}
 								sendInProgressGameUpdate(game);
@@ -1647,7 +1647,7 @@ module.exports.selectVoting = (passport, game, data, socket, force = false) => {
 								game.publicPlayersState.forEach(player => {
 									player.cardStatus.isFlipped = true;
 								});
-								completeGame(game, 'fascist');
+								completeGame(game, 'bam');
 							},
 							process.env.NODE_ENV === 'development' ? 100 : experiencedMode ? 2000 : 4000
 						);

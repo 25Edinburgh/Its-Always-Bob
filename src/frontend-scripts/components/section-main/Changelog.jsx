@@ -55,7 +55,7 @@ class Changelog extends React.Component {
 				<p>
 					<strong style={{ fontSize: '1.1em', color: 'darkmagenta' }}>Deck/Claim Information Customizations</strong> - you can now choose how deck and claim
 					information is presented in your chat. The original way ('RRB' etc) is still the default, and available. However, you can now pick short ('FFL' etc)
-					or full ('fascist, fascist, liberal' etc) as well.
+					or full ('bam, bam, camper' etc) as well.
 				</p>
 				<img
 					src="../images/1.7.0-images/1-7ClaimTypeLegacy.png"
@@ -331,7 +331,7 @@ class Changelog extends React.Component {
 					<li>adam: 1882</li>
 					<li>Cucumber: 1879</li>
 				</ul>
-				<h3>Badges this season are thanks to player liberalist!</h3>
+				<h3>Badges this season are thanks to player camperist!</h3>
 				<p>
 					It took a while, but we're here - all major features I could think of and some I couldn't are in and mostly working. A long, long way from the first
 					stable(ish) release back in May 2017.
@@ -348,7 +348,7 @@ class Changelog extends React.Component {
 				<p>
 					Please note that 1.0 does not mean I am no longer supporting the application and site. Work will continue to make the site even better, but not
 					personally at the pace I have been. My next game is in progress and I expect to get to a playable pre-alpha state some time in the next few months. It
-					will be a (fresh IP) hidden role game with some similarities to the fascist hunting/electing game we all know and love but with some fun features and
+					will be a (fresh IP) hidden role game with some similarities to the bam hunting/electing game we all know and love but with some fun features and
 					mechanics that can only exist online. Stay tuned! -Chris
 				</p>
 				<p>This update also includes:</p>

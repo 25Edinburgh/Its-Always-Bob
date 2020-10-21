@@ -10,10 +10,10 @@ const DisplayLobbies = props => {
 
 		if (game.gameStatus === 'isStarted') {
 			classes += ' inprogress';
-		} else if (game.gameStatus === 'fascist') {
-			classes += ' fascist';
-		} else if (game.gameStatus === 'liberal') {
-			classes += ' liberal';
+		} else if (game.gameStatus === 'bam') {
+			classes += ' bam';
+		} else if (game.gameStatus === 'camper') {
+			classes += ' camper';
 		} else {
 			classes += ' notstarted';
 		}
@@ -382,17 +382,17 @@ const DisplayLobbies = props => {
 					<i className="yellow lock icon" title="This is a private game.  You can only be seated if you know the password, or are whitelisted" />
 				</div>
 			);
-		} else if (game.gameStatus === 'liberal') {
-			classes += ' liberal';
-			progressText = 'Liberals Win !';
+		} else if (game.gameStatus === 'camper') {
+			classes += ' camper';
+			progressText = 'campers Win !';
 			progressIcons = (
 				<div className="victory-icon">
 					<img src="../images/bird.png" />
 				</div>
 			);
-		} else if (game.gameStatus === 'fascist') {
-			classes += ' fascist';
-			progressText = 'Fascists Win !';
+		} else if (game.gameStatus === 'bam') {
+			classes += ' bam';
+			progressText = 'bams Win !';
 			progressIcons = (
 				<div className="victory-icon">
 					<img src="../images/skull.png" />
@@ -406,19 +406,19 @@ const DisplayLobbies = props => {
 				progressText = 'Election #' + game.electionCount;
 				progressIcons = (
 					<div className="progress-icons">
-						<div className="liberal-count">
+						<div className="camper-count">
 							{_.range(1, 6).map(num => (
 								<div
 									key={num}
-									className={num <= game.enactedLiberalPolicyCount ? 'leftsidebar box liberal-box filled' : 'leftsidebar box liberal-box unfilled'}
+									className={num <= game.enactedcamperPolicyCount ? 'leftsidebar box camper-box filled' : 'leftsidebar box camper-box unfilled'}
 								/>
 							))}
 						</div>
-						<div className="fascist-count">
+						<div className="bam-count">
 							{_.range(1, 7).map(num => (
 								<div
 									key={num}
-									className={num <= game.enactedFascistPolicyCount ? 'leftsidebar box fascist-box filled' : ' leftsidebar box fascist-box unfilled'}
+									className={num <= game.enactedbamPolicyCount ? 'leftsidebar box bam-box filled' : ' leftsidebar box bam-box unfilled'}
 								/>
 							))}
 						</div>

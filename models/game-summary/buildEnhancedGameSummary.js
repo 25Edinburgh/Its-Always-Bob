@@ -53,9 +53,9 @@ function buildEnhancedGameSummary(_summary) {
 	// List[{ id: Int, username: String, role: String, loyalty: String }]
 	const players = (() => {
 		const roleToLoyalty = Map({
-			liberal: 'liberal',
-			fascist: 'fascist',
-			hitler: 'fascist'
+			camper: 'camper',
+			bam: 'bam',
+			bob: 'bam'
 		});
 
 		return summary.players.map((p, i) => {
@@ -84,9 +84,9 @@ function buildEnhancedGameSummary(_summary) {
 		const lastTurn = turns.last();
 
 		if (lastTurn.isHitlerElected) {
-			return 'fascist';
+			return 'bam';
 		} else if (lastTurn.isHitlerKilled) {
-			return 'liberal';
+			return 'camper';
 		} else {
 			if (!lastTurn.enactedPolicy) {
 				console.log('no lastturn enacted policy @ buildenhancedgamesummary');
@@ -97,7 +97,7 @@ function buildEnhancedGameSummary(_summary) {
 	})();
 
 	// Option[Int]
-	const hitlerZone = (() => {
+	const bobZone = (() => {
 		const i = turns.findIndex(t => t.beforeTrack.reds === 3);
 		return i > -1 ? some(i) : none;
 	})();
@@ -162,7 +162,7 @@ function buildEnhancedGameSummary(_summary) {
 		players,
 		turns,
 		playerSize,
-		hitlerZone,
+		bobZone,
 		winningTeam,
 		isRebalanced,
 		casualGame,

@@ -13,11 +13,11 @@ const GameSummary = require('../models/game-summary');
 const Game = require('../models/game');
 
 mongoose.Promise = global.Promise;
-mongoose.connect(`mongodb://localhost:27017/secret-hitler-app`, { useNewUrlParser: true });
+mongoose.connect(`mongodb://localhost:27017/its-always-bob-app`, { useNewUrlParser: true });
 
 const now = new Date();
 console.log('Starting at', now);
-const OUTPUT_DIR = '/var/www/secret-hitler/public/game-dumps';
+const OUTPUT_DIR = '/var/www/its-always-bob/public/game-dumps';
 const SUMMARY_DIR = `${OUTPUT_DIR}/games`;
 if (!fs.existsSync(OUTPUT_DIR)) {
 	fs.mkdirSync(OUTPUT_DIR);

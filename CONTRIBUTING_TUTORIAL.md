@@ -1,5 +1,5 @@
-# Contributing to Secret Hitler
-Written by Paladin of Ioun.
+# Contributing to It's Always Bob
+Written by Paladin of Ioun for Secret Hitler.
 
 Welcome! This is a guide intended for people with none of the required tools installed or have little to no experience with Git and GitHub. This guide has steps for Windows and Linux development (because I don't have a Mac). 
 

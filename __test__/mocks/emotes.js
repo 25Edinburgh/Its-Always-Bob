@@ -34,7 +34,7 @@ export function processEmotes(input, isMod, mapping) {
 	const formatedMsg = [];
 
 	message.forEach((word, index) => {
-		const validSiteURL = /^http[s]?:\/\/(secretbob\.io|localhost:8080|github\.com\/25Edinburgh\/its-always-bob)\/([a-zA-Z0-9#?=&\/\._]*)$/i;
+		const validSiteURL = /^http[s]?:\/\/(iab\.25edinburgh\.org|localhost:8080|github\.com\/25Edinburgh\/its-always-bob)\/([a-zA-Z0-9#?=&\/\._]*)$/i;
 		if (mapping[word]) {
 			formatedMsg.push(
 				<span key={index} data-tooltip={word} data-inverted>

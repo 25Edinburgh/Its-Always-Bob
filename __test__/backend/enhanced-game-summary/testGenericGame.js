@@ -55,8 +55,8 @@ export default () => {
 				id: 0,
 				icon: 0,
 				username: 'Uther',
-				role: 'liberal',
-				loyalty: 'liberal',
+				role: 'camper',
+				loyalty: 'camper',
 				isDead: false
 			});
 		});
@@ -172,11 +172,11 @@ export default () => {
 		it('should track enacted policies', () => {
 			const getEnactedPolicy = turnNum => turns.get(turnNum).enactedPolicy;
 
-			expect(getEnactedPolicy(0)).toEqual(some('fascist'));
-			expect(getEnactedPolicy(1)).toEqual(some('fascist'));
-			expect(getEnactedPolicy(3)).toEqual(some('fascist'));
+			expect(getEnactedPolicy(0)).toEqual(some('bam'));
+			expect(getEnactedPolicy(1)).toEqual(some('bam'));
+			expect(getEnactedPolicy(3)).toEqual(some('bam'));
 			expect(getEnactedPolicy(5)).toEqual(none);
-			expect(getEnactedPolicy(7)).toEqual(some('fascist'));
+			expect(getEnactedPolicy(7)).toEqual(some('bam'));
 		});
 
 		it('should track president hands', () => {
@@ -208,14 +208,14 @@ export default () => {
 		it('should track president discard', () => {
 			const presidentDiscard = turnNum => turns.get(turnNum).presidentDiscard;
 
-			expect(presidentDiscard(0)).toEqual(some('liberal'));
-			expect(presidentDiscard(1)).toEqual(some('fascist'));
-			expect(presidentDiscard(2)).toEqual(some('liberal'));
-			expect(presidentDiscard(3)).toEqual(some('fascist'));
+			expect(presidentDiscard(0)).toEqual(some('camper'));
+			expect(presidentDiscard(1)).toEqual(some('bam'));
+			expect(presidentDiscard(2)).toEqual(some('camper'));
+			expect(presidentDiscard(3)).toEqual(some('bam'));
 			expect(presidentDiscard(4)).toEqual(none);
 			expect(presidentDiscard(5)).toEqual(none);
-			expect(presidentDiscard(6)).toEqual(some('liberal'));
-			expect(presidentDiscard(7)).toEqual(some('liberal'));
+			expect(presidentDiscard(6)).toEqual(some('camper'));
+			expect(presidentDiscard(7)).toEqual(some('camper'));
 		});
 
 		it('should track chancellor hands', () => {
@@ -247,14 +247,14 @@ export default () => {
 		it('should track chancellor discard', () => {
 			const chancellorDiscard = turnNum => turns.get(turnNum).chancellorDiscard;
 
-			expect(chancellorDiscard(0)).toEqual(some('fascist'));
-			expect(chancellorDiscard(1)).toEqual(some('liberal'));
-			expect(chancellorDiscard(2)).toEqual(some('liberal'));
-			expect(chancellorDiscard(3)).toEqual(some('liberal'));
+			expect(chancellorDiscard(0)).toEqual(some('bam'));
+			expect(chancellorDiscard(1)).toEqual(some('camper'));
+			expect(chancellorDiscard(2)).toEqual(some('camper'));
+			expect(chancellorDiscard(3)).toEqual(some('camper'));
 			expect(chancellorDiscard(4)).toEqual(none);
 			expect(chancellorDiscard(5)).toEqual(none);
-			expect(chancellorDiscard(6)).toEqual(some('fascist'));
-			expect(chancellorDiscard(7)).toEqual(some('fascist'));
+			expect(chancellorDiscard(6)).toEqual(some('bam'));
+			expect(chancellorDiscard(7)).toEqual(some('bam'));
 		});
 
 		it('should track executions', () => {
@@ -283,17 +283,17 @@ export default () => {
 			expect(investigation(7)).toBe(false);
 		});
 
-		it('should track if hitler is killed', () => {
-			const isHitlerKilled = turnNum => turns.get(turnNum).isHitlerKilled;
+		it('should track if Bob is sent home', () => {
+			const isBobSentHome = turnNum => turns.get(turnNum).isBobSentHome;
 
-			expect(isHitlerKilled(0)).toBe(false);
-			expect(isHitlerKilled(1)).toBe(false);
-			expect(isHitlerKilled(2)).toBe(false);
-			expect(isHitlerKilled(3)).toBe(false);
-			expect(isHitlerKilled(4)).toBe(false);
-			expect(isHitlerKilled(5)).toBe(false);
-			expect(isHitlerKilled(6)).toBe(false);
-			expect(isHitlerKilled(7)).toBe(false);
+			expect(isBobSentHome(0)).toBe(false);
+			expect(isBobSentHome(1)).toBe(false);
+			expect(isBobSentHome(2)).toBe(false);
+			expect(isBobSentHome(3)).toBe(false);
+			expect(isBobSentHome(4)).toBe(false);
+			expect(isBobSentHome(5)).toBe(false);
+			expect(isBobSentHome(6)).toBe(false);
+			expect(isBobSentHome(7)).toBe(false);
 		});
 
 		it('should track player indexes', () => {
@@ -307,13 +307,13 @@ export default () => {
 		});
 
 		it('should track loyalties', () => {
-			expect(game.loyaltyOf('Uther')).toEqual(some('liberal'));
-			expect(game.loyaltyOf('Jaina')).toEqual(some('liberal'));
-			expect(game.loyaltyOf('Rexxar')).toEqual(some('liberal'));
-			expect(game.loyaltyOf('Anduin')).toEqual(some('liberal'));
-			expect(game.loyaltyOf('Malfurian')).toEqual(some('fascist'));
-			expect(game.loyaltyOf('Thrall')).toEqual(some('fascist'));
-			expect(game.loyaltyOf('Valeera')).toEqual(some('fascist'));
+			expect(game.loyaltyOf('Uther')).toEqual(some('camper'));
+			expect(game.loyaltyOf('Jaina')).toEqual(some('camper'));
+			expect(game.loyaltyOf('Rexxar')).toEqual(some('camper'));
+			expect(game.loyaltyOf('Anduin')).toEqual(some('camper'));
+			expect(game.loyaltyOf('Malfurian')).toEqual(some('bam'));
+			expect(game.loyaltyOf('Thrall')).toEqual(some('bam'));
+			expect(game.loyaltyOf('Valeera')).toEqual(some('bam'));
 		});
 
 		it('should track usernames', () => {
@@ -337,13 +337,13 @@ export default () => {
 		});
 
 		it('should track roles', () => {
-			expect(game.roleOf('Uther')).toEqual(some('liberal'));
-			expect(game.roleOf('Jaina')).toEqual(some('liberal'));
-			expect(game.roleOf('Rexxar')).toEqual(some('liberal'));
-			expect(game.roleOf('Anduin')).toEqual(some('liberal'));
-			expect(game.roleOf('Malfurian')).toEqual(some('fascist'));
-			expect(game.roleOf('Thrall')).toEqual(some('hitler'));
-			expect(game.roleOf('Valeera')).toEqual(some('fascist'));
+			expect(game.roleOf('Uther')).toEqual(some('camper'));
+			expect(game.roleOf('Jaina')).toEqual(some('camper'));
+			expect(game.roleOf('Rexxar')).toEqual(some('camper'));
+			expect(game.roleOf('Anduin')).toEqual(some('camper'));
+			expect(game.roleOf('Malfurian')).toEqual(some('bam'));
+			expect(game.roleOf('Thrall')).toEqual(some('bob'));
+			expect(game.roleOf('Valeera')).toEqual(some('bam'));
 		});
 
 		it('should track winners', () => {
@@ -357,7 +357,7 @@ export default () => {
 		});
 
 		it('should track winning team', () => {
-			expect(game.winningTeam).toBe('fascist');
+			expect(game.winningTeam).toBe('bam');
 		});
 
 		it('should track votes', () => {
@@ -382,8 +382,8 @@ export default () => {
 			).toEqual(none);
 		});
 
-		it('should track hitler zone', () => {
-			expect(game.hitlerZone).toEqual(some(3));
+		it('should track Bob zone', () => {
+			expect(game.bobZone).toEqual(some(3));
 		});
 
 		it('should track player size', () => {

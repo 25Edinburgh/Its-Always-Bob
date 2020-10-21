@@ -8,9 +8,9 @@ const Account = require('../models/account');
 const Game = require('../models/game');
 
 mongoose.Promise = global.Promise;
-mongoose.connect(`mongodb://localhost:27017/secret-hitler-app`);
+mongoose.connect(`mongodb://localhost:27017/its-always-bob-app`);
 
-const OUTPUT_DIR = '/var/www/secret-hitler/public/game-dumps';
+const OUTPUT_DIR = '/var/www/its-always-bob/public/game-dumps';
 const GAMES_DIR = `${OUTPUT_DIR}/games`;
 child_process.execSync(`mkdir -p ${GAMES_DIR}`);
 fs.accessSync(GAMES_DIR, fs.constants.W_OK);

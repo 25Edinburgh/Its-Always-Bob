@@ -143,13 +143,13 @@ export default function buildReplay(game) {
 		const {
 			isVotePassed,
 			isGameEndingPolicyEnacted,
-			isHitlerElected,
+			isBobElected,
 			isElectionTrackerMaxed,
 			isInvestigation,
 			isPolicyPeek,
 			isSpecialElection,
 			isExecution,
-			isHitlerKilled,
+			isBobSentHome,
 			isVeto,
 			isVetoSuccessful
 		} = game.turns.get(turnNum);
@@ -172,7 +172,7 @@ export default function buildReplay(game) {
 			case 'nomination':
 				return next('election');
 			case 'election':
-				if (isHitlerElected) return gameOver();
+				if (isBobElected) return gameOver();
 				else if (isVotePassed) return next('presidentLegislation');
 				else if (isElectionTrackerMaxed) return next('topDeck');
 				else return jump();
@@ -202,7 +202,7 @@ export default function buildReplay(game) {
 			case 'specialElection':
 				return jump();
 			case 'execution':
-				if (isHitlerKilled) return gameOver();
+				if (isBobSentHome) return gameOver();
 				else return jump();
 		}
 	}

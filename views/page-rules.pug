@@ -2,24 +2,24 @@ extends layout
 block content
 	.ui.container.rules-container
 		.ui.text.container
-			h1.ui.header.centered The Rules of Secret Hitler
+			h1.ui.header.centered The Rules of It's Always Bob
 		.ui.text.container
-			p.understated The year is 1932. The place is pre-WWII Germany. In Secret Hitler, players are German politicians attempting to hold a fragile Liberal government together and stem the rising tide of Fascism. Watch out though—there are secret Fascists among you, and one player is Secret Hitler.
+			p.understated The year is 2020. The place is the Craggan. In It's Always Bob, players are BB leaders attempting to hold a camp together and stem the rising tide of unruly behaviour. Watch out though — there are secret bams among you, and one player is Bob.
 			h2.ui.header.centered OVERVIEW
-			p At the beginning of the game, each player is secretly assigned one of the three roles: <span class="emphasis">Liberal</span>, <span class="emphasis">Fascist</span>, or <span class="emphasis">Hitler</span>. The Liberals have a majority, but they don’t know the roles of other players; Fascists must resort to secrecy and sabotage to accomplish their goals. Fascists know the identities of the other Fascists and Hitler. Hitler plays for the Fascist team, but doesn't know who the other Fascists are and must work to figure them out.
-			p Whenever a Fascist Policy is enacted, the government becomes more powerful, and the President is granted a single-use power which must be used before the next round can begin. These powers range from choosing the next President to killing one of the players.
+			p At the beginning of the game, each player is secretly assigned one of the three roles: <span class="emphasis">Camper</span>, on Killy's team, <span class="emphasis">Bam</span>, on Bob's team, or <span class="emphasis">Bob</span> himself. Killy's team have a majority, but they don’t know the roles of other players; Bams must resort to secrecy and sabotage to accomplish their goals. Bams know the identities of the other Bams and Bob. Bob plays for the Bam team, but doesn't know who the other Bams are and must work to figure them out.
+			p Whenever one of Bob's Rules enacted, the camp decends further into disarray, and the Duty Officer is granted a single-use power which must be used before the next round can begin. These powers range from choosing the next Duty Officer to sending one of the players home.
 			h2.ui.header.centered OBJECT
-			p Every player has a secret identity as a member of either the Liberal team or the Fascist team. Players on the Liberal team win if either:
+			p Every player has a secret identity as a member of either Killy's team or Bob's Bam team. Players on Killy's team win if either:
 			ul
-				li Five Liberal Policies are enacted OR
-				li Hitler is assassinated.
-			p Players on the Fascist team win if either:
+				li Five of Killy's Rules are enacted OR
+				li Bob is sent home from camp.
+			p Players on Bob's team win if either:
 			ul
-				li Six Fascist Policies are enacted OR
-				li Hitler is elected Chancellor any time after the third Fascist Policy has been enacted.
+				li Six of Bob's Rules are enacted OR
+				li Bob is elected Duty Officer any time after the third of Bob's Rules has been enacted.
 			h2.ui.header.centered SETUP
-			p The 11 Fascist Policy tiles and the 6 Liberal Policy tiles are shuffled into a single Policy deck. Games with 6, 7, or 9 players have the option of being "rebalanced" to make the gameplay more even for both sides. If rebalancing is enabled: 6 player games start with a Fascist Policy already enacted, 7 player games start with 10 Fascist Policies in the deck instead of 11, and 9 player games start with 9 Fascist Policies in the deck.
-			p Each player will receive a Secret Role card. The table below determines the correct distribution of roles and whether Hitler knows who the Fascists are or not.
+			p The 11 Bob's Rule tiles and the 6 Killy's Rule tiles are shuffled into a single Rule deck. Games with 6, 7, or 9 players have the option of being "rebalanced" to make the gameplay more even for both sides. If rebalancing is enabled: 6 player games start with one of Bob Rule's already enacted, 7 player games start with 10 of Bob's Rules in the deck instead of 11, and 9 player games start with 9 of Bob's Rules in the deck.
+			p Each player will receive a Secret Role card. The table below determines the correct distribution of roles and whether Bob knows who the Bams are or not.
 			table
 				thead
 					tr.emphasis
@@ -28,83 +28,83 @@ block content
 							td= val
 				tbody
 					tr
-						td Liberals
+						td Campers
 						each val in [3, 4, 4, 5, 5, 6]
 							td= val
 					tr
-						td Fascists
+						td Bams
 						each val in ['1+H', '1+H', '2+H', '2+H', '3+H', '3+H']
 							td= val
 					tr
-						td Fascists known by Hitler?
+						td Bams known by Bob?
 						each val in ['Yes', 'Yes', 'No', 'No', 'No', 'No']
 							td= val
 			h2.ui.header.centered GAMEPLAY
-			p Secret Hitler is played in rounds. Each round has an Election to form a government, a Legislative Session to enact a new Policy, and an Executive Action to exercise governmental power.
+			p It's Always Bob is played in rounds. Each round has an Election to form a camp leadership, a leader's meeting to enact a new Rule, and an Executive Action to exercise leader's powers.
 			h4.ui.header.centered ELECTION
-			p At the beginning of a new round, the President placard moves right to the next player, who is the new Presidential Candidate.
-			p.emphasis 2. Nominate a Chancellor
-			p The Presidential Candidate chooses a Chancellor Candidate by selecting any other eligible player. The Presidential Candidate is free to discuss Chancellor options with the table to build consensus and make it more likely the Government gets elected.
+			p At the beginning of a new round, the Duty Officer placard moves right to the next player, who is the new Duty Officer Candidate.
+			p.emphasis 2. Nominate a Deputy
+			p The Duty Officer Candidate chooses a Deptuy Candidate by selecting any other eligible player. The Duty Officer Candidate is free to discuss Deputy options with the table to build consensus and make it more likely the leader gets elected.
 			p.emphasis Eligibility:
-			p The last elected President and Chancellor are "term-limited", and ineligible to be nominated as Chancellor Candidate.
+			p The last elected Duty Officer and Deputy are "term-limited", and ineligible to be nominated as Deputy Candidate.
 			p.aside ON ELIGIBILITY:
 			ul.aside
-				li Term limits apply to the President and Chancellor who were last elected, not to the last pair nominated.
-				li Term limits only affect nominations to the Chancellorship; anyone can be President, even someone who was just Chancellor.
-				li If there are only five players left in the game, only the last elected Chancellor is ineligible to be Chancellor Candidate; the last President may be nominated.
+				li Term limits apply to the Duty Offier and Deputy who were last elected, not to the last pair nominated.
+				li Term limits only affect nominations to the Deputyship; anyone can be Duty Officer, even someone who was just Deputy.
+				li If there are only five players left in the game, only the last elected Deputy is ineligible to be Deputy Candidate; the last Duty Officer may be nominated.
 				li There are some other rules that affect eligibility in specific ways: the Veto Power and the Election Tracker. You don’t need to worry about those yet, and we’ll talk about each one in its relevant section.
 			p.emphasis 3. Vote on the government
-			p Once the Presidential Candidate has chosen an eligible Chancellor Candidate, players may discuss the proposed government until everyone has cast their votes. All players, including the President and Chancellor Candidate, vote on the proposed government. Once everyone has cast their vote, the Ballot cards are revealed simultaneously.
+			p Once the Duty Officer Candidate has chosen an eligible Deputy Candidate, players may discuss the proposed government until everyone has cast their votes. All players, including the Duty Officer and Deputy Candidate, vote on the proposed government. Once everyone has cast their vote, the Ballot cards are revealed simultaneously.
 			p.emphasis If the vote is a tie, or if a majority of players votes no:
-			p The vote fails. The Presidential Candidate misses this chance to be elected, and the President placard moves to the next player. The Election Tracker is advanced by one Election.
-			p Election Tracker: If the group rejects three governments in a row, the country is thrown into chaos. The next Policy on the top of the deck is revealed and enacted. Any power granted by this Policy is ignored, but the Election Tracker resets, and any existing term-limits are forgotten. If there are fewer than three tiles remaining in the Policy deck at this point, they are shuffled with the Discard pile to create a new Policy deck.
-			p Any time a new Policy is enacted for any reason, the Election Tracker is reset.
+			p The vote fails. The Duty Officer Candidate misses this chance to be elected, and the Duty Officer placard moves to the next player. The Election Tracker is advanced by one Election.
+			p Election Tracker: If the group rejects three governments in a row, the country is thrown into chaos. The next Rule on the top of the deck is revealed and enacted. Any power granted by this Rule is ignored, but the Election Tracker resets, and any existing term-limits are forgotten. If there are fewer than three tiles remaining in the Rule deck at this point, they are shuffled with the Discard pile to create a new Rule deck.
+			p Any time a new Rule is enacted for any reason, the Election Tracker is reset.
 			p.emphasis If a majority of players vote yes:
-			p The Presidential Candidate and Chancellor Candidate become the new President and Chancellor, respectively.
-			p.emphasis If three or more Fascist Policies have been enacted and a majority of players vote yes:
-			p If the new Chancellor is Hitler, the game is over and the Fascists win. If the game didn't end, other players will know for sure the Chancellor is not Hitler.
-			h4.ui.header.centered LEGISLATIVE SESSION
-			p During the Legislative Session, the President and Chancellor work together to enact a new Policy in secret. The President draws the top three tiles from the Policy deck, looks at them in secret, and discards one tile face down into the Discard pile. The remaining two tiles go to the Chancellor, who in secret discards one Policy tile face down, and enacts the remaining Policy by placing the tile face up on the corresponding track.
-			p The chat for the President and Chancellor is disabled during the Legislative Session. Attempting to telegraph the contents of your hand using randomness or any other unusual selection procedure violates the spirit of the game. Don’t do it.
-			p.emphasis Discarded Policy tiles are not revealed to the group. Players must rely on the word of the President and Chancellor, who are free to lie.
-			p.aside ABOUT LYING: Often, some players learn things that the rest of the players don’t know, like when the President and Chancellor get to see Policy tiles, or when a President uses the Investigate power to see someone’s Party Membership card. You can always lie about hidden knowledge in Secret Hitler.
-			p <span class="emphasis">If there are fewer than three tiles remaining in the Policy deck at the end of a Legislative Session,</span> they are shuffled with the Discard pile to create a new Policy deck. Unused Policy tiles are not revealed.
+			p The Duty Officer Candidate and Deputy Candidate become the new Duty Officer and Deputy, respectively.
+			p.emphasis If three or more of Bob's Rules have been enacted and a majority of players vote yes:
+			p If the new Deputy is Bob, the game is over and the Bams win. If the game didn't end, other players will know for sure the Deputy is not Bob.
+			h4.ui.header.centered LEADERS' MEETING
+			p During the Leaders' Meeting, the Duty Officer and Deputy work together to enact a new Rule in secret. The Duty Officer draws the top three tiles from the Rule deck, looks at them in secret, and discards one tile face down into the Discard pile. The remaining two tiles go to the Deputy, who in secret discards one Rule tile face down, and enacts the remaining Rule by placing the tile face up on the corresponding track.
+			p The chat for the Duty Officer and Deputy is disabled during the Leader's Meeting. Attempting to telegraph the contents of your hand using randomness or any other unusual selection procedure violates the spirit of the game. Don’t do it.
+			p.emphasis Discarded Rule tiles are not revealed to the group. Players must rely on the word of the Duty Officer and Deputy, who are free to lie.
+			p.aside ABOUT LYING: Often, some players learn things that the rest of the players don’t know, like when the Duty Officer and Deputy get to see Rule tiles, or when a Duty Officer uses the Investigate power to see someone’s Party Membership card. You can always lie about hidden knowledge in It's Always Bob.
+			p <span class="emphasis">If there are fewer than three tiles remaining in the Rule deck at the end of a Leader's Meeting,</span> they are shuffled with the Discard pile to create a new Rule deck. Unused Rule tiles are not revealed.
 			h4.ui.header.centered EXECUTIVE ACTION
-			p If the newly-enacted Fascist Policy grants a Presidential Power, the President must use it before the next round can begin. Before using a power, the President is free to discuss the issue with other players, but ultimately the President gets to decide how and when the power is used. Gameplay cannot continue until the President uses the power. Presidential Powers are used only once; they don’t stack or roll over to future turns. If the government enacted a Liberal or Fascist Policy that grants no Presidential Power, begin the next round with a new Election.
-			h4.ui.header.centered PRESIDENTIAL POWERS
+			p If the newly-enacted Rule from Bob grants a Duty Officer Power, the Duty Officer must use it before the next round can begin. Before using a power, the Duty Officer is free to discuss the issue with other players, but ultimately the Duty Officer gets to decide how and when the power is used. Gameplay cannot continue until the Duty Officer uses the power. Duty Officer Powers are used only once; they don’t stack or roll over to future turns. If the government enacted one of Killy or Bob's Rules that grants no Duty Officer Power, begin the next round with a new Election.
+			h4.ui.header.centered Duty Officer POWERS
 			p.emphasis Investigate Loyalty
-			p The President chooses a player to investigate. Investigated players show their Party Membership (not the secret role card that also reveals whether the player is Hitler or not, just whether he's a Liberal or Fascist) to the President. The President may share or lie about the results of their investigation at their discretion. No player may be investigated twice in the same game.
+			p The Duty Officer chooses a player to investigate. Investigated players show their Party Membership (not the secret role card that also reveals whether the player is Bob or not, just whether he's a Camper or Bam) to the Duty Officer. The Duty Officer may share or lie about the results of their investigation at their discretion. No player may be investigated twice in the same game.
 			p.emphasis Call Special Election
-			p The President chooses any other player at the table to be the next Presidential Candidate. Any player can become President—even players that are term-limited. The new President nominates an eligible player as Chancellor Candidate and the Election proceeds as usual.
-			p.emphasis A Special Election does not skip any players. After a Special Election, the President placard returns to the right of the President who enacted the Special Election.
-			p If the President passes the presidency to the next player in the rotation, that player would get to run for President twice in a row: once for the Special Election and once for their normal shift in the Presidential rotation.
-			p.emphasis Policy Peek
-			p After selecting the Policy deck, the President sees the top three tiles.
+			p The Duty Officer chooses any other player at the table to be the next Duty Officer Candidate. Any player can become Duty Officer—even players that are term-limited. The new Duty Officer nominates an eligible player as Deputy Candidate and the Election proceeds as usual.
+			p.emphasis A Special Election does not skip any players. After a Special Election, the Duty Officer placard returns to the right of the Duty Officer who enacted the Special Election.
+			p If the Duty Officer passes the presidency to the next player in the rotation, that player would get to run for Duty Officer twice in a row: once for the Special Election and once for their normal shift in the Duty Officer rotation.
+			p.emphasis Rule Peek
+			p After selecting the Rule deck, the Duty Officer sees the top three tiles.
 			p.emphasis Execution
-			p The President executes one player by selecting them. If that player is Hitler, the game ends in a Liberal victory. If the executed player is not Hitler, the table does not learn whether a Fascist or a Liberal has been killed; players must try to work out for themselves the new table balance. Executed players are removed from the game and may not chat, vote, or run for office.
+			p The Duty Officer executes one player by selecting them. If that player is Bob, the game ends in a Camper victory. If the executed player is not Bob, the table does not learn whether a Bam or a Camper has been killed; players must try to work out for themselves the new table balance. Executed players are removed from the game and may not chat, vote, or run for office.
 			h4.ui.header.centered VETO POWER
-			p The Veto Power is a permanent special rule that comes into effect after five Fascist Policies have been enacted. For all Legislative Sessions after the fifth Fascist Policy is enacted, the Executive branch gains a permanent new ability to discard all three Policy tiles if both the Chancellor and President agree.
-			p The President draws three Policy tiles, discards one, and passes the remaining two to the Chancellor as usual. The Chancellor selects one, and then both the President and Chancellor vote on whether or not to veto the results of this election in secret. If so, both Policies are discarded and the President placard passes to the right as usual. If either the President or Chancellor doesn't agree to veto, the Policy passes.
+			p The Veto Power is a permanent special rule that comes into effect after five of Bob's Rules have been enacted. For all Leaders' Meetings after the fifth of Bob's Rules is enacted, the Leadership team gains a permanent new ability to discard all three Rule tiles if both the Deputy and Duty Officer agree.
+			p The Duty Officer draws three Rule tiles, discards one, and passes the remaining two to the Deputy as usual. The Deputy selects one, and then both the Duty Officer and Deputy vote on whether or not to veto the results of this election in secret. If so, both Policies are discarded and the Duty Officer placard passes to the right as usual. If either the Duty Officer or Deputy doesn't agree to veto, the Rule passes.
 			p Each use of the Veto Power represents an inactive government and advances the Election Tracker by one.
 			h2.ui.header.centered BASIC STRATEGY
 			ul
-				li <span class="emphasis">Everyone should claim to be a Liberal.</span> Since the Liberal team has a voting majority, it can easily shut out any player claiming to be a Fascist. As a Fascist, there is no advantage to outing yourself to the majority. Additionally, Liberals should usually tell the truth. Liberals are trying to figure out the game like a puzzle, so lying can put their team at a significant disadvantage.
-				li <span class="emphasis">If this is your first time playing Hitler, just remember: be as Liberal as possible.</span> Enact Liberal Policies. Vote for Liberal governments. Kiss babies. Trust your fellow Fascists to create opportunities for you to enact Liberal Policies and to advance Fascism on their turns. The Fascists win by subtly manipulating the table and waiting for the right cover to enact Fascist Policies, not by overtly playing as evil.
-				li <span class="emphasis">Liberals frequently benefit from slowing play down and discussing the available information. Fascists frequently benefit from rushing votes and creating confusion.
-				li <span class="emphasis">Fascists most often win by electing Hitler, not by enacting six Policies!</span> Electing Hitler isn’t an optional or secondary win condition, it’s the core of a successful Fascist strategy. Hitler should always play as a Liberal, and should generally avoid lying or getting into fights and disagreements with other players. When the time comes, Hitler needs the Liberal's trust to get elected. Even if Hitler isn’t ultimately elected, the distrust sown among Liberals is key to getting Fascists elected late in the game.
-				li <span class="emphasis">Ask other players to explain why they took an action.</span> This is especially important with Presidential Powers—in fact, ask ahead of time whom a candidate is thinking of investigating/appointing/assassinating.
-				li <span class="emphasis">If a Fascist Policy comes up, there are only three possible culprits: The President, the Chancellor, or the Policy Deck.</span> Try to figure out who or what put you in this position.
+				li <span class="emphasis">Everyone should claim to be a Camper.</span> Since the Camper team has a voting majority, it can easily shut out any player claiming to be a Bam. As a Bam, there is no advantage to outing yourself to the majority. Additionally, Campers should usually tell the truth. Campers are trying to figure out the game like a puzzle, so lying can put their team at a significant disadvantage.
+				li <span class="emphasis">If this is your first time playing It's Always Bob, just remember: be as much of a Camper as possible.</span> Enact Killy's Policies. Vote for Camper governments. Do your duties. Trust your fellow Bams to create opportunities for you to enact Killy's Rules and to advance Bob's Rules on their turns. The Bams win by subtly manipulating the table and waiting for the right cover to enact Bob's Rules, not by overtly playing as Bams.
+				li <span class="emphasis">Campers frequently benefit from slowing play down and discussing the available information. Bams frequently benefit from rushing votes and creating confusion.
+				li <span class="emphasis">Bams most often win by electing Bob, not by enacting six rules!</span> Electing Bob isn’t an optional or secondary win condition, it’s the core of a successful Bam strategy. Bob should always play as a Camper, and should generally avoid lying or getting into fights and disagreements with other players. When the time comes, Bob needs the Camper's trust to get elected. Even if Bob isn’t ultimately elected, the distrust sown among Campers is key to getting Bams elected late in the game.
+				li <span class="emphasis">Ask other players to explain why they took an action.</span> This is especially important with Duty Officer Powers — in fact, ask ahead of time whom a candidate is thinking of investigating/appointing/assassinating.
+				li <span class="emphasis">If one of Bob's Rules comes up, there are only three possible culprits: The Duty Officer, the Deputy, or the Rule Deck.</span> Try to figure out who or what put you in this position.
 			h2.ui.header.centered GLOSSARY AND STRATEGIES
 			p This part contains definitions for common acronyms/terms and also some commonly seen strategies. You may skip this part for now and come back later once you've got hang of the game.
 			ul
-				li <span class="emphasis">Order (meta)</span> During the first rounds of the game, Liberals should try to get as many players elected in the government as possible. In a 5-player game, the first President should pick the fourth player as his Chancellor and the second President pick the fifth player so that everyone gets in the government at least once. As another example, in a 6-player game the picks should be 14, 25, and 36 (1 picking 4, 2 picking 5, 3 picking 6). In a 7-player game, the picks should be 15, 26, 37.
-				li <span class="emphasis">Blue/Red President (BP/RP)</span> Red Presidents (RP) are Presidents who claimed to get three Fascist cards. Blue Presidents (BP) are those who passed along Liberal Policies to the Chancellor. Blue Presidents who didn't have a choice to pass along two Fascist Policies to the Chancellor are sometimes called Semi-Blue Presidents (Semi-BP). Blue Chancellors (BC) are Chancellors who picked a Liberal Policy when they could have picked a Fascist one.
-				li <span class="emphasis">Conflict (conf)</span> Two players can be in conflict for different reasons, like claiming that you saw different Policies during the Legislative Session or investigating somebody and claiming he's a Fascist.
-				li <span class="emphasis">Freeze</span> Players can decide to "freeze" a particular player, meaning that they will not vote to elect that player into government. Usually, people in conflicts are frozen, and sometimes also Red Presidents depending on the circumstances.
-				li <span class="emphasis">Hitler Zone (HZ)</span> The game enters into so-called "Hitler Zone" when 3 Fascist Policies are enacted and there is a risk of electing Hitler that would mean losing the game for Liberals.
-				li <span class="emphasis">Force</span> When a President gets two Liberal and one Fascist Policy (shorthand: RBB) and decide to pass along two Liberal Policies giving the Chancellor no option to pick - that's called forcing. A Liberal should force, but Hitlers that don't know who the other fascists are might sometimes try passing along one Fascist and one Liberal Policy to see if the Chancellor picks the Fascist Policy, signalling the Hitler that they are a Fascist.
-				li <span class="emphasis">Gunpoint (GP)</span> A confirmed Liberal President can pick a player that is in conflict (Hitler usually does not conflict to remain unsuspicious) when the next Presidental Power is the execution. The picked player is forced to pick a Liberal Policy in case he has a choice unless he wants to get shot.
-				li <span class="emphasis">Powerplay (PP)</span> Powerplay is when you nominate the next President as a Chancellor, effectively letting him be in the government for two rounds in a row unless the proposal is denied. This should usually be avoided in the early game.
-				li <span class="emphasis">Double dip (DD)</span> When a single player conflicts with two players using the investigation power. How it works is that the President gives two Fascist tiles while lying that he gave the Chancellor a choice. They both get frozen, but the President first gets to investigate another player. He investigates a Liberal and claims he investigated a Fascist. So he effectively froze two Liberals with him.
-				li <span class="emphasis">Double ditch</span> When both the President and Chancellor are Fascists and they both ditch (discard, burn, drop etc.) a Liberal card.
-				li <span class="emphasis">Cucu</span> Cucu is a name for an advanced strategy that comes into play when the investigation power comes into play. This strategy is only valid before Hitler Zone. When a President enacts a Fascist Policy, he should investigate the player two spots ahead of him. If the investigated player is claimed to be a Liberal, he should pick the player who investigated him once he becomes a President. If there is a conflict (RRB --> RR), everyone can be sure that the Investigator is a Fascist because he claimed that the President was a Liberal (meaning that he couldn't lie). That forces Fascists into playing Liberal cards. There is also another strategy related to this that is named pre-cucu. That strategy suggests that the next President after the investigation should pick the investigated player.
+				li <span class="emphasis">Order (meta)</span> During the first rounds of the game, Campers should try to get as many players elected in the government as possible. In a 5-player game, the first Duty Officer should pick the fourth player as his Deputy and the second Duty Officer pick the fifth player so that everyone gets in the government at least once. As another example, in a 6-player game the picks should be 14, 25, and 36 (1 picking 4, 2 picking 5, 3 picking 6). In a 7-player game, the picks should be 15, 26, 37.
+				li <span class="emphasis">Blue/Red Duty Officer (BO/RO)</span> Red Duty Officers (RO) are Duty Officers who claimed to get three Bob's Rules cards. Blue Duty Officers (BO) are those who passed along Killy's Rules to the Deputy. Blue Duty Officers who didn't have a choice to pass along two of Bob's Rules to the Deputy are sometimes called Semi-Blue Duty Officers (Semi-BO). Blue Deputys (BD) are Deputys who picked one of Killy's Rules when they could have picked one of Bob's.
+				li <span class="emphasis">Conflict (conf)</span> Two players can be in conflict for different reasons, like claiming that you saw different Rules during the Leaders' Meeting or investigating somebody and claiming he's a Bam.
+				li <span class="emphasis">Freeze</span> Players can decide to "freeze" a particular player, meaning that they will not vote to elect that player into government. Usually, people in conflicts are frozen, and sometimes also Bam Duty Officers depending on the circumstances.
+				li <span class="emphasis">Bob Zone (BZ)</span> The game enters into so-called "Bob Zone" when 3 of Bob's Rules are enacted and there is a risk of electing Bob that would mean losing the game for Campers.
+				li <span class="emphasis">Force</span> When a Duty Officer gets two of Killy's Rules and one of Bob's (shorthand: BKK) and decides to pass along two of Killy's Rules giving the Deputy no option to pick - that's called forcing. A Camper should force, but Bams that don't know who the other Bams are might sometimes try passing along one of Bob's Rules and one of Killy's to see if the Deputy picks Bob's Rules, signalling the Bam that they are a Bam.
+				li <span class="emphasis">Go-home Point (GP)</span> A confirmed Camper Duty Officer can pick a player that is in conflict (Bob usually does not conflict to remain unsuspicious) when the next Duty Officeral Power is the sending home. The picked player is forced to pick one of Killy's Rules in case he has a choice unless he wants to be sent home.
+				li <span class="emphasis">Powerplay (PP)</span> Powerplay is when you nominate the next Duty Officer as a Deputy, effectively letting him be in the government for two rounds in a row unless the proposal is denied. This should usually be avoided in the early game.
+				li <span class="emphasis">Double dip (DD)</span> When a single player conflicts with two players using the investigation power. How it works is that the Duty Officer gives two of Bob's Rules while lying that he gave the Deputy a choice. They both get frozen, but the Duty Officer first gets to investigate another player. He investigates a Camper and claims he investigated a Bam. So he effectively froze two Campers with him.
+				li <span class="emphasis">Double ditch</span> When both the Duty Officer and Deputy are Bams and they both ditch (discard, burn, drop etc.) one of Killy's Rules.
+				li <span class="emphasis">Cucu</span> Cucu is a name for an advanced strategy that comes into play when the investigation power comes into play. This strategy is only valid before Bob Zone. When a Duty Officer enacts one of Bob's Rules, he should investigate the player two spots ahead of him. If the investigated player is claimed to be a Camper, he should pick the player who investigated him once he becomes a Duty Officer. If there is a conflict (BBK --> BB), everyone can be sure that the Investigator is a Bam because he claimed that the Duty Officer was a Camper (meaning that he couldn't lie). That forces Bams into playing Killy's Rules. There is also another strategy related to this that is named pre-cucu. That strategy suggests that the next Duty Officer after the investigation should pick the investigated player.

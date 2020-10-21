@@ -15,33 +15,33 @@ const shufflePolicies = (module.exports.shufflePolicies = (game, isStart) => {
 	if (isStart) {
 		game.trackState.enactedPolicies = [];
 		if (game.customGameSettings.trackState.lib > 0) {
-			game.trackState.liberalPolicyCount = game.customGameSettings.trackState.lib;
+			game.trackState.camperPolicyCount = game.customGameSettings.trackState.lib;
 			_.range(0, game.customGameSettings.trackState.lib).forEach(num => {
 				game.trackState.enactedPolicies.push({
-					cardBack: 'liberal',
+					cardBack: 'camper',
 					isFlipped: true,
-					position: `liberal${num + 1}`
+					position: `camper${num + 1}`
 				});
 			});
 		}
 		if (game.customGameSettings.trackState.fas > 0) {
-			game.trackState.fascistPolicyCount = game.customGameSettings.trackState.fas;
+			game.trackState.bamPolicyCount = game.customGameSettings.trackState.fas;
 			_.range(0, game.customGameSettings.trackState.fas).forEach(num => {
 				game.trackState.enactedPolicies.push({
-					cardBack: 'fascist',
+					cardBack: 'bam',
 					isFlipped: true,
-					position: `fascist${num + 1}`
+					position: `bam${num + 1}`
 				});
 			});
 		}
 	}
 
-	const libCount = game.customGameSettings.deckState.lib - game.trackState.liberalPolicyCount;
-	const fasCount = game.customGameSettings.deckState.fas - game.trackState.fascistPolicyCount;
+	const libCount = game.customGameSettings.deckState.lib - game.trackState.camperPolicyCount;
+	const fasCount = game.customGameSettings.deckState.fas - game.trackState.bamPolicyCount;
 	game.private.policies = _.shuffle(
 		_.range(0, libCount)
-			.map(num => 'liberal')
-			.concat(_.range(0, fasCount).map(num => 'fascist'))
+			.map(num => 'camper')
+			.concat(_.range(0, fasCount).map(num => 'bam'))
 	);
 
 	game.gameState.undrawnPolicyCount = game.private.policies.length;
@@ -55,15 +55,15 @@ const shufflePolicies = (module.exports.shufflePolicies = (game, isStart) => {
 					text: 'Deck shuffled: '
 				},
 				{
-					text: `${libCount} liberal`,
-					type: 'liberal'
+					text: `${libCount} camper`,
+					type: 'camper'
 				},
 				{
 					text: ' and '
 				},
 				{
-					text: `${fasCount} fascist`,
-					type: 'fascist'
+					text: `${fasCount} bam`,
+					type: 'bam'
 				},
 				{
 					text: ' policies.'
@@ -83,7 +83,7 @@ const shufflePolicies = (module.exports.shufflePolicies = (game, isStart) => {
 	};
 	game.private.policies.forEach(policy => {
 		modOnlyChat.chat.push({
-			text: policy === 'liberal' ? 'B' : 'R',
+			text: policy === 'camper' ? 'B' : 'R',
 			type: policy
 		});
 	});
@@ -97,7 +97,7 @@ const shufflePolicies = (module.exports.shufflePolicies = (game, isStart) => {
 module.exports.startElection = (game, specialElectionPresidentIndex) => {
 	const { experiencedMode } = game.general;
 
-	if (game.trackState.fascistPolicyCount >= game.customGameSettings.vetoZone) {
+	if (game.trackState.bamPolicyCount >= game.customGameSettings.vetoZone) {
 		game.gameState.isVetoEnabled = true;
 	}
 

@@ -50,9 +50,9 @@ export default class Creategame extends React.Component {
 				enabled: false,
 				// Valid powers: investigate, deckpeek, election, bullet; null for no power
 				powers: [null, null, null, null, null], // last "power" is always a fas victory
-				hitlerZone: 3, // 1-5
+				bobZone: 3, // 1-5
 				vetoZone: 5, // 1-5, must be larger than fas track state
-				fascistCount: 1, // 1-3, does not include hit
+				bamCount: 1, // 1-3, does not include hit
 				hitKnowsFas: false,
 				deckState: { lib: 6, fas: 11 }, // includes tracks cards; 6 deck + 1 track = 5 in deck
 				trackState: { lib: 0, fas: 0 }
@@ -525,9 +525,9 @@ export default class Creategame extends React.Component {
 						enabled: false,
 						// Valid powers: investigate, deckpeek, election, bullet; null for no power
 						powers: [null, null, null, null, null], // last "power" is always a fas victory
-						hitlerZone: 3, // 1-5
+						bobZone: 3, // 1-5
 						vetoZone: 5, // 1-5, must be larger than fas track state
-						fascistCount: 1, // 1-3, does not include hit
+						bamCount: 1, // 1-3, does not include hit
 						hitKnowsFas: false,
 						fasCanShootHit: false,
 						deckState: { lib: 6, fas: 11 }, // includes tracks cards; 6 deck + 1 track = 5 in deck
@@ -564,9 +564,9 @@ export default class Creategame extends React.Component {
 						enabled: false,
 						// Valid powers: investigate, deckpeek, election, bullet; null for no power
 						powers: [null, null, null, null, null], // last "power" is always a fas victory
-						hitlerZone: 3, // 1-5
+						bobZone: 3, // 1-5
 						vetoZone: 5, // 1-5, must be larger than fas track state
-						fascistCount: 1, // 1-3, does not include hit
+						bamCount: 1, // 1-3, does not include hit
 						hitKnowsFas: false,
 						fasCanShootHit: false,
 						deckState: { lib: 6, fas: 11 }, // includes tracks cards; 6 deck + 1 track = 5 in deck
@@ -603,9 +603,9 @@ export default class Creategame extends React.Component {
 						enabled: true,
 						// Valid powers: investigate, deckpeek, election, bullet; null for no power
 						powers: ['bullet', 'bullet', 'bullet', 'bullet', 'bullet'], // last "power" is always a fas victory
-						hitlerZone: 4, // 1-5
+						bobZone: 4, // 1-5
 						vetoZone: 5, // 1-5, must be larger than fas track state
-						fascistCount: 1, // 1-3, does not include hit
+						bamCount: 1, // 1-3, does not include hit
 						hitKnowsFas: false,
 						fasCanShootHit: false,
 						deckState: { lib: 6, fas: 13 }, // includes tracks cards; 6 deck + 1 track = 5 in deck
@@ -643,9 +643,9 @@ export default class Creategame extends React.Component {
 						enabled: false,
 						// Valid powers: investigate, deckpeek, election, bullet; null for no power
 						powers: [null, null, null, null, null], // last "power" is always a fas victory
-						hitlerZone: 3, // 1-5
+						bobZone: 3, // 1-5
 						vetoZone: 5, // 1-5, must be larger than fas track state
-						fascistCount: 1, // 1-3, does not include hit
+						bamCount: 1, // 1-3, does not include hit
 						hitKnowsFas: false,
 						fasCanShootHit: false,
 						deckState: { lib: 6, fas: 11 }, // includes tracks cards; 6 deck + 1 track = 5 in deck
@@ -683,9 +683,9 @@ export default class Creategame extends React.Component {
 						enabled: false,
 						// Valid powers: investigate, deckpeek, election, bullet; null for no power
 						powers: [null, null, null, null, null], // last "power" is always a fas victory
-						hitlerZone: 3, // 1-5
+						bobZone: 3, // 1-5
 						vetoZone: 5, // 1-5, must be larger than fas track state
-						fascistCount: 1, // 1-3, does not include hit
+						bamCount: 1, // 1-3, does not include hit
 						hitKnowsFas: false,
 						fasCanShootHit: false,
 						deckState: { lib: 6, fas: 11 }, // includes tracks cards; 6 deck + 1 track = 5 in deck
@@ -723,9 +723,9 @@ export default class Creategame extends React.Component {
 						enabled: false,
 						// Valid powers: investigate, deckpeek, election, bullet; null for no power
 						powers: [null, null, null, null, null], // last "power" is always a fas victory
-						hitlerZone: 3, // 1-5
+						bobZone: 3, // 1-5
 						vetoZone: 5, // 1-5, must be larger than fas track state
-						fascistCount: 1, // 1-3, does not include hit
+						bamCount: 1, // 1-3, does not include hit
 						hitKnowsFas: false,
 						fasCanShootHit: false,
 						deckState: { lib: 6, fas: 11 }, // includes tracks cards; 6 deck + 1 track = 5 in deck
@@ -763,9 +763,9 @@ export default class Creategame extends React.Component {
 						enabled: true,
 						// Valid powers: investigate, deckpeek, election, bullet; null for no power
 						powers: ['investigate', 'reverseinv', 'investigate', 'reverseinv', 'investigate'], // last "power" is always a fas victory
-						hitlerZone: 3, // 1-5
+						bobZone: 3, // 1-5
 						vetoZone: 5, // 1-5, must be larger than fas track state
-						fascistCount: 1, // 1-3, does not include hit
+						bamCount: 1, // 1-3, does not include hit
 						hitKnowsFas: false,
 						fasCanShootHit: false,
 						deckState: { lib: 6, fas: 15 }, // includes tracks cards; 6 deck + 1 track = 5 in deck
@@ -803,9 +803,9 @@ export default class Creategame extends React.Component {
 						enabled: true,
 						// Valid powers: investigate, deckpeek, election, bullet; null for no power
 						powers: ['bullet', 'bullet', 'bullet', 'bullet', 'bullet'], // last "power" is always a fas victory
-						hitlerZone: 4, // 1-5
+						bobZone: 4, // 1-5
 						vetoZone: 5, // 1-5, must be larger than fas track state
-						fascistCount: 2, // 1-3, does not include hit
+						bamCount: 2, // 1-3, does not include hit
 						hitKnowsFas: true,
 						fasCanShootHit: true,
 						deckState: { lib: 6, fas: 19 }, // includes tracks cards; 6 deck + 1 track = 5 in deck
@@ -843,9 +843,9 @@ export default class Creategame extends React.Component {
 						enabled: false,
 						// Valid powers: investigate, deckpeek, election, bullet; null for no power
 						powers: [null, null, null, null, null], // last "power" is always a fas victory
-						hitlerZone: 3, // 1-5
+						bobZone: 3, // 1-5
 						vetoZone: 5, // 1-5, must be larger than fas track state
-						fascistCount: 1, // 1-3, does not include hit
+						bamCount: 1, // 1-3, does not include hit
 						hitKnowsFas: false,
 						fasCanShootHit: false,
 						deckState: { lib: 6, fas: 11 }, // includes tracks cards; 6 deck + 1 track = 5 in deck
@@ -858,14 +858,14 @@ export default class Creategame extends React.Component {
 	sliderNumFas = val => {
 		const { customGameSettings } = this.state;
 
-		customGameSettings.fascistCount = val[0];
+		customGameSettings.bamCount = val[0];
 		customGameSettings.enabled = true;
 		this.setState({ gameType: 'custom', customGameSettings });
 	};
 
 	sliderHitlerZone = val => {
 		const { customGameSettings } = this.state;
-		customGameSettings.hitlerZone = val[0];
+		customGameSettings.bobZone = val[0];
 		customGameSettings.enabled = true;
 		this.setState({ gameType: 'custom', customGameSettings });
 	};
@@ -1072,7 +1072,7 @@ export default class Creategame extends React.Component {
 
 		return (
 			<div className={this.state.isTourny ? 'rebalance-container isTourny' : 'rebalance-container'}>
-				<span title="When enabled, 6p games have a fascist policy already enacted, and 7p and 9p games start with one less fascist policy in the deck.">
+				<span title="When enabled, 6p games have a bam policy already enacted, and 7p and 9p games start with one less bam policy in the deck.">
 					<i className="info circle icon" />
 					Rebalance:
 				</span>
@@ -1180,11 +1180,11 @@ export default class Creategame extends React.Component {
 		const rowWidth = Math.ceil((numLib + numFas) / 3);
 		const data = _.range(0, numLib)
 			.map((val, i) => {
-				return <div key={`L${i}`} className="deckcard" style={{ backgroundImage: "url('../images/cards/liberalp-l.png')" }} />; // eslint-disable-line
+				return <div key={`L${i}`} className="deckcard" style={{ backgroundImage: "url('../images/cards/camperp-l.png')" }} />; // eslint-disable-line
 			})
 			.concat(
 				_.range(0, numFas).map((val, i) => {
-					return <div key={`F${i}`} className="deckcard" style={{ backgroundImage: "url('../images/cards/fascistp-l.png')" }} />; // eslint-disable-line
+					return <div key={`F${i}`} className="deckcard" style={{ backgroundImage: "url('../images/cards/bamp-l.png')" }} />; // eslint-disable-line
 				})
 			);
 		const thirds = [];
@@ -1220,8 +1220,8 @@ export default class Creategame extends React.Component {
 			if (p == 'peekdrop') return 'PeekDrop';
 			return null;
 		});
-		const numFas = customGameSettings.fascistCount;
-		const hzStart = customGameSettings.hitlerZone;
+		const numFas = customGameSettings.bamCount;
+		const hzStart = customGameSettings.bobZone;
 		const vzPoint = customGameSettings.vetoZone;
 		const hitKnowsFas = customGameSettings.hitKnowsFas;
 		const getHZ = pos => {
@@ -1385,21 +1385,21 @@ export default class Creategame extends React.Component {
 		const { hitKnowsFas } = this.state.customGameSettings;
 
 		const renderFas = () => {
-			return _.range(0, this.state.customGameSettings.fascistCount).map((val, i) => (
+			return _.range(0, this.state.customGameSettings.bamCount).map((val, i) => (
 				<div
 					key={i}
 					className="rolecard"
-					style={{ backgroundImage: hitKnowsFas ? `url('../images/cards/fascist${val}.png')` : "url('../images/cards/secretrole.png')" }} // eslint-disable-line
+					style={{ backgroundImage: hitKnowsFas ? `url('../images/cards/bam${val}.png')` : "url('../images/cards/secretrole.png')" }} // eslint-disable-line
 				/>
 			));
 		};
 
 		const renderLib = () => {
-			return _.range(0, this.state.customGameSliderValue - this.state.customGameSettings.fascistCount - 1).map((val, i) => (
+			return _.range(0, this.state.customGameSliderValue - this.state.customGameSettings.bamCount - 1).map((val, i) => (
 				<div
 					key={i}
 					className="rolecard"
-					style={{ backgroundImage: hitKnowsFas ? `url('../images/cards/liberal${val % 6}.png')` : "url('../images/cards/secretrole.png')" }} // eslint-disable-line
+					style={{ backgroundImage: hitKnowsFas ? `url('../images/cards/camper${val % 6}.png')` : "url('../images/cards/secretrole.png')" }} // eslint-disable-line
 				/>
 			));
 		};
@@ -1432,7 +1432,7 @@ export default class Creategame extends React.Component {
 								max={5}
 								defaultValue={[3]}
 								onChange={this.sliderHitlerZone}
-								value={[this.state.customGameSettings.hitlerZone]}
+								value={[this.state.customGameSettings.bobZone]}
 								marks={{ 1: '1', 2: '2', 3: '3', 4: '4', 5: '5' }}
 							/>
 						</div>
@@ -1457,19 +1457,19 @@ export default class Creategame extends React.Component {
 					<div className="row">
 						<div className="six wide column">
 							<div>
-								<h4 className="ui header">Number of fascists</h4>
+								<h4 className="ui header">Number of bams</h4>
 								<Range
 									min={1}
 									max={3}
 									defaultValue={[2]}
 									onChange={this.sliderNumFas}
-									value={[this.state.customGameSettings.fascistCount]}
+									value={[this.state.customGameSettings.bamCount]}
 									marks={{ 1: '1', 2: '2', 3: '3' }}
 								/>
 							</div>
 						</div>
 						<div className="five wide column">
-							<h4 className="ui header">Hitler sees fascists</h4>
+							<h4 className="ui header">Hitler sees bams</h4>
 							<Switch
 								className="create-game-switch"
 								onChange={checked => {
@@ -1486,7 +1486,7 @@ export default class Creategame extends React.Component {
 							/>
 						</div>
 						<div className="five wide column">
-							<h4 className="ui header">Fascists can shoot hitler</h4>
+							<h4 className="ui header">bams can shoot bob</h4>
 							<Switch
 								className="create-game-switch"
 								onChange={checked => {
@@ -1505,7 +1505,7 @@ export default class Creategame extends React.Component {
 					</div>
 					<div className="row">
 						<div style={{ display: 'flex', width: '100%', marginBottom: '6px' }}>
-							<div className="rolecard" style={{ backgroundImage: "url('../images/cards/hitler0.png')" }} /> {/* eslint-disable-line */}
+							<div className="rolecard" style={{ backgroundImage: "url('../images/cards/bob0.png')" }} /> {/* eslint-disable-line */}
 							{renderFas()}
 						</div>
 						<div style={{ display: 'flex', width: '100%' }}>{renderLib()}</div>
@@ -1514,7 +1514,7 @@ export default class Creategame extends React.Component {
 				<div className="eight wide column ui grid" style={{ marginTop: '-1rem', marginLeft: '3rem', marginBottom: '3rem' }}>
 					<div className="row">
 						<div className="eight wide column">
-							<h4 className="ui header">Liberal policies</h4>
+							<h4 className="ui header">camper policies</h4>
 							<Range
 								min={5}
 								max={8}
@@ -1525,7 +1525,7 @@ export default class Creategame extends React.Component {
 							/>
 						</div>
 						<div className="eight wide column">
-							<h4 className="ui header">Fascist policies</h4>
+							<h4 className="ui header">bam policies</h4>
 							<Range
 								min={10}
 								max={19}
@@ -1624,8 +1624,8 @@ export default class Creategame extends React.Component {
 			}
 		}
 		if (this.state.customGameSettings.enabled) {
-			if (this.state.customGameSettings.fascistCount + 1 >= this.state.customGameSliderValue / 2) {
-				errs.push('There must be a liberal majority when the game starts.');
+			if (this.state.customGameSettings.bamCount + 1 >= this.state.customGameSliderValue / 2) {
+				errs.push('There must be a camper majority when the game starts.');
 			}
 			if (this.state.customGameSettings.vetoZone <= this.state.customGameSettings.trackState.fas) {
 				errs.push('Veto Zone cannot be active when the game starts.');
@@ -2092,7 +2092,7 @@ export default class Creategame extends React.Component {
 					<div className="row">
 						<div className="sixteen wide column">
 							<i className="big setting icon" />
-							<h4 className="ui header">Custom Game - Use a custom fascist track.</h4>
+							<h4 className="ui header">Custom Game - Use a custom bam track.</h4>
 							<Switch
 								className="create-game-switch"
 								onChange={checked => {

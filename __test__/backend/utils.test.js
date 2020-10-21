@@ -86,152 +86,152 @@ describe('handDiff', () => {
 });
 
 describe('handToPolicy', () => {
-	expect(handToPolicy({ reds: 1, blues: 0 })).toBe('fascist');
-	expect(handToPolicy({ reds: 0, blues: 1 })).toBe('liberal');
+	expect(handToPolicy({ reds: 1, blues: 0 })).toBe('bam');
+	expect(handToPolicy({ reds: 0, blues: 1 })).toBe('camper');
 });
 
 describe('handToPolicies', () => {
-	expect(handToPolicies({ reds: 3, blues: 0 })).toImmutableEqual(List(['fascist', 'fascist', 'fascist']));
-	expect(handToPolicies({ reds: 2, blues: 1 })).toImmutableEqual(List(['fascist', 'fascist', 'liberal']));
-	expect(handToPolicies({ reds: 1, blues: 2 })).toImmutableEqual(List(['fascist', 'liberal', 'liberal']));
-	expect(handToPolicies({ reds: 0, blues: 3 })).toImmutableEqual(List(['liberal', 'liberal', 'liberal']));
-	expect(handToPolicies({ reds: 2, blues: 0 })).toImmutableEqual(List(['fascist', 'fascist']));
-	expect(handToPolicies({ reds: 1, blues: 1 })).toImmutableEqual(List(['fascist', 'liberal']));
-	expect(handToPolicies({ reds: 0, blues: 2 })).toImmutableEqual(List(['liberal', 'liberal']));
+	expect(handToPolicies({ reds: 3, blues: 0 })).toImmutableEqual(List(['bam', 'bam', 'bam']));
+	expect(handToPolicies({ reds: 2, blues: 1 })).toImmutableEqual(List(['bam', 'bam', 'camper']));
+	expect(handToPolicies({ reds: 1, blues: 2 })).toImmutableEqual(List(['bam', 'camper', 'camper']));
+	expect(handToPolicies({ reds: 0, blues: 3 })).toImmutableEqual(List(['camper', 'camper', 'camper']));
+	expect(handToPolicies({ reds: 2, blues: 0 })).toImmutableEqual(List(['bam', 'bam']));
+	expect(handToPolicies({ reds: 1, blues: 1 })).toImmutableEqual(List(['bam', 'camper']));
+	expect(handToPolicies({ reds: 0, blues: 2 })).toImmutableEqual(List(['camper', 'camper']));
 });
 
 describe('policyToHand', () => {
-	expect(policyToHand('liberal')).toEqual({ reds: 0, blues: 1 });
-	expect(policyToHand('fascist')).toEqual({ reds: 1, blues: 0 });
+	expect(policyToHand('camper')).toEqual({ reds: 0, blues: 1 });
+	expect(policyToHand('bam')).toEqual({ reds: 1, blues: 0 });
 });
 
 describe('handToText', () => {
 	// Legacy
 	expect(handToText({ reds: 3, blues: 0 }, { gameSettings: { claimCharacters: 'legacy' } })).toEqual([
-		text('fascist', 'R', false, false),
-		text('fascist', 'R', false, false),
-		text('fascist', 'R', false, false),
+		text('bam', 'R', false, false),
+		text('bam', 'R', false, false),
+		text('bam', 'R', false, false),
 		text('normal', '')
 	]);
 
 	expect(handToText({ reds: 2, blues: 1 }, { gameSettings: { claimCharacters: 'legacy' } })).toEqual([
-		text('fascist', 'R', false, false),
-		text('fascist', 'R', false, false),
-		text('liberal', 'B', false, false),
+		text('bam', 'R', false, false),
+		text('bam', 'R', false, false),
+		text('camper', 'B', false, false),
 		text('normal', '')
 	]);
 
 	expect(handToText({ reds: 1, blues: 2 }, { gameSettings: { claimCharacters: 'legacy' } })).toEqual([
-		text('fascist', 'R', false, false),
-		text('liberal', 'B', false, false),
-		text('liberal', 'B', false, false),
+		text('bam', 'R', false, false),
+		text('camper', 'B', false, false),
+		text('camper', 'B', false, false),
 		text('normal', '')
 	]);
 
 	expect(handToText({ reds: 0, blues: 3 }, { gameSettings: { claimCharacters: 'legacy' } })).toEqual([
-		text('liberal', 'B', false, false),
-		text('liberal', 'B', false, false),
-		text('liberal', 'B', false, false),
+		text('camper', 'B', false, false),
+		text('camper', 'B', false, false),
+		text('camper', 'B', false, false),
 		text('normal', '')
 	]);
 
 	expect(handToText({ reds: 2, blues: 0 }, { gameSettings: { claimCharacters: 'legacy' } })).toEqual([
-		text('fascist', 'R', false, false),
-		text('fascist', 'R', false, false),
+		text('bam', 'R', false, false),
+		text('bam', 'R', false, false),
 		text('normal', '')
 	]);
 
 	expect(handToText({ reds: 1, blues: 1 }, { gameSettings: { claimCharacters: 'legacy' } })).toEqual([
-		text('fascist', 'R', false, false),
-		text('liberal', 'B', false, false),
+		text('bam', 'R', false, false),
+		text('camper', 'B', false, false),
 		text('normal', '')
 	]);
 
 	expect(handToText({ reds: 0, blues: 2 }, { gameSettings: { claimCharacters: 'legacy' } })).toEqual([
-		text('liberal', 'B', false, false),
-		text('liberal', 'B', false, false),
+		text('camper', 'B', false, false),
+		text('camper', 'B', false, false),
 		text('normal', '')
 	]);
 
 	// Short
 	expect(handToText({ reds: 3, blues: 0 })).toEqual([
-		text('fascist', 'F', false, false),
-		text('fascist', 'F', false, false),
-		text('fascist', 'F', false, false),
+		text('bam', 'F', false, false),
+		text('bam', 'F', false, false),
+		text('bam', 'F', false, false),
 		text('normal', '')
 	]);
 
 	expect(handToText({ reds: 2, blues: 1 })).toEqual([
-		text('fascist', 'F', false, false),
-		text('fascist', 'F', false, false),
-		text('liberal', 'L', false, false),
+		text('bam', 'F', false, false),
+		text('bam', 'F', false, false),
+		text('camper', 'L', false, false),
 		text('normal', '')
 	]);
 
 	expect(handToText({ reds: 1, blues: 2 })).toEqual([
-		text('fascist', 'F', false, false),
-		text('liberal', 'L', false, false),
-		text('liberal', 'L', false, false),
+		text('bam', 'F', false, false),
+		text('camper', 'L', false, false),
+		text('camper', 'L', false, false),
 		text('normal', '')
 	]);
 
 	expect(handToText({ reds: 0, blues: 3 })).toEqual([
-		text('liberal', 'L', false, false),
-		text('liberal', 'L', false, false),
-		text('liberal', 'L', false, false),
+		text('camper', 'L', false, false),
+		text('camper', 'L', false, false),
+		text('camper', 'L', false, false),
 		text('normal', '')
 	]);
 
-	expect(handToText({ reds: 2, blues: 0 })).toEqual([text('fascist', 'F', false, false), text('fascist', 'F', false, false), text('normal', '')]);
+	expect(handToText({ reds: 2, blues: 0 })).toEqual([text('bam', 'F', false, false), text('bam', 'F', false, false), text('normal', '')]);
 
-	expect(handToText({ reds: 1, blues: 1 })).toEqual([text('fascist', 'F', false, false), text('liberal', 'L', false, false), text('normal', '')]);
+	expect(handToText({ reds: 1, blues: 1 })).toEqual([text('bam', 'F', false, false), text('camper', 'L', false, false), text('normal', '')]);
 
-	expect(handToText({ reds: 0, blues: 2 })).toEqual([text('liberal', 'L', false, false), text('liberal', 'L', false, false), text('normal', '')]);
+	expect(handToText({ reds: 0, blues: 2 })).toEqual([text('camper', 'L', false, false), text('camper', 'L', false, false), text('normal', '')]);
 
 	// Full
 	expect(handToText({ reds: 3, blues: 0 }, { gameSettings: { claimCharacters: 'full' } })).toEqual([
-		text('fascist', 'fascist', false, true),
-		text('fascist', 'fascist', false, true),
-		text('fascist', 'fascist', false, false),
+		text('bam', 'bam', false, true),
+		text('bam', 'bam', false, true),
+		text('bam', 'bam', false, false),
 		text('normal', '')
 	]);
 
 	expect(handToText({ reds: 2, blues: 1 }, { gameSettings: { claimCharacters: 'full' } })).toEqual([
-		text('fascist', 'fascist', false, true),
-		text('fascist', 'fascist', false, true),
-		text('liberal', 'liberal', false, false),
+		text('bam', 'bam', false, true),
+		text('bam', 'bam', false, true),
+		text('camper', 'camper', false, false),
 		text('normal', '')
 	]);
 
 	expect(handToText({ reds: 1, blues: 2 }, { gameSettings: { claimCharacters: 'full' } })).toEqual([
-		text('fascist', 'fascist', false, true),
-		text('liberal', 'liberal', false, true),
-		text('liberal', 'liberal', false, false),
+		text('bam', 'bam', false, true),
+		text('camper', 'camper', false, true),
+		text('camper', 'camper', false, false),
 		text('normal', '')
 	]);
 
 	expect(handToText({ reds: 0, blues: 3 }, { gameSettings: { claimCharacters: 'full' } })).toEqual([
-		text('liberal', 'liberal', false, true),
-		text('liberal', 'liberal', false, true),
-		text('liberal', 'liberal', false, false),
+		text('camper', 'camper', false, true),
+		text('camper', 'camper', false, true),
+		text('camper', 'camper', false, false),
 		text('normal', '')
 	]);
 
 	expect(handToText({ reds: 2, blues: 0 }, { gameSettings: { claimCharacters: 'full' } })).toEqual([
-		text('fascist', 'fascist', false, true),
-		text('fascist', 'fascist', false, false),
+		text('bam', 'bam', false, true),
+		text('bam', 'bam', false, false),
 		text('normal', '')
 	]);
 
 	expect(handToText({ reds: 1, blues: 1 }, { gameSettings: { claimCharacters: 'full' } })).toEqual([
-		text('fascist', 'fascist', false, true),
-		text('liberal', 'liberal', false, false),
+		text('bam', 'bam', false, true),
+		text('camper', 'camper', false, false),
 		text('normal', '')
 	]);
 
 	expect(handToText({ reds: 0, blues: 2 }, { gameSettings: { claimCharacters: 'full' } })).toEqual([
-		text('liberal', 'liberal', false, true),
-		text('liberal', 'liberal', false, false),
+		text('camper', 'camper', false, true),
+		text('camper', 'camper', false, false),
 		text('normal', '')
 	]);
 });

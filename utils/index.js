@@ -37,7 +37,7 @@ exports.mapOpt2 = f => {
  * ALIASES:
  *
  * Hand: { reds: Int, blues: Int }
- * Policy: String ('fascist' | 'liberal')
+ * Policy: String ('bam' | 'camper')
  */
 
 // (handX: Hand, handY: Hand) => Hand
@@ -54,10 +54,10 @@ exports.handToPolicy = hand => {
 	if (hand.reds > 0 && hand.blues > 0) {
 		throw new Error('Expected hand to contain only a single card');
 	}
-	return hand.reds > 0 ? 'fascist' : 'liberal';
+	return hand.reds > 0 ? 'bam' : 'camper';
 };
 
-// consistently ordered 'fascist' first, followed by 'liberal'
+// consistently ordered 'bam' first, followed by 'camper'
 // (hand: Hand) => List[Policy]
 const handToPolicies = (exports.handToPolicies = hand => {
 	const toPolicies = (count, type) => {
@@ -66,15 +66,15 @@ const handToPolicies = (exports.handToPolicies = hand => {
 			.toList();
 	};
 
-	const reds = toPolicies(hand.reds, 'fascist');
-	const blues = toPolicies(hand.blues, 'liberal');
+	const reds = toPolicies(hand.reds, 'bam');
+	const blues = toPolicies(hand.blues, 'camper');
 
 	return reds.concat(blues).toList();
 });
 
 // (policy: Policy) => Hand
 exports.policyToHand = policy => {
-	return policy === 'fascist' ? { reds: 1, blues: 0 } : { reds: 0, blues: 1 };
+	return policy === 'bam' ? { reds: 1, blues: 0 } : { reds: 0, blues: 1 };
 };
 
 const isComma = (index, list, userInfo) => {
@@ -87,17 +87,17 @@ const isComma = (index, list, userInfo) => {
 
 const policyToString = (policy, userInfo) => {
 	const mode = (userInfo && userInfo.gameSettings && userInfo.gameSettings.claimCharacters) || 'short';
-	let liberalChar = 'L';
-	let fascistChar = 'F';
+	let camperChar = 'L';
+	let bamChar = 'F';
 	if (mode === 'legacy') {
-		liberalChar = 'B';
-		fascistChar = 'R';
+		camperChar = 'B';
+		bamChar = 'R';
 	} else if (mode === 'full') {
-		liberalChar = 'liberal';
-		fascistChar = 'fascist';
+		camperChar = 'camper';
+		bamChar = 'bam';
 	}
 
-	return policy === 'fascist' ? fascistChar : liberalChar;
+	return policy === 'bam' ? bamChar : camperChar;
 };
 
 // (policy: Policy) => String ('R' | 'B')

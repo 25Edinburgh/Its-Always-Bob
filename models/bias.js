@@ -6,8 +6,8 @@ const Bias = new Schema({
 		required: true,
 		unique: true
 	},
-	eloLiberal: Number,
-	eloFascist: Number
+	elocamper: Number,
+	elobam: Number
 });
 
 module.exports = mongoose.model('Account', Bias);

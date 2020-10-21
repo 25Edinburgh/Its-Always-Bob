@@ -1,6 +1,6 @@
-// liberal win
+// camper win
 module.exports = {
-	_id: 'liberal-win-7p',
+	_id: 'camper-win-7p',
 	gameSetting: {
 		rebalance6p: false,
 		rebalance7p: false,
@@ -11,7 +11,7 @@ module.exports = {
 		{
 			presidentId: 0,
 			chancellorId: 3,
-			enactedPolicy: 'liberal',
+			enactedPolicy: 'camper',
 			chancellorHand: {
 				reds: 1,
 				blues: 1
@@ -25,7 +25,7 @@ module.exports = {
 		{
 			presidentId: 1,
 			chancellorId: 6,
-			enactedPolicy: 'fascist',
+			enactedPolicy: 'bam',
 			chancellorHand: {
 				reds: 2,
 				blues: 0
@@ -39,7 +39,7 @@ module.exports = {
 		{
 			presidentId: 2,
 			chancellorId: 5,
-			enactedPolicy: 'liberal',
+			enactedPolicy: 'camper',
 			chancellorHand: {
 				reds: 1,
 				blues: 1
@@ -53,7 +53,7 @@ module.exports = {
 		{
 			presidentId: 3,
 			chancellorId: 4,
-			enactedPolicy: 'liberal',
+			enactedPolicy: 'camper',
 			chancellorHand: {
 				reds: 1,
 				blues: 1
@@ -67,7 +67,7 @@ module.exports = {
 		{
 			presidentId: 4,
 			chancellorId: 2,
-			enactedPolicy: 'liberal',
+			enactedPolicy: 'camper',
 			chancellorHand: {
 				reds: 1,
 				blues: 1
@@ -86,7 +86,7 @@ module.exports = {
 		{
 			presidentId: 6,
 			chancellorId: 5,
-			enactedPolicy: 'liberal',
+			enactedPolicy: 'camper',
 			chancellorHand: {
 				reds: 0,
 				blues: 2
@@ -101,31 +101,31 @@ module.exports = {
 	players: [
 		{
 			username: 'Uther',
-			role: 'liberal'
+			role: 'camper'
 		},
 		{
 			username: 'Jaina',
-			role: 'liberal'
+			role: 'camper'
 		},
 		{
 			username: 'Rexxar',
-			role: 'hitler'
+			role: 'bob'
 		},
 		{
 			username: 'Thrall',
-			role: 'liberal'
+			role: 'camper'
 		},
 		{
 			username: 'Malfurian',
-			role: 'fascist'
+			role: 'bam'
 		},
 		{
 			username: 'Valeera',
-			role: 'fascist'
+			role: 'bam'
 		},
 		{
 			username: 'Anduin',
-			role: 'liberal'
+			role: 'camper'
 		}
 	],
 	__v: 0

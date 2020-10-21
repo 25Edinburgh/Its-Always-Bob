@@ -63,20 +63,20 @@ export default class Game extends React.Component {
 				playSound(pack === 'pack1' ? 'policyspecialelection' : 'policypeek', 'pack1', pack === 'pack1' ? 9000 : 3000);
 			}
 
-			if (gameInfo.gameState.audioCue === 'hitlerShot' && prevProps.gameInfo.gameState.audioCue !== 'hitlerShot') {
-				playSound(pack === 'pack1' ? 'liberalswinhitlershot' : 'liberalswin', pack, pack === 'pack1' ? 26000 : 8000);
+			if (gameInfo.gameState.audioCue === 'bobShot' && prevProps.gameInfo.gameState.audioCue !== 'bobShot') {
+				playSound(pack === 'pack1' ? 'camperswinbobshot' : 'camperswin', pack, pack === 'pack1' ? 26000 : 8000);
 			}
 
-			if (gameInfo.gameState.audioCue === 'liberalsWin' && prevProps.gameInfo.gameState.audioCue !== 'liberalsWin') {
-				playSound('liberalswin', pack, pack === 'pack1' ? 19000 : 8000);
+			if (gameInfo.gameState.audioCue === 'campersWin' && prevProps.gameInfo.gameState.audioCue !== 'campersWin') {
+				playSound('camperswin', pack, pack === 'pack1' ? 19000 : 8000);
 			}
 
-			if (gameInfo.gameState.audioCue === 'fascistsWin' && prevProps.gameInfo.gameState.audioCue !== 'fascistsWin') {
-				playSound('fascistswin', pack, pack === 'pack1' ? 19000 : 13000);
+			if (gameInfo.gameState.audioCue === 'bamsWin' && prevProps.gameInfo.gameState.audioCue !== 'bamsWin') {
+				playSound('bamswin', pack, pack === 'pack1' ? 19000 : 13000);
 			}
 
-			if (gameInfo.gameState.audioCue === 'fascistsWinHitlerElected' && prevProps.gameInfo.gameState.audioCue !== 'fascistsWinHitlerElected') {
-				playSound('fascistswinhitlerelected', pack, pack === 'pack1' ? 11000 : 13000);
+			if (gameInfo.gameState.audioCue === 'bamsWinHitlerElected' && prevProps.gameInfo.gameState.audioCue !== 'bamsWinHitlerElected') {
+				playSound('bamswinbobelected', pack, pack === 'pack1' ? 11000 : 13000);
 			}
 
 			if (gameInfo.gameState.audioCue === 'passedVeto' && prevProps.gameInfo.gameState.audioCue !== 'passedVeto') {

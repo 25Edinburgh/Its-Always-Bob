@@ -63,7 +63,7 @@ const checkIP = config => {
 		creationDisabledSignup.save(() => {
 			res.status(403).json({
 				message:
-					'Creating new accounts is currently disabled.  This is likely due to limitations on our current server hardware.  Here to only play private games?  Please check out our mirror site found at https://private.secrethitler.io. If you need an exception, please contact our moderators on discord.'
+					'Creating new accounts is currently disabled.  This is likely due to limitations on our current server hardware.  If you need an exception, please contact your leaders.'
 			});
 		});
 	} else if (torIps.includes(signupIP)) {
@@ -137,7 +137,7 @@ const checkIP = config => {
 				fragSignup.save(() => {
 					res.status(401).json({
 						message:
-							'Creating new accounts is currently disabled.  This is likely due to limitations on our current server hardware.  Here to only play private games?  Please check out our mirror site found at https://private.secrethitler.io. If you need an exception, please contact our moderators on Discord.'
+							'Creating new accounts is currently disabled.  This is likely due to limitations on our current server hardware. If you need an exception, please contact your leaders.'
 					});
 				});
 				ipBanned = true;
@@ -148,25 +148,25 @@ const checkIP = config => {
 						if (banType == 'nocache') res.status(403).json({ message: 'The server is still getting its bearings, try again in a few moments.' });
 						else if (banType === 'small' || banType === 'big') {
 							res.status(403).json({
-								message: 'You can no longer access this service.  If you believe this is in error, contact the moderators on our discord channel.'
+								message: 'You can no longer access this service.  If you believe this is in error, contact your leaders.'
 							});
 							ipBanned = true;
 						} else if (banType === 'tiny') {
 							res.status(403).json({
-								message: `Your IP address was timed out.  If you believe this is in error, contact the moderators on Discord. Your timeout expires on ${new Date(
+								message: `Your IP address was timed out.  If you believe this is in error, contact your leaders. Your timeout expires on ${new Date(
 									unbanTime
 								)}`
 							});
 							ipBanned = true;
 						} else if (banType == 'new') {
 							res.status(403).json({
-								message: 'You can only make accounts once per day.  If you need an exception to this rule, contact the moderators on our discord channel.'
+								message: 'You can only make accounts once per day.  If you need an exception to this rule, contact your leaders.'
 							});
 							ipBanned = true;
 						} else {
 							console.log(`Unhandled IP ban type: ${banType}`);
 							res.status(403).json({
-								message: 'You can no longer access this service.  If you believe this is in error, contact the moderators on our discord channel.'
+								message: 'You can no longer access this service.  If you believe this is in error, contact your leaders.'
 							});
 							ipBanned = true;
 						}
@@ -190,7 +190,7 @@ const checkIP = config => {
 									const vpnScore = json.result;
 
 									if (vpnScore < 0) {
-										res.status(501).json({ message: 'There was an error processing your request. Please contact our moderators on Discord.' });
+										res.status(501).json({ message: 'There was an error processing your request. Please contact your leaders.' });
 										console.log('Error in Get IP Intel, score given: ', vpnScore, 'IP: ', signupIP, 'Message: ', json.message);
 										return;
 									}
@@ -199,7 +199,7 @@ const checkIP = config => {
 								})
 								.catch(e => {
 									console.log('failed getipintel', signupIP, e);
-									res.status(501).json({ message: 'There was a fatal error in processing your request. Please contact our moderators on Discord' });
+									res.status(501).json({ message: 'There was a fatal error in processing your request. Please contact your leaders' });
 									return;
 								});
 						}

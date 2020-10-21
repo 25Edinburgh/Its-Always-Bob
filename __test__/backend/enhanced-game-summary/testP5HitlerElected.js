@@ -1,12 +1,12 @@
 import buildEnhancedGameSummary from '../../../models/game-summary/buildEnhancedGameSummary';
-import { p5HitlerElected } from '../../mocks';
+import { p5BobElected } from '../../mocks';
 import { List, Range } from 'immutable';
 import { some, none } from 'option';
 import '../../matchers';
 
 export default () => {
-	describe('Hitler elected: 5p', () => {
-		const game = buildEnhancedGameSummary(p5HitlerElected);
+	describe('Bob elected: 5p', () => {
+		const game = buildEnhancedGameSummary(p5BobElected);
 		const { turns } = game;
 
 		if (
@@ -17,9 +17,9 @@ export default () => {
 			})
 		);
 
-		it('last turn should have hitler elected', () => {
-			expect(turns.last().isHitlerElected).toBe(true);
-			expect(game.winningTeam).toBe('fascist');
+		it('last turn should have Bob elected', () => {
+			expect(turns.last().isBobElected).toBe(true);
+			expect(game.winningTeam).toBe('bam');
 		});
 
 		it('should track the deck size', () => {

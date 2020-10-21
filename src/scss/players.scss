@@ -211,47 +211,47 @@ $eloValues: (1500 0.3 1 0.3) (1600 0.3 1 0.5) (1849 0 1 0.7) (1850 1 1 0.7) (190
 			.card.secretrole {
 				background-image: url('../../public/images/cards/secretrole.png');
 			}
-			.card.liberal0 {
-				background-image: url('../../public/images/cards/liberal0.png');
+			.card.camper0 {
+				background-image: url('../../public/images/cards/camper0.png');
 			}
-			.card.liberal1 {
-				background-image: url('../../public/images/cards/liberal1.png');
+			.card.camper1 {
+				background-image: url('../../public/images/cards/camper1.png');
 			}
-			.card.liberal2 {
-				background-image: url('../../public/images/cards/liberal2.png');
+			.card.camper2 {
+				background-image: url('../../public/images/cards/camper2.png');
 			}
-			.card.liberal3 {
-				background-image: url('../../public/images/cards/liberal3.png');
+			.card.camper3 {
+				background-image: url('../../public/images/cards/camper3.png');
 			}
-			.card.liberal4 {
-				background-image: url('../../public/images/cards/liberal4.png');
+			.card.camper4 {
+				background-image: url('../../public/images/cards/camper4.png');
 			}
-			.card.liberal5 {
-				background-image: url('../../public/images/cards/liberal5.png');
+			.card.camper5 {
+				background-image: url('../../public/images/cards/camper5.png');
 			}
-			.card.fascist0 {
-				background-image: url('../../public/images/cards/fascist0.png');
+			.card.bam0 {
+				background-image: url('../../public/images/cards/bam0.png');
 			}
-			.card.fascist1 {
-				background-image: url('../../public/images/cards/fascist1.png');
+			.card.bam1 {
+				background-image: url('../../public/images/cards/bam1.png');
 			}
-			.card.fascist2 {
-				background-image: url('../../public/images/cards/fascist2.png');
+			.card.bam2 {
+				background-image: url('../../public/images/cards/bam2.png');
 			}
-			.card.fascist3 {
-				background-image: url('../../public/images/cards/fascist3.png');
+			.card.bam3 {
+				background-image: url('../../public/images/cards/bam3.png');
 			}
-			.card.fascist4 {
-				background-image: url('../../public/images/cards/fascist4.png');
+			.card.bam4 {
+				background-image: url('../../public/images/cards/bam4.png');
 			}
-			.card.fascist5 {
-				background-image: url('../../public/images/cards/fascist5.png');
+			.card.bam5 {
+				background-image: url('../../public/images/cards/bam5.png');
 			}
-			.card.hitler0 {
-				background-image: url('../../public/images/cards/hitler0.png');
+			.card.bob0 {
+				background-image: url('../../public/images/cards/bob0.png');
 			}
-			.card.hitler1 {
-				background-image: url('../../public/images/cards/hitler1.png');
+			.card.bob1 {
+				background-image: url('../../public/images/cards/bob1.png');
 			}
 			.card.ballot {
 				background-image: url('../../public/images/cards/ballot.png');
@@ -265,11 +265,11 @@ $eloValues: (1500 0.3 1 0.3) (1600 0.3 1 0.5) (1849 0 1 0.7) (1850 1 1 0.7) (190
 			.card.partymembership {
 				background-image: url('../../public/images/cards/partymembership.png');
 			}
-			.card.membership-liberal {
-				background-image: url('../../public/images/cards/membership-liberal.png');
+			.card.membership-camper {
+				background-image: url('../../public/images/cards/membership-camper.png');
 			}
-			.card.membership-fascist {
-				background-image: url('../../public/images/cards/membership-fascist.png');
+			.card.membership-bam {
+				background-image: url('../../public/images/cards/membership-bam.png');
 			}
 			.card-back {
 				-webkit-backface-visibility: hidden; // thanks osx safari
@@ -300,16 +300,16 @@ $eloValues: (1500 0.3 1 0.3) (1600 0.3 1 0.5) (1849 0 1 0.7) (1850 1 1 0.7) (190
 		.player-number.disconnected {
 			opacity: 0.6;
 		}
-		.player-name.liberal,
-		.player-number.liberal {
+		.player-name.camper,
+		.player-number.camper {
 			color: #608cb3;
 		}
-		.player-name.fascist,
-		.player-number.fascist {
+		.player-name.bam,
+		.player-number.bam {
 			color: #c36563;
 		}
-		.player-name.hitler,
-		.player-number.hitler {
+		.player-name.bob,
+		.player-number.bob {
 			color: #be0804;
 		}
 	}
@@ -326,14 +326,14 @@ $eloValues: (1500 0.3 1 0.3) (1600 0.3 1 0.5) (1849 0 1 0.7) (1850 1 1 0.7) (190
 		animation: fadeIn 0.6s infinite alternate;
 		cursor: pointer;
 	}
-	.player-container.fascist::after {
+	.player-container.bam::after {
 		box-shadow: 0 0 4px 4px #c36563;
 	}
-	.player-container.hitler::after,
+	.player-container.bob::after,
 	.player-container.danger::after {
 		box-shadow: 0 0 4px 4px #be0804;
 	}
-	.player-container.liberal::after {
+	.player-container.camper::after {
 		box-shadow: 0 0 4px 4px #608cb3;
 	}
 	.player-container.notification::after {

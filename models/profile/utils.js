@@ -10,16 +10,16 @@ function profileDelta(username, game) {
 	const { playerSize, isRebalanced, date, id } = game;
 	const isWinner = game.isWinner(username).value();
 	const loyalty = game.loyaltyOf(username).value();
-	const isLiberal = loyalty === 'liberal';
-	const isFascist = !isLiberal;
-	const votes = game.hitlerZone
+	const iscamper = loyalty === 'camper';
+	const isbam = !iscamper;
+	const votes = game.bobZone
 		.map(hz =>
 			flattenListOpts(
 				game
 					.votesOf(username)
 					.value()
 					.slice(hz)
-			).filter(v => game.loyaltyOf(v.presidentId).value() === 'fascist' || game.roleOf(v.chancellorId).value() === 'hitler')
+			).filter(v => game.loyaltyOf(v.presidentId).value() === 'bam' || game.roleOf(v.chancellorId).value() === 'bob')
 		)
 		.valueOrElse(List());
 	const accurateVotes = votes.filterNot(v => {
@@ -27,10 +27,10 @@ function profileDelta(username, game) {
 		const presidentLoyalty = game.loyaltyOf(presidentId).value();
 		const chancellorRole = game.roleOf(chancellorId).value();
 
-		return ja && (presidentLoyalty === 'fascist' || chancellorRole === 'hitler');
+		return ja && (presidentLoyalty === 'bam' || chancellorRole === 'bob');
 	});
 	const shots = game.shotsOf(username).value();
-	const accurateShots = shots.filter(id => game.loyaltyOf(id).value() === 'fascist');
+	const accurateShots = shots.filter(id => game.loyaltyOf(id).value() === 'bam');
 
 	if (game.casualGame) {
 		return {
@@ -40,11 +40,11 @@ function profileDelta(username, game) {
 						events: 0,
 						successes: 0
 					},
-					liberal: {
+					camper: {
 						events: 0,
 						successes: 0
 					},
-					fascist: {
+					bam: {
 						events: 0,
 						successes: 0
 					}
@@ -78,23 +78,23 @@ function profileDelta(username, game) {
 					events: 1,
 					successes: isWinner ? 1 : 0
 				},
-				liberal: {
-					events: isLiberal ? 1 : 0,
-					successes: isLiberal && isWinner ? 1 : 0
+				camper: {
+					events: iscamper ? 1 : 0,
+					successes: iscamper && isWinner ? 1 : 0
 				},
-				fascist: {
-					events: isFascist ? 1 : 0,
-					successes: isFascist && isWinner ? 1 : 0
+				bam: {
+					events: isbam ? 1 : 0,
+					successes: isbam && isWinner ? 1 : 0
 				}
 			},
 			actions: {
 				voteAccuracy: {
-					events: isLiberal ? votes.size : 0,
-					successes: isLiberal ? accurateVotes.size : 0
+					events: iscamper ? votes.size : 0,
+					successes: iscamper ? accurateVotes.size : 0
 				},
 				shotAccuracy: {
-					events: isLiberal ? shots.size : 0,
-					successes: isLiberal ? accurateShots.size : 0
+					events: iscamper ? shots.size : 0,
+					successes: iscamper ? accurateShots.size : 0
 				}
 			}
 		},
@@ -122,11 +122,11 @@ function updateProfile(username, game, options = {}) {
 					'stats.matches.allMatches.events': delta.stats.matches.allMatches.events,
 					'stats.matches.allMatches.successes': delta.stats.matches.allMatches.successes,
 
-					'stats.matches.liberal.events': delta.stats.matches.liberal.events,
-					'stats.matches.liberal.successes': delta.stats.matches.liberal.successes,
+					'stats.matches.camper.events': delta.stats.matches.camper.events,
+					'stats.matches.camper.successes': delta.stats.matches.camper.successes,
 
-					'stats.matches.fascist.events': delta.stats.matches.fascist.events,
-					'stats.matches.fascist.successes': delta.stats.matches.fascist.successes,
+					'stats.matches.bam.events': delta.stats.matches.bam.events,
+					'stats.matches.bam.successes': delta.stats.matches.bam.successes,
 
 					'stats.actions.voteAccuracy.events': delta.stats.actions.voteAccuracy.events,
 					'stats.actions.voteAccuracy.successes': delta.stats.actions.voteAccuracy.successes,

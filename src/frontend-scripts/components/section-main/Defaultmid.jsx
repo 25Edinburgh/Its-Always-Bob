@@ -31,16 +31,16 @@ const Defaultmid = ({ version, readPatchNotes, quickDefault, userInfo }) => (
 			</a>
 		</div>
 		<PatchAlert isActive={version.lastSeen && version.current.number !== version.lastSeen} onClick={readPatchNotes} />
-		<img src="/images/lizard29.png" alt="Secret Hitler log" width="400" height="400" />
+		<img src="/images/lizard29.png" alt="It's Always Bob log" width="400" height="400" />
 		<p>
-			<span>{`sh.io version ${version.current.number} "${version.current.color}" released ${version.current.date} | `}</span>
+			<span>{`It's Always Bob version ${version.current.number} "${version.current.color}" released ${version.current.date} | `}</span>
 			<span>
 				<a onClick={readPatchNotes}> changelog </a>|{' '}
-				<a rel="noopener noreferrer" target="_blank" href="https://github.com/cozuya/secret-hitler/issues">
+				<a rel="noopener noreferrer" target="_blank" href="https://github.com/25Edinburgh/its-always-bob/issues">
 					open issues and upcoming features
 				</a>{' '}
 				|{' '}
-				<a rel="noopener noreferrer" target="_blank" style={{ color: 'lightgreen' }} href="https://github.com/cozuya/secret-hitler/wiki">
+				<a rel="noopener noreferrer" target="_blank" style={{ color: 'lightgreen' }} href="https://github.com/25Edinburgh/its-always-bob/wiki">
 					wiki page
 				</a>{' '}
 				|{' '}

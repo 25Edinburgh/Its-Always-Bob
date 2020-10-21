@@ -1,6 +1,10 @@
 ## Contribution Guidelines
 
-Hello and thanks for considering contributing to this project. Your contribution(s), if significant, may be rewarded with a special contributor status and a special color; more info [here](https://github.com/cozuya/secret-hitler/wiki/Contribution#contributor-role-recognition). If you're new to programming in general and want to get started, I would recommend the visual studio code editor (not visual studio) and I like my setup which you can find here: https://github.com/cozuya/visual-studio-code-settings-and-snippets
+Hello and thanks for considering contributing to this project. 
+
+First consider whether your contribution would be better on the upstream project for SH.io. Any changes there can be reflected here, so if your change affects core gameplay or is a core gameplay bugfix, it should probably go there.
+
+Your contribution(s), if significant, may be rewarded with a special contributor status and a special color; more info [here](https://github.com/cozuya/secret-hitler/wiki/Contribution#contributor-role-recognition). If you're new to programming in general and want to get started, I would recommend the visual studio code editor (not visual studio) and I like my setup which you can find here: https://github.com/cozuya/visual-studio-code-settings-and-snippets
 
 I only have the following guidelines:
 

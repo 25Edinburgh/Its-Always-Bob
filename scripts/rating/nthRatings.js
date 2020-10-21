@@ -40,7 +40,7 @@ async function influence(game) {
 		}
 		if (Math.abs((await ja(turn.votes)) - (await nein(turn.votes))) === 0) {
 			for (const v of turn.votes) {
-				// even number of fascist and liberal votes: everyone gets a point
+				// even number of bam and camper votes: everyone gets a point
 				weighting[v]++;
 			}
 		}
@@ -48,11 +48,11 @@ async function influence(game) {
 			// In government influence
 			weighting[turn.presidentId]++;
 			weighting[turn.chancellorId]++;
-			if (red > 3 && turn.enactedPolicy._value === 'fascist') {
+			if (red > 3 && turn.enactedPolicy._value === 'bam') {
 				// President powers influence
 				weighting[turn.presidentId]++;
 			}
-			if (turn.enactedPolicy._value === 'fascist') {
+			if (turn.enactedPolicy._value === 'bam') {
 				red += 1;
 			}
 		}
@@ -65,20 +65,20 @@ async function influence(game) {
 async function rate(summary) {
 	const game = buildEnhancedGameSummary(summary.toObject());
 	// Construct extra game info
-	const liberalPlayerNames = game.players
-		.filter(player => player.role === 'liberal')
+	const camperPlayerNames = game.players
+		.filter(player => player.role === 'camper')
 		.map(player => player.username)
 		.toArray();
-	const fascistPlayerNames = game.players
-		.filter(player => liberalPlayerNames.indexOf(player.username) === -1)
+	const bamPlayerNames = game.players
+		.filter(player => camperPlayerNames.indexOf(player.username) === -1)
 		.map(player => player.username)
 		.toArray();
-	const winningPlayerNames = game.winningTeam === 'liberal' ? liberalPlayerNames : fascistPlayerNames;
-	const losingPlayerNames = game.winningTeam === 'liberal' ? fascistPlayerNames : liberalPlayerNames;
+	const winningPlayerNames = game.winningTeam === 'camper' ? camperPlayerNames : bamPlayerNames;
+	const losingPlayerNames = game.winningTeam === 'camper' ? bamPlayerNames : camperPlayerNames;
 	const playerNames = game.players.map(player => player.username).toArray();
 	const playerInfluence = await influence(game);
 	// Construct some basic statistics for each team
-	const b = game.winningTeam === 'liberal' ? 1 : 0;
+	const b = game.winningTeam === 'camper' ? 1 : 0;
 	const weightedPlayerRank = new Array(game.playerSize);
 	const weightedPlayerSeasonRank = new Array(game.playerSize);
 	for (const i in playerNames) {
@@ -127,7 +127,7 @@ async function rate(summary) {
 async function allSummaries(rate) {
 	try {
 		mongoose.Promise = global.Promise;
-		await mongoose.connect(`mongodb://localhost:27017/secret-hitler-app`);
+		await mongoose.connect(`mongodb://localhost:27017/its-always-bob-app`);
 		const cursor = await Summary.find().cursor();
 		for (let summary = await cursor.next(); summary != null; summary = await cursor.next()) {
 			// Ignore casual games

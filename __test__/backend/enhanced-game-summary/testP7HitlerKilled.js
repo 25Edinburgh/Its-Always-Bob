@@ -1,12 +1,12 @@
 import buildEnhancedGameSummary from '../../../models/game-summary/buildEnhancedGameSummary';
-import { p7HitlerKilled } from '../../mocks';
+import { p7BobSentHome } from '../../mocks';
 import { List, Range } from 'immutable';
 import { some, none } from 'option';
 import matches from '../../matchers';
 
 export default () => {
-	describe('Hitler killed: 7p', () => {
-		const game = buildEnhancedGameSummary(p7HitlerKilled);
+	describe('Bob sent home: 7p', () => {
+		const game = buildEnhancedGameSummary(p7BobSentHome);
 		const { turns } = game;
 
 		it('should track special elections', () => {
@@ -17,9 +17,9 @@ export default () => {
 			expect(turns.get(4).isSpecialElection).toBe(false);
 		});
 
-		it('last turn should have hitler killed', () => {
-			expect(turns.last().isHitlerKilled).toBe(true);
-			expect(game.winningTeam).toBe('liberal');
+		it('last turn should have Bob sent home', () => {
+			expect(turns.last().isBobSentHome).toBe(true);
+			expect(game.winningTeam).toBe('camper');
 		});
 
 		it('should track shots', () => {

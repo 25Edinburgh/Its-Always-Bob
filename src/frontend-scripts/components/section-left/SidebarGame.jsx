@@ -8,10 +8,10 @@ const SidebarGame = ({ game, socket }) => {
 
 		if (game.gameStatus === 'isStarted') {
 			classes += ' inprogress';
-		} else if (game.gameStatus === 'fascist') {
-			classes += ' fascist';
-		} else if (game.gameStatus === 'liberal') {
-			classes += ' liberal';
+		} else if (game.gameStatus === 'bam') {
+			classes += ' bam';
+		} else if (game.gameStatus === 'camper') {
+			classes += ' camper';
 		} else {
 			classes += ' notstarted';
 		}
@@ -67,7 +67,7 @@ const SidebarGame = ({ game, socket }) => {
 					{(game.rebalance6p || game.rebalance7p || game.rebalance9p) && (
 						<div
 							className="rebalance-game"
-							title="This is a rebalanced game - 6 player games start with a fascist policy enacted, 7 & 9 player games start with one less fascist policy."
+							title="This is a rebalanced game - 6 player games start with a bam policy enacted, 7 & 9 player games start with one less bam policy."
 						>
 							{game.rebalance6p && game.rebalance7p && game.rebalance9p
 								? 'R679'
@@ -140,7 +140,7 @@ const SidebarGame = ({ game, socket }) => {
 					{game.rebalance69p && (
 						<div
 							className="rebalance-game"
-							title="This is a rebalanced game - 6 player games start with a fascist policy enacted, 7 & 9 player games start with one less fascist policy."
+							title="This is a rebalanced game - 6 player games start with a bam policy enacted, 7 & 9 player games start with one less bam policy."
 						>
 							R
 						</div>
@@ -148,14 +148,14 @@ const SidebarGame = ({ game, socket }) => {
 					<div className={game.rainbowgame ? 'gamename rainbow' : 'gamename'} title={'Playing: ' + game.userNames.join(', ')}>
 						{game.name}
 					</div>
-					<div className="liberal-count">
+					<div className="camper-count">
 						{_.range(1, 6).map(num => (
-							<div key={num} className={num <= game.enactedLiberalPolicyCount ? 'box liberal-box filled' : 'box liberal-box unfilled'} />
+							<div key={num} className={num <= game.enactedcamperPolicyCount ? 'box camper-box filled' : 'box camper-box unfilled'} />
 						))}
 					</div>
-					<div className="fascist-count">
+					<div className="bam-count">
 						{_.range(1, 7).map(num => (
-							<div key={num} className={num <= game.enactedFascistPolicyCount ? 'box fascist-box filled' : 'box fascist-box unfilled'} />
+							<div key={num} className={num <= game.enactedbamPolicyCount ? 'box bam-box filled' : 'box bam-box unfilled'} />
 						))}
 					</div>
 					<div className="lower-row">

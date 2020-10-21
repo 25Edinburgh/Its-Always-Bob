@@ -104,10 +104,7 @@ export class Main extends React.Component {
 											to play here. Cliffs: No NSFW/No hate speech/No player abuse. These rules are "relaxed" if you are only here to play private games.
 										</p>
 										<p>
-											If you need moderator help or support, the best way is on the <b>#mod-support</b> channel of our{' '}
-											<a href="https://discord.gg/secrethitlerio" target="_blank" rel="noopener noreferrer">
-												Discord server.
-											</a>{' '}
+											If you need moderator help or support, the best way is to talk to your leaders.
 											You can also make reports by double clicking someone's name in game.
 										</p>
 									</React.Fragment>
@@ -129,11 +126,7 @@ export class Main extends React.Component {
 											<a href="/how-to-play" target="_blank" rel="noopener noreferrer">
 												how to play
 											</a>{' '}
-											section of the site. Our{' '}
-											<a href="https://github.com/cozuya/secret-hitler/wiki" target="_blank" rel="noopener noreferrer">
-												wiki
-											</a>{' '}
-											is a great read on how the site works and how to be successful while playing here. Ranked games (this site uses an "ELO" system - cliffs:
+											section of the site. Ranked games (this site uses an "ELO" system - cliffs:
 											your ELO points go up more if you win against better players by aggregate ELO than if you win against worse players) are taken seriously
 											by many so you might want to play in some casual (often custom) games to learn how this game works online and the basics of the
 											established metagame before jumping into ranked. They will have this <Icon name="handshake outline" /> icon in the game list.
@@ -168,7 +161,7 @@ export class Main extends React.Component {
 									<h4>
 										Have fun playing this open source site. We are always looking for contributors, if you do add to this site's code, you get a cool
 										contributor color! Check out the{' '}
-										<a href="https://github.com/cozuya/secret-hitler" target="_blank" rel="noopener noreferrer">
+										<a href="https://github.com/25Edinburgh/its-always-bob" target="_blank" rel="noopener noreferrer">
 											github repo
 										</a>{' '}
 										if you're interested. Thanks for playing! -coz (site admin)

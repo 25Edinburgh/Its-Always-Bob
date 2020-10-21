@@ -177,7 +177,7 @@ export class GamesList extends React.Component {
 						(game.timedMode && timedMode) ||
 						(game.gameStatus === 'notStarted' && unstarted) ||
 						(game.gameStatus === 'isStarted' && inprogress) ||
-						((game.gameStatus === 'fascist' || game.gameStatus === 'liberal') && completed) ||
+						((game.gameStatus === 'bam' || game.gameStatus === 'camper') && completed) ||
 						(game.isCustomGame && customgame) ||
 						(game.casualGame && casualgame)
 					);
@@ -190,7 +190,7 @@ export class GamesList extends React.Component {
 							? 1
 							: 0;
 
-					const statusSortOrder = ['notStarted', 'isStarted', 'fascist', 'liberal'];
+					const statusSortOrder = ['notStarted', 'isStarted', 'bam', 'camper'];
 					const diff = Math.min(2, statusSortOrder.indexOf(a.gameStatus)) - Math.min(2, statusSortOrder.indexOf(b.gameStatus));
 					return userInGame || diff || sortTypeThenName(a, b);
 				})
